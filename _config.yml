@@ -1,0 +1,2 @@
+# To prevent Jekyll from reading bundles on Travis CI
+exclude: [vendor]
