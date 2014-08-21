@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 rvm:
 - 2.1
-script: "bundle exec rake test:all"
+script: "bundle exec rake test"
 
 # branch whitelist
 branches:
