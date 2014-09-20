@@ -2,6 +2,12 @@ language: ruby
 cache: bundler
 rvm:
 - 2.1
+
+before_install:
+  # Update repos
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq ca-certificates
+
 script: "bundle exec rake test"
 
 env:
