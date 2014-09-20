@@ -3,3 +3,4 @@ exclude: [vendor]
 markdown: redcarpet
 highlighter: pygments
 repository: https://github.com/connectbot/connectbot/
+permalink: pretty
