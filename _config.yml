@@ -1,5 +1,5 @@
 # To prevent Jekyll from reading bundles on Travis CI
 exclude: [vendor]
-
 markdown: redcarpet
 highlighter: pygments
+repository: https://github.com/connectbot/connectbot/
