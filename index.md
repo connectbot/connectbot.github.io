@@ -19,4 +19,4 @@ If you'd like to see ConnectBot translated into your language and you're willing
 
 *The latest stable version of ConnectBot is available in the Android Market.* You can scan the QR code belod using the Barcode Scanner application or Google Search to go directly to its entry in Market:
 
-<img src="/images/qr-code.png" />
+<img src="/images/qr-code.png" alt="QR code link to ConnectBot on Google Play Store" />
