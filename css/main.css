@@ -216,8 +216,10 @@ a:hover {
 }
 
 .sidebar {
+  transition: padding-right 1s ease;
   float: left;
   width: 14%;
+  min-width: 12.5em;
   padding-left: 11em;
   padding-right: 2.125em;
   border-right: 1px solid #e7e7e7;
