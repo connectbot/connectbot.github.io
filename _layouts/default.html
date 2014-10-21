@@ -2,7 +2,8 @@
 <html>
   <head>
       <script type="text/javascript">
-        if ("{{ site.github.owner_name }}.{{ site.github.pages_hostname }}" == window.location.host && window.location.protocol != "https:")
+        var host_url = "connectbot.org";
+        if (window.location.host.indexOf(host_url, window.location.host.length - host_url.length) !== -1 && window.location.protocol != "https:")
             window.location = window.location.toString().replace(/^http:/, "https:");
       </script>
       <meta charset="utf-8">
