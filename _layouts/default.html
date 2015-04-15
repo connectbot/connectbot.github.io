@@ -28,7 +28,8 @@
         </div>
         <div class="posts">
           <ul class="posts-list">
-            {% for post in site.pages %}
+            {% assign sorted_pages = site.pages | sort: "name" %}
+            {% for post in sorted_pages %}
               {% if post.title != "Home" %}
                 <li class="post-link">
                   <a class="post-title" href="{{ post.url }}">
