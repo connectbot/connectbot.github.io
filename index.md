@@ -17,7 +17,7 @@ If you're a developer, check out details about how the current codebase is desig
 
 If you'd like to see ConnectBot translated into your language and you're willing to help, then head on over to [ConnectBot translations at Launchpad](https://translations.launchpad.net/connectbot/trunk/+pots/fortune).
 
-# Available in Android Market
+# Available in Google Play Store
 
 *The latest stable version of ConnectBot is [available in the Google Play Store](https://play.google.com/store/apps/details?id=org.connectbot).* You can scan the QR code belod using the Barcode Scanner application:
 
