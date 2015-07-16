@@ -1,7 +1,3 @@
-# To emulate the GitHub Pages environment
-safe: true
-lsi: false
-
 # To prevent Jekyll from reading bundles on Travis CI
 exclude: [vendor]
 markdown: redcarpet
