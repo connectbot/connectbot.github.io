@@ -1,4 +1,5 @@
 require 'html/proofer'
+require 'rake-jekyll'
 
 task :default => :build
 
@@ -15,6 +16,10 @@ end
 desc 'Check site with html-proofer'
 task :test => :build do
   HTML::Proofer.new("./_site").run
+end
+
+Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
+  t.deploy_branch = 'master'
 end
 
 desc 'Start Jekyll server with --watch'

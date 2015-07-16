@@ -9,8 +9,9 @@ addons:
     packages:
       - ca-certificates
 
-script: "bundle exec rake test"
+script: bundle exec rake test deploy
 
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+    - secure: iJ7SiOFpf4OmthtvwHAjH4VCVuKbJoTM4sW1RJ1/wo/5ZHcYsW2GlNms48WSuzNOhHsz6Ji2YCf02TDPpZNDm5qLNoP3TLcJ3qe4xsd99XXeSZEc0Mt6pBBwVixqolXBRSfQDQIDm3xYUPWsprq46wJlzpEXepCSVy+UjTZACVE=
