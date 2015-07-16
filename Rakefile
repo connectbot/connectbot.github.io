@@ -15,7 +15,7 @@ end
 
 desc 'Check site with html-proofer'
 task :test => :build do
-  HTML::Proofer.new("./_site").run
+  HTML::Proofer.new("./_site", {:check_html => true}).run
 end
 
 Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
