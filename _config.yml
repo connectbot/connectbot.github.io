@@ -4,3 +4,5 @@ markdown: redcarpet
 highlighter: pygments
 repository: https://github.com/connectbot/connectbot/
 permalink: pretty
+gems:
+  - jekyll-sitemap
