@@ -1,15 +1,16 @@
 language: ruby
 cache: bundler
+sudo: false
 rvm:
-- 2.1
+  - 2.1
 
-before_install:
-  # Update repos
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq ca-certificates
+addons:
+  apt:
+    packages:
+      - ca-certificates
 
 script: "bundle exec rake test"
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
