@@ -19,7 +19,7 @@ If you'd like to see ConnectBot translated into your language and you're willing
 
 # Available in Google Play Store
 
-*The latest stable version of ConnectBot is [available in the Google Play Store](https://play.google.com/store/apps/details?id=org.connectbot).* You can scan the QR code belod using the Barcode Scanner application:
+*The latest stable version of ConnectBot is [available in the Google Play Store](https://play.google.com/store/apps/details?id=org.connectbot).* You can scan the QR code below using the Barcode Scanner application:
 
 {% qr https://play.google.com/store/apps/details?id=org.connectbot %}
 
