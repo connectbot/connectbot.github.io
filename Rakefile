@@ -20,6 +20,7 @@ end
 
 Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
   t.deploy_branch = 'master'
+  t.committer = 'Jekyll [automated] <no-reply@connectbot.org>'
   t.override_committer = true
 end
 
