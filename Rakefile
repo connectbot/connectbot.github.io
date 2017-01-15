@@ -1,4 +1,4 @@
-require 'html/proofer'
+require 'html-proofer'
 require 'rake-jekyll'
 
 task :default => :build
@@ -15,7 +15,7 @@ end
 
 desc 'Check site with html-proofer'
 task :test => :build do
-  HTML::Proofer.new("./_site", {:check_html => true}).run
+  HTMLProofer.check_directory("./_site", {:check_html => true}).run
 end
 
 Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
