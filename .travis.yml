@@ -11,5 +11,7 @@ script: bundle exec rake test deploy
 
 env:
   global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-    - secure: iJ7SiOFpf4OmthtvwHAjH4VCVuKbJoTM4sW1RJ1/wo/5ZHcYsW2GlNms48WSuzNOhHsz6Ji2YCf02TDPpZNDm5qLNoP3TLcJ3qe4xsd99XXeSZEc0Mt6pBBwVixqolXBRSfQDQIDm3xYUPWsprq46wJlzpEXepCSVy+UjTZACVE=
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+    - secure: skiq3/Bfpw2+kc1d02jDJV1B3/x3k9DRkSZmsWteidzIRFjMyfHAuoRYSyZCzG8g1YNhsxMFPg1/oGQBJ7H0YPDjrX1NoMl3jIUVc+3eM7qjNDMsPZD44QiUM6skXDphnb6yB+gssY0p6HX/IUs/csxCfu/wn7VQyxhFj+ZdIYg=
+    - secure: VTGwPqaPe9F9Qi9G8CsjChCl0fjOZck1lcr7mfJMIe8ReOxJulGXshwGUDnLxCVWkCfTvAv3OKc2QMeuILlKeQZgiKAdXUM1MyGamBFdFABmCWDJfAH1yZ6RUBf5r1ud1tAqUUu6/gPm/dPiCIyu4Z9LkDXOA0tANWYBSsLRLwI=
+    - secure: UAx4wZFXO9wbpPTr4VTPZqg1RYHQU3lNH2EPEoNHTio4YpxXqB8X01ZuEH8ZzyayUCOGNewGfPE7RrXYYwHWPJeTvM2KIWGZEX1s2g9IkXElmqhINk7EcQwl0a17XGHQrg7+OHFDop3xjpYIe0A3N/Lv5+3NCxQSAUT4yai1by8=
