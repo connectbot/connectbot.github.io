@@ -9,7 +9,7 @@ end
 
 desc 'Build site with Jekyll'
 task :build => :clean do
-  jekyll('build')
+  jekyll('build --profile')
 end
 
 desc 'Check site with html-proofer'
