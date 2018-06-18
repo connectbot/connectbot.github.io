@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'github-pages'
-gem 'rake-jekyll'
+gem 'rake'
 gem 'rqrcode_png'
 gem 'redcarpet'
 
