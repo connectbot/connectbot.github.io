@@ -1,5 +1,4 @@
 require 'html-proofer'
-require 'rake-jekyll'
 
 task :default => :build
 
@@ -16,12 +15,6 @@ end
 desc 'Check site with html-proofer'
 task :test => :build do
   HTMLProofer.check_directory("./_site", {:check_html => true}).run
-end
-
-Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
-  t.deploy_branch = 'master'
-  t.committer = 'Jekyll [automated] <no-reply@connectbot.org>'
-  t.override_committer = true
 end
 
 desc 'Start Jekyll server with --watch'

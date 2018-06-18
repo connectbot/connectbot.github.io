@@ -7,11 +7,23 @@ addons:
     packages:
       - ca-certificates
 
-script: bundle exec rake test deploy
+script: bundle exec rake test
 
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
     - secure: Y92VeqNKgeRR0yU82FSjljI1VihQFDZuFlwakAr+E6Fin/jFi8iqrha2Eryru33UkDXLsBJpy+vGabHfFw7eFxQ9oVAqeTjYrrglFJfBQ6NYbM56BshR9ZXpIIaGqgRrlfVGHElFWaU68GEtaPomUt+2rL2UlXDHwMfl9GrSNFQ=
-    - secure: VTGwPqaPe9F9Qi9G8CsjChCl0fjOZck1lcr7mfJMIe8ReOxJulGXshwGUDnLxCVWkCfTvAv3OKc2QMeuILlKeQZgiKAdXUM1MyGamBFdFABmCWDJfAH1yZ6RUBf5r1ud1tAqUUu6/gPm/dPiCIyu4Z9LkDXOA0tANWYBSsLRLwI=
-    - secure: UAx4wZFXO9wbpPTr4VTPZqg1RYHQU3lNH2EPEoNHTio4YpxXqB8X01ZuEH8ZzyayUCOGNewGfPE7RrXYYwHWPJeTvM2KIWGZEX1s2g9IkXElmqhINk7EcQwl0a17XGHQrg7+OHFDop3xjpYIe0A3N/Lv5+3NCxQSAUT4yai1by8=
+
+deploy:
+  provider: pages
+  github-token: $GH_TOKEN
+  name: Jekyll [automated]
+  email: no-reply@connectbot.org
+  local-dir: _site
+  skip-cleanup: true
+  on:
+    repo: connectbot/connectbot.github.io
+    branch: develop
+  target-branch: master
+  keep-history: true
+  fqdn: connectbot.org
