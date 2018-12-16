@@ -86,6 +86,14 @@ a:hover {
   text-align: center;
 }
 
+.logo-font {
+  font-family: 'Essential PragmataPro';
+  src: url('subset-EssentialPragmataPro.woff2') format('woff2'),
+       url('subset-EssentialPragmataPro.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .tagline {
   width: 100%;
   color: #777;
