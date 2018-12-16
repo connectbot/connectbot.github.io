@@ -9,4 +9,5 @@ kramdown:
 repository: https://github.com/connectbot/connectbot.github.io.git
 permalink: pretty
 plugins:
+  - jekyll-assets
   - jekyll-sitemap
