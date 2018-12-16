@@ -1,11 +1,11 @@
 <div class="content" id="home">
   <div id="sidebar-button">
-    <img src="/images/sidebar-button.png" alt="Menu" />
+    {% asset sidebar-button.png alt="Menu" %}
   </div>
   <div id="post-info">
     {% if page.cover %}
     <div id="cover-photo-container">
-      <img id="cover-photo" src="/images/{{ page.cover }}">
+      {% asset {{ page.cover }} id='cover-photo' %}
     </div>
     {% endif %}
     {% if page.title != "Home" %}
