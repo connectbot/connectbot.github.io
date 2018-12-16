@@ -86,6 +86,14 @@ a:hover {
   text-align: center;
 }
 
+.logo-font {
+  font-family: 'Datatype Thin';
+  src: url('subset-EssentialDatatypeThin.woff2') format('woff2'),
+       url('subset-EssentialDatatypeThin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .tagline {
   width: 100%;
   color: #777;
