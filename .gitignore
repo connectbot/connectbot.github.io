@@ -1,1 +1,6 @@
 _site
+
+# Jekyll assets
+.asset-cache/
+.jekyll-cache/
+.sass-cache/
