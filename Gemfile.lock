@@ -113,6 +113,8 @@ GEM
       ethon (>= 0.9.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    uglifier (4.1.20)
+      execjs (>= 0.3.0, < 3)
     yell (2.0.7)
 
 PLATFORMS
@@ -126,7 +128,9 @@ DEPENDENCIES
   mini_magick
   rake
   rqrcode_png
+  sass
   sprockets (~> 4.0.beta)
+  uglifier
 
 BUNDLED WITH
    1.17.2
