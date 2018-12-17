@@ -1,84 +1,81 @@
-/*****************************************************************************/
-/*
-/* Common
-/*
-/*****************************************************************************/
+@import 'colors';
+
+// Common
 
 * {
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
-  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  color: #333;
-  background-color: #fafbfc;
+  background-color: $athens-gray;
+  color: $mine-shaft;
   font-family: 'Raleway', Arial, sans-serif;
+  font-size: .85em;
   font-weight: 400;
-  font-size: 0.85em;
   overflow: hidden;
 }
 
 a {
-  color: #8085C1;
+  border: 0;
+  color: $ship-cove;
   text-decoration: none;
-  border: none;
-}
 
-a img {
-  outline: none;
-}
+  img {
+    outline: none;
+  }
 
-a:hover {
-  color: #555;
-  border: none;
+  :hover {
+    border: 0;
+    color: $emperor;
+  }
 }
 
 .separator {
-  color: #555;
+  color: $emperor;
 }
 
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
+// Home
 #logo {
   max-width: 128px;
 }
 
-.posts a {
-  color: #444;
-}
+.posts {
+  border-top: 1px solid $mercury;
+  margin-top: 1em;
+  padding-bottom: 1.25em;
+  padding-top: 1.5em;
 
-.posts a:hover {
-  color: #777;
+  a {
+    color: $tundora;
+
+    :hover {
+      color: $boulder;
+    }
+  }
 }
 
 .posts-list {
   list-style-type: none;
+
+  li {
+    line-height: 1.75em;
+    text-align: center;
+  }
 }
 
-.posts-list li {
-  text-align: center;
-  line-height: 1.75em;
-}
-
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
+// Site
 
 .site {
   height: 100%;
-  width: 100%;
   line-height: 1.25em;
+  width: 100%;
 }
 
 .title {
@@ -88,47 +85,34 @@ a:hover {
 
 .logo-font {
   font-family: 'Essential PragmataPro';
-  src: url('subset-EssentialPragmataPro.woff2') format('woff2'),
-       url('subset-EssentialPragmataPro.woff') format('woff');
-  font-weight: normal;
   font-style: normal;
+  font-weight: normal;
+  src: url('subset-EssentialPragmataPro.woff2') format('woff2'), url('subset-EssentialPragmataPro.woff') format('woff');
 }
 
 .tagline {
-  width: 100%;
-  color: #777;
-  text-align: center;
-  margin-top: 0.5em;
+  color: $boulder;
   display: block;
-
-}
-
-.posts {
-  border-top: 1px solid #e7e7e7;
-  margin-top: 1em;
-  padding-top: 1.5em;
-  padding-bottom: 1.25em;
+  margin-top: .5em;
+  text-align: center;
+  width: 100%;
 }
 
 .footer {
-  font-size: 0.95em;
-  border-top: 1px solid #e7e7e7;
-  padding-top: 1.25em;
-  padding-bottom: 1.5em;
-  overflow: hidden;
+  border-top: 1px solid $mercury;
   float: center;
+  font-size: .95em;
+  overflow: hidden;
+  padding-bottom: 1.5em;
+  padding-top: 1.25em;
   text-align: center;
 }
 
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
+// Posts
 
 #date {
-  padding-top: 0.5em;
   margin-bottom: 2em;
+  padding-top: .5em;
 }
 
 #cover-photo-container,
@@ -141,97 +125,98 @@ a:hover {
 }
 
 #title {
-  color: #494949;
-  margin-bottom: 0.35em;
+  color: $tundora;
   font-size: 3.5em;
+  margin-bottom: .35em;
   text-transform: uppercase;
 }
 
 .post {
-  line-height: 24px;
-  max-width: 725px;
   clear: both;
+  line-height: 24px;
   margin-top: 3em;
+  max-width: 725px;
+
+  h2 {
+    margin-bottom: 1.25em;
+    margin-left: -.5em;
+    margin-top: 1.25em;
+  }
+
+  a {
+    border-bottom: 1px dashed $ship-cove;
+
+    hover {
+      border: 0;
+    }
+  }
+
+  #about {
+    a {
+      border-bottom: 1px dashed $ship-cove;
+    }
+  }
+
+  // standard
+  pre {
+    background-color: $titan-white;
+    border: 1px solid $alto;
+    padding: 0 .4em;
+
+    code {
+      border: 0;
+    }
+
+    .terminal {
+      background-color: $mine-shaft;
+      border: 1px solid $black;
+      color: $white;
+
+      code {
+        background-color: $mine-shaft;
+      }
+    }
+  }
+
+  p {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 1.1em;
+    margin-bottom: 1.45em;
+    text-align: justify;
+  }
+
+  ul,
+  ol {
+    margin-bottom: 1.25em;
+    margin-left: 2.35em;
+  }
+
+  code {
+    background-color: $titan-white;
+    border: 1px solid $alto;
+    padding: 0 .2em;
+  }
+
 }
 
-.post h2 {
-  margin-top: 1.25em;
-  margin-left: -0.5em;
-  margin-bottom: 1.25em;
-}
-
-.post a,
-#about a {
-  border-bottom: 1px dashed #8085C1;
-}
-
-.post a:hover {
-  border: none;
-}
-
-/* standard */
-.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
-}
-
-.post p {
-  font-family: 'Source Sans Pro', Arial, sans-serif;
-  font-size: 1.1em;
-  margin-bottom: 1.45em;
-  text-align: justify;
-}
-
-.post ul, .post ol {
-  margin-left: 2.35em;
-  margin-bottom: 1.25em;
-}
-
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
-}
-
-.post pre code {
-  border: none;
-}
-
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
-}
-
-.post pre.terminal code {
-  background-color: #333;
-}
-
-/*****************************************************************************/
-/*
-/* Sidebar and Content
-/*
-/*****************************************************************************/
+// Sidebar and Content
 
 .sidebar,
 .content {
-  vertical-align: top;
   height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
+  vertical-align: top;
 }
 
 .sidebar {
-  transition: padding-right 1s ease;
+  border-right: 1px solid $mercury;
   float: left;
-  width: 14%;
   min-width: 12.5em;
   padding-left: 11em;
   padding-right: 2.125em;
-  border-right: 1px solid #e7e7e7;
+  transition: padding-right 1s ease;
+  width: 14%;
 }
 
 .content {
@@ -239,58 +224,55 @@ a:hover {
 }
 
 .header {
-  text-align: center;
-  padding-top: 2.5em;
   font-size: 1.1em;
+  padding-top: 2.5em;
+  text-align: center;
 }
 
 .post-link {
-  margin-bottom: 0.75em;
+  margin-bottom: .75em;
 }
 
 .post-title {
-  font-weight: 600;
   font-size: 1.4em;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
 .post-date {
-  color: #8a8a8a;
-  font-family: Monaco, "Courier New", monospace;
-  font-weight: 600;
-  font-size: 0.65em;
+  color: $gray;
   display: block;
+  font-family: Monaco, 'Courier New', monospace;
+  font-size: .65em;
+  font-weight: 600;
   text-transform: lowercase;
 }
 
 #sidebar-button {
-  height: intrinsic;
+  border-bottom: 1px solid $mercury;
   cursor: pointer;
   display: none;
-  padding: 15px 5px 0px 0px;
+  height: intrinsic;
   margin-bottom: 10px;
-  border-bottom: 1px solid #e7e7e7;
+  padding: 15px 5px 0 0;
+
+  :active,
+  :hover {
+    opacity: .7;
+  }
 }
 
-#sidebar-button:active,
-#sidebar-button:hover {
-  opacity: 0.7;
-}
-
-/*****************************************************************************/
-/*
-/* Colophon
-/*
-/*****************************************************************************/
+// Colophon
 
 .colophon {
-  margin-top: 1.5em;
+  border-top: 1px dotted $mercury;
   margin-bottom: 1.45em;
-  border-top: 1px dotted #e7e7e7;
+  margin-top: 1.5em;
+
+  p {
+    color: $boulder;
+    font-size: .95em;
+    margin-top: 1.25em;
+  }
 }
 
-.colophon p {
-  margin-top: 1.25em;
-  font-size: 0.95em;
-  color: #777;
-}
