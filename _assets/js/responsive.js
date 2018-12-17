@@ -3,10 +3,10 @@ window.onload = function() {
   var sidebarButton = document.getElementById("sidebar-button");
 
   function openSidebar(e) {
-    if (sidebar.className.indexOf("slideIn") != -1) {
-      sidebar.className = sidebar.className.replace(" slideIn", "");
+    if (sidebar.className.indexOf("slide-in") != -1) {
+      sidebar.className = sidebar.className.replace(" slide-in", "");
     } else {
-     sidebar.className = sidebar.className + " slideIn"; 
+     sidebar.className = sidebar.className + " slide-in"; 
     }
   }
 
