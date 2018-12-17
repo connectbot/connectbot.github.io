@@ -8,6 +8,9 @@ kramdown:
   syntax_highlighter: rouge
 repository: https://github.com/connectbot/connectbot.github.io.git
 permalink: pretty
+favicon:
+  source: /_assets/favicon/icon-web.png
 plugins:
   - jekyll-assets
+  - jekyll-favicon
   - jekyll-sitemap

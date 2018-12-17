@@ -3,6 +3,7 @@ linters:
   rubocop:
     fixer: true
   sasslint:
+    config: _sass-lint-config.yml
 files:
   ignore:
     - 'bower_components/*'

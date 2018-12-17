@@ -60,6 +60,9 @@ GEM
       nokogiri (~> 1.8)
       pathutil (~> 0.16)
       sprockets (>= 3.3, < 4.1.beta)
+    jekyll-favicon (0.2.5)
+      jekyll (~> 3.0)
+      mini_magick (~> 4.5)
     jekyll-sanity (1.2.0)
       jekyll (~> 3.1)
     jekyll-sass-converter (1.5.2)
@@ -100,7 +103,7 @@ GEM
       rqrcode
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
-    sass (3.7.2)
+    sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -124,6 +127,7 @@ DEPENDENCIES
   html-proofer
   jekyll
   jekyll-assets
+  jekyll-favicon
   jekyll-sitemap
   mini_magick
   rake
