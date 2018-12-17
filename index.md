@@ -7,7 +7,7 @@ ConnectBot is a secure shell client for the Android platform. Its ultimate goal 
 
 # Development Team
 
-The current development team consists of [Kenny Root](https://the-b.org/), Paul Evans, and Torne Wuff.
+The main developer is [Kenny Root](https://the-b.org/) with various contributions from the community.
 
 All of us are on the <strong>#connectbot</strong> channel on [Freenode](https://freenode.net/) if you have questions. You can join via Freenode's [webchat](https://webchat.freenode.net/) system or your own IRC client.
 
