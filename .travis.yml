@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
       - ca-certificates
+      - imagemagick
 
 script: bundle exec rake test
 
