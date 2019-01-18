@@ -1,5 +1,5 @@
 # To prevent Jekyll from reading bundles on Travis CI
-exclude: [vendor]
+exclude: [Gemfile, Gemfile.lock, README.md, LICENSE.flex, Rakefile, vendor]
 highlighter: rouge
 markdown: kramdown
 kramdown:

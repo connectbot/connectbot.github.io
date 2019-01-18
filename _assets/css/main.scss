@@ -146,7 +146,7 @@ a {
   a {
     border-bottom: 1px dashed $ship-cove;
 
-    hover {
+    :hover {
       border: 0;
     }
   }
