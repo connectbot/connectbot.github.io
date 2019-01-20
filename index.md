@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Home
+navigation: true
 ---
 
 ConnectBot is a secure shell client for the Android platform. Its ultimate goal is to create a secure connection through which you can use a shell on a remote machine and transfer files back and forth to your phone.
