@@ -25,15 +25,13 @@
         </div>
         <div class="posts">
           <ul class="posts-list">
-            {% assign sorted_pages = site.pages | sort: "name" %}
+            {% assign sorted_pages = site.pages | sort: "name" | where: "navigation", true %}
             {% for post in sorted_pages %}
-              {% if post.title != "Home" %}
                 <li class="post-link">
                   <a class="post-title" href="{{ post.url }}">
                     {{ post.title }}
                   </a>
                 </li>
-              {% endif %}
             {% endfor %}
           </ul>
         </div>

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+navigation: true
 ---
 
 <a href="https://the-b.org/">Kenny Root</a> created ConnectBot the same day
