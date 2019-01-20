@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Reporting Bugs
+navigation: true
 ---
 
 Please use GitHub issues to report all problems with ConnectBot, this web
