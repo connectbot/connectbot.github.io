@@ -24,7 +24,7 @@ GEM
     fastimage (2.1.5)
     ffi (1.10.0)
     forwardable-extended (2.6.0)
-    html-proofer (3.10.1)
+    html-proofer (3.10.2)
       activesupport (>= 4.2, < 6.0)
       addressable (~> 2.3)
       colorize (~> 0.8)
