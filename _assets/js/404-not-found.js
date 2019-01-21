@@ -1,17 +1,25 @@
 let drawModule = (function() {
     "use strict";
 
-    let canvas = document.getElementById("scene");
-    if (!(canvas instanceof HTMLCanvasElement)) {
-        throw "#scene must be a <canvas> element!";
-    }
-    let ctx = canvas.getContext("2d");
+    /** @type HTMLCanvasElement */
+    let canvas = undefined;
+    /** @type CanvasRenderingContext2D */
+    let ctx = undefined;
     /** @type Particle[] */
     let particles = [];
     let padding = 36;
 
     /** @type number */
     let renderStuff = undefined;
+
+    function findTarget() {
+        let possibleCanvas = document.getElementById("scene");
+        if (!(possibleCanvas instanceof HTMLCanvasElement)) {
+            throw "#scene must be a <canvas> element!";
+        }
+        canvas = possibleCanvas;
+        ctx = canvas.getContext("2d");
+    }
 
     /**
      *
@@ -70,6 +78,7 @@ let drawModule = (function() {
     };
 
     function drawScene() {
+        findTarget();
         fitCanvasToScreen();
 
         if (renderStuff !== undefined) {
