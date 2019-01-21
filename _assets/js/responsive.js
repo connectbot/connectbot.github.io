@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("DOMContentLoaded", function() {
   var sidebar = document.getElementById("sidebar");
   var sidebarButton = document.getElementById("sidebar-button");
 
@@ -11,4 +11,4 @@ window.onload = function() {
   }
 
   sidebarButton.addEventListener("click", openSidebar, false);
-};
+});

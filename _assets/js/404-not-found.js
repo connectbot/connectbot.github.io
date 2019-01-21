@@ -1,9 +1,9 @@
 let drawModule = (function() {
-    'use strict';
+    "use strict";
 
     let canvas = document.getElementById("scene");
     if (!(canvas instanceof HTMLCanvasElement)) {
-        throw '#scene must be a <canvas> element!';
+        throw "#scene must be a <canvas> element!";
     }
     let ctx = canvas.getContext("2d");
     /** @type Particle[] */
@@ -30,6 +30,10 @@ let drawModule = (function() {
     }
 
     Particle.prototype.animate = function() {
+        if (this.x === this.x0 && this.y === this.y0) {
+            return;
+        }
+
         if (Math.sqrt(Math.pow(this.x - this.x0, 2) + Math.pow(this.y - this.y0, 2)) > 1) {
             this.x += this.xDelta / 200;
             this.y += this.yDelta / 200;
@@ -66,12 +70,15 @@ let drawModule = (function() {
     };
 
     function drawScene() {
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        fitCanvasToScreen();
 
-        canvas.addEventListener('mousemove', move, false);
+        if (renderStuff !== undefined) {
+            window.clearInterval(renderStuff);
+            renderStuff = undefined;
+        }
+
+        canvas.addEventListener("mousemove", disperseParticles, false);
+        canvas.addEventListener("click", disperseParticles, false);
 
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
@@ -99,10 +106,6 @@ let drawModule = (function() {
         }
         ctx.fillStyle = "black";
 
-        if (renderStuff !== undefined) {
-            window.clearInterval(renderStuff);
-        }
-
         renderStuff = window.setInterval(function () {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0, j = particles.length; i < j; i++) {
@@ -111,7 +114,13 @@ let drawModule = (function() {
                 ctx.fillRect(particle.x, particle.y, 2, 2);
             }
         }, 1);
+    }
 
+    function fitCanvasToScreen() {
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
     }
 
     /**
@@ -152,7 +161,7 @@ let drawModule = (function() {
     /**
      * @param {MouseEvent} e - mouse movement event
      */
-    function move(e) {
+    function disperseParticles(e) {
         let mouseX = parseInt(e.clientX - canvas.offsetLeft);
         let mouseY = parseInt(e.clientY - canvas.offsetTop);
 
@@ -163,14 +172,7 @@ let drawModule = (function() {
         });
     }
 
-    drawScene();
+    window.addEventListener("DOMContentLoaded", drawScene);
     window.addEventListener("resize", drawScene);
-
-    return {
-        start: function() {
-            drawScene();
-        }
-    }
+    window.addEventListener("transitionend", drawScene);
 }());
-
-drawModule.start();
