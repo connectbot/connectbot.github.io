@@ -86,8 +86,9 @@ let drawModule = (function() {
             renderStuff = undefined;
         }
 
-        canvas.addEventListener("mousemove", disperseParticles, false);
-        canvas.addEventListener("click", disperseParticles, false);
+        canvas.addEventListener("mousemove", disperseParticlesMouse, false);
+        canvas.addEventListener("touchmove", disperseParticlesTouch, false);
+        canvas.addEventListener("click", disperseParticlesMouse, false);
 
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
@@ -168,15 +169,37 @@ let drawModule = (function() {
     }
 
     /**
+     * @param {TouchEvent} e - touch movement events
+     */
+    function disperseParticlesTouch(e) {
+        e.preventDefault();
+        for (let i = 0; i < e.targetTouches.length; i++) {
+            let touch = e.targetTouches[i];
+            let touchX = parseInt(touch.clientX - canvas.offsetLeft);
+            let touchY = parseInt(touch.clientY - canvas.offsetTop);
+            disperseParticlesXY(touchX, touchY);
+        }
+    }
+
+    /**
      * @param {MouseEvent} e - mouse movement event
      */
-    function disperseParticles(e) {
+    function disperseParticlesMouse(e) {
+        e.preventDefault();
         let mouseX = parseInt(e.clientX - canvas.offsetLeft);
         let mouseY = parseInt(e.clientY - canvas.offsetTop);
+        disperseParticlesXY(mouseX, mouseY);
+    }
 
+    /**
+     *
+     * @param {number} x - x coordinate of dispersion source
+     * @param {number} y - y coordinate of dispersion source
+     */
+    function disperseParticlesXY(x, y) {
         particles.forEach(function(particle) {
-            if (particle.distanceTo(mouseX, mouseY) < 20) {
-                particle.moveAwayFrom(mouseX, mouseY);
+            if (particle.distanceTo(x, y) < 20) {
+                particle.moveAwayFrom(x, y);
             }
         });
     }
