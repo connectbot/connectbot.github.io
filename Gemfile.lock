@@ -60,7 +60,7 @@ GEM
       nokogiri (~> 1.8)
       pathutil (~> 0.16)
       sprockets (>= 3.3, < 4.1.beta)
-    jekyll-favicon (0.2.5)
+    jekyll-favicon (0.2.6)
       jekyll (~> 3.0)
       mini_magick (~> 4.5)
     jekyll-sanity (1.2.0)
