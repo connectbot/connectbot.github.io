@@ -7,7 +7,7 @@ gem "mini_magick", group: :jekyll_plugins
 gem "rake"
 gem "rqrcode_png"
 gem "uglifier"
-gem "sprockets", "~> 4.0.beta", {
+gem "sprockets", "~> 4.0", {
   require: false
 }
 

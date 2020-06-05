@@ -107,7 +107,7 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sprockets (4.0.0.beta8)
+    sprockets (4.0.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     thread_safe (0.3.6)
@@ -131,7 +131,7 @@ DEPENDENCIES
   mini_magick
   rake
   rqrcode_png
-  sprockets (~> 4.0.beta)
+  sprockets (~> 4.0)
   uglifier
 
 BUNDLED WITH
