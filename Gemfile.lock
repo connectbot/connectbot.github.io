@@ -51,7 +51,7 @@ GEM
     fastimage (2.2.0)
     ffi (1.13.1)
     forwardable-extended (2.6.0)
-    html-proofer (3.18.0)
+    html-proofer (3.18.1)
       addressable (~> 2.3)
       mercenary (~> 0.3)
       nokogumbo (~> 2.0)
