@@ -1,19 +1,10 @@
 {
   "icons": [
     {
-      "src": "/assets/images/favicon-192x192.png",
-      "type": "png",
-      "sizes": "192x192"
+      "src": "/android-chrome-192x192.png"
     },
     {
-      "src": "/assets/images/favicon-96x96.png",
-      "type": "png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "/assets/images/favicon-48x48.png",
-      "type": "png",
-      "sizes": "48x48"
+      "src": "/android-chrome-512x512.png"
     }
   ]
 }
