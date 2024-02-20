@@ -114,7 +114,7 @@ GEM
       forwardable-extended (~> 2.6)
     public_suffix (5.0.0)
     racc (1.7.3)
-    rack (2.2.3.1)
+    rack (2.2.8)
     rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.11.2)
