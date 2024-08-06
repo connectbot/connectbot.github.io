@@ -24,4 +24,4 @@ If you'd like to see ConnectBot translated into your language and you're willing
 
 {% qr https://play.google.com/store/apps/details?id=org.connectbot %}
 
-You may also download ConnectBot from our [releases page](https://github.com/connectbot/connectbot/releases). Historical downloads may be available from the old Google Code site [downloads page](https://code.google.com/p/connectbot/downloads/list).
+You may also download ConnectBot from our [releases page](https://github.com/connectbot/connectbot/releases). Historical downloads may be available from the old Google Code site [downloads page](https://code.google.com/archive/p/connectbot/downloads).
