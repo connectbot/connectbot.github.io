@@ -1,6 +1,6 @@
 module Jekyll
   class QrCodeTag < Liquid::Tag
-    require 'rqrcode_png'
+    require 'rqrcode'
 
     def initialize(tag_name, url, tokens)
       super
@@ -9,7 +9,7 @@ module Jekyll
 
     def render(context)
       qr = RQRCode::QRCode.new(@url)
-      png = qr.to_img
+      png = qr.as_png
       w, h = png.width, png.height
       png = png.resize(w*2, h*2)
       <<-MARKUP.strip
