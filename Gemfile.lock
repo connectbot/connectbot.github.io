@@ -163,8 +163,9 @@ GEM
       rake (>= 13)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sprockets (4.2.1)
+    sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
+      logger
       rack (>= 2.2.4, < 4)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
