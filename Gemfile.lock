@@ -35,7 +35,7 @@ GEM
       io-event (~> 1.11)
       metrics (~> 0.12)
       traces (~> 0.18)
-    base64 (0.2.0)
+    base64 (0.3.0)
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     chunky_png (1.4.0)
