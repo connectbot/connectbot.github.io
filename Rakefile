@@ -14,7 +14,13 @@ end
 
 desc 'Check site with html-proofer'
 task :test => :build do
-  HTMLProofer.check_directory("./_site", {:check_html => true}).run
+  options = {
+    :check_html => true,
+    :url_ignore => [
+      "buymeacoffee.com",
+    ],
+  }
+  HTMLProofer.check_directory("./_site", options).run
 end
 
 desc 'Start Jekyll server with --watch'
