@@ -16,8 +16,8 @@ desc 'Check site with html-proofer'
 task :test => :build do
   options = {
     :check_html => true,
-    :url_ignore => [
-      "buymeacoffee.com",
+    :ignore_urls => [
+      /:\/\/buymeacoffee\.com\//,
     ],
   }
   HTMLProofer.check_directory("./_site", options).run
