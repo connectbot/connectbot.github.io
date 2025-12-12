@@ -14,6 +14,12 @@ All of us are on the <strong>#connectbot</strong> channel on [Libera.Chat](https
 
 If you're a developer, check out details about how the current codebase is designed.
 
+# Support the Project
+
+If you'd like to support ConnectBot development, you can donate via:
+- [GitHub Sponsors](https://github.com/sponsors/kruton)
+- [BuyMeACoffee](https://buymeacoffee.com/kruton)
+
 # Translations to your language
 
 If you'd like to see ConnectBot translated into your language and you're willing to help, then head on over to [ConnectBot translations at Launchpad](https://translations.launchpad.net/connectbot/trunk/+pots/fortune).
