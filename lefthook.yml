@@ -1,0 +1,18 @@
+# Validate commit messages
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm exec commitlint --edit $1
+
+# Validate content before committing
+pre-commit:
+  commands:
+    lint:
+      glob: '*'
+      run: pnpm exec eslint --fix --no-warn-ignored {staged_files}
+      stage_fixed: true
+      priority: 1
+    check-types:
+      glob: '*.{ts,tsx}'
+      run: pnpm run check:types
+      priority: 2
