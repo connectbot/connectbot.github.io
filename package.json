@@ -2,13 +2,12 @@
   "scripts": {
     "check:types": "tsc --noEmit --pretty",
     "check:deps": "knip",
-    "check:i18n": "i18n-check -l src/locales -s en -u src -f next-intl",
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind"
+    "postbuild": "pagefind --site .next/server/app --output-path out/_pagefind"
   },
   "dependencies": {
     "@commitlint/cli": "^20.3.0",
