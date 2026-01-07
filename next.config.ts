@@ -5,6 +5,10 @@ import './src/libs/Env';
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
   devIndicators: {
     position: 'bottom-right',
   },
