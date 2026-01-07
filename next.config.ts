@@ -15,6 +15,7 @@ const baseConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   reactCompiler: true,
+  trailingSlash: true,
 };
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -23,7 +24,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 // Set up Nextra with its configuration
 const withNextra = nextra({
-  defaultShowCopyCode: true,
   latex: true,
   contentDirBasePath: '/',
 });
