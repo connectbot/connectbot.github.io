@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
 import bundleAnalyzer from '@next/bundle-analyzer';
 import nextra from 'nextra';
-import './src/libs/Env';
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {
