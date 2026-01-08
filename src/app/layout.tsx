@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
-import Image from 'next/image';
 
 import {
   LastUpdated,
@@ -9,6 +8,7 @@ import {
 } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
+import themeConfig from '@/theme.config';
 import './styles.css';
 
 export const metadata: Metadata = {
@@ -36,16 +36,14 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
 
   const navbar = (
     <Navbar
-      logo={(
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Image src="/logo.png" alt="ConnectBot logo" width={32} height={32} />
-          <span style={{ fontWeight: 'bold' }}>ConnectBot</span>
-        </div>
-      )}
-      projectLink="https://github.com/connectbot/connectbot"
+      logo={themeConfig.logo}
+      projectLink={themeConfig.project.link}
+      chatLink={themeConfig.chat.link}
+      chatIcon={themeConfig.chat.icon}
     >
     </Navbar>
   );
+
   return (
     <html lang="en" suppressHydrationWarning>
       <Head
@@ -54,25 +52,24 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
           light: '#fafbfc',
         }}
         color={{
-          hue: { dark: 120, light: 0 },
-          saturation: { dark: 100, light: 100 },
+          hue: themeConfig.primaryHue,
+          saturation: themeConfig.primarySaturation,
         }}
-      />
+      >
+        {themeConfig.head}
+      </Head>
       <body>
         <Layout
           navbar={navbar}
-          sidebar={{
-            defaultMenuCollapseLevel: 1,
-            autoCollapse: true,
-          }}
-          nextThemes={{ defaultTheme: 'dark' }}
+          sidebar={themeConfig.sidebar}
+          nextThemes={themeConfig.nextThemes}
           pageMap={pageMap}
           lastUpdated={<LastUpdated>Last Updated</LastUpdated>}
-          themeSwitch={{
-            dark: 'Dark',
-            light: 'Light',
-            system: 'System',
-          }}
+          themeSwitch={themeConfig.themeSwitch.getOptions()}
+          footer={themeConfig.footer}
+          editLink={themeConfig.editLink}
+          feedback={themeConfig.feedback}
+          toc={themeConfig.toc}
         >
           {children}
         </Layout>

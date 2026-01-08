@@ -22,5 +22,14 @@ article p {
   margin: 0.75rem 0;
 }
 
+.footer-link {
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.footer-link:hover {
+  opacity: 1;
+}
+
 @theme {
 }
