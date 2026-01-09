@@ -1,4 +1,8 @@
-import NotFoundCanvas from '@/components/NotFoundCanvas';
+import dynamic from 'next/dynamic';
+
+const NotFoundCanvas = dynamic(() => import('@/components/NotFoundCanvas'), {
+  loading: () => <div style={{ height: '200px' }} />,
+});
 
 export default function NotFound() {
   return (
