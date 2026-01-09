@@ -1,9 +1,6 @@
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import antfu from '@antfu/eslint-config';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import playwright from 'eslint-plugin-playwright';
-import tailwind from 'eslint-plugin-tailwindcss';
 
 export default antfu(
   {
@@ -27,15 +24,6 @@ export default antfu(
   },
   // --- Accessibility Rules ---
   jsxA11y.flatConfigs.recommended,
-  // --- Tailwind CSS Rules ---
-  ...tailwind.configs['flat/recommended'],
-  {
-    settings: {
-      tailwindcss: {
-        config: `${dirname(fileURLToPath(import.meta.url))}/src/app/styles.css`,
-      },
-    },
-  },
   // --- E2E Testing Rules ---
   {
     files: [
