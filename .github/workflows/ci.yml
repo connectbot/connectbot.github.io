@@ -33,6 +33,7 @@ jobs:
           cache: pnpm
 
       - name: Setup Pages
+        if: github.ref == 'refs/heads/develop' && github.event_name == 'push' && github.repository == 'connectbot/connectbot.github.io'
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Restore cache
@@ -57,7 +58,7 @@ jobs:
         run: pnpm run build
 
       - name: Upload artifact
-        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/develop' && github.event_name == 'push' && github.repository == 'connectbot/connectbot.github.io'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
           path: ./out
@@ -68,7 +69,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push' && github.repository == 'connectbot/connectbot.github.io'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
