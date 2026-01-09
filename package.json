@@ -1,6 +1,7 @@
 {
   "scripts": {
     "analyze": "next experimental-analyze",
+    "analyze:export": "next experimental-analyze --output",
     "check:types": "tsc --noEmit --pretty",
     "check:deps": "knip",
     "dev": "next",
