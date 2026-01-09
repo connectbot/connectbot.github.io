@@ -1,23 +1,12 @@
 @import 'nextra-theme-docs/style.css';
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
-
-@font-face {
-  font-family: 'Datatype Thin';
-  font-style: normal;
-  font-weight: normal;
-  src:
-    url('/fonts/logo-font.woff2') format('woff2'),
-    url('/fonts/logo-font.woff') format('woff');
-}
 
 body {
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: var(--font-raleway), Arial, sans-serif;
   font-size: 0.85em;
 }
 
 article p {
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: var(--font-source-sans), Arial, sans-serif;
   margin: 0.75rem 0;
 }
 
