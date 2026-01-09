@@ -15,6 +15,9 @@ const baseConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
   trailingSlash: true,
+  experimental: {
+    optimizePackageImports: ['nextra-theme-docs', 'react-icons', 'qrcode.react'],
+  },
 };
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -23,7 +26,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 // Set up Nextra with its configuration
 const withNextra = nextra({
-  latex: true,
   contentDirBasePath: '/',
 });
 
