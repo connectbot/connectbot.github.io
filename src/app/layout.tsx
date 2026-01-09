@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 
+import { Raleway, Source_Sans_3 } from 'next/font/google';
+import localFont from 'next/font/local';
 import {
   LastUpdated,
   Layout,
@@ -10,6 +12,32 @@ import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import themeConfig from '@/theme.config';
 import './styles.css';
+
+const raleway = Raleway({
+  weight: ['300', '400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-raleway',
+});
+
+const sourceSans = Source_Sans_3({
+  weight: ['300', '400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-source-sans',
+});
+
+const pragmataPro = localFont({
+  src: [
+    {
+      path: '../../public/fonts/logo-font.woff2',
+      weight: 'normal',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-pragmata-pro',
+});
 
 export const metadata: Metadata = {
   description:
@@ -45,7 +73,7 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
   );
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${raleway.variable} ${sourceSans.variable} ${pragmataPro.variable}`}>
       <Head
         backgroundColor={{
           dark: 'rgb(15,23,42)',
