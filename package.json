@@ -37,7 +37,7 @@
     "eslint-plugin-playwright": "^2.5.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
-    "knip": "^5.80.2",
+    "knip": "^5.81.0",
     "lefthook": "^2.0.15",
     "pagefind": "^1.4.0",
     "typescript": "^5.9.3"
