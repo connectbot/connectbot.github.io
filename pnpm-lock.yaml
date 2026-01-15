@@ -46,8 +46,8 @@ importers:
         specifier: ^2.6.4
         version: 2.6.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@next/bundle-analyzer':
-        specifier: ^16.1.1
-        version: 16.1.1
+        specifier: ^16.1.2
+        version: 16.1.2
       '@next/eslint-plugin-next':
         specifier: ^16.1.2
         version: 16.1.2
@@ -923,8 +923,8 @@ packages:
   '@napi-rs/wasm-runtime@1.1.1':
     resolution: {integrity: sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A==}
 
-  '@next/bundle-analyzer@16.1.1':
-    resolution: {integrity: sha512-aNJy301GGH8k36rDgrYdnyYEdjRQg6csMi1njzqHo+3qyZvOOWMHSv+p7SztNTzP5RU2KRwX0pPwYBtDcE+vVA==}
+  '@next/bundle-analyzer@16.1.2':
+    resolution: {integrity: sha512-WTwoRTCmU5BKAizao2lKBkbeJDpsdgF/rrkSnFQye7ni8ybtM/aYzka8N+QqGug5UBBm4ddRkIwxMF7vWCreFw==}
 
   '@next/env@16.1.2':
     resolution: {integrity: sha512-r6TpLovDTvWtzw11UubUQxEK6IduT8rSAHbGX68yeFpA/1Oq9R4ovi5nqMUMgPN0jr2SpfeyFRbTZg3Inuuv3g==}
@@ -5675,7 +5675,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@next/bundle-analyzer@16.1.1':
+  '@next/bundle-analyzer@16.1.2':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:
