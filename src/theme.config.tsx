@@ -18,7 +18,7 @@ const config = {
       </svg>
     ),
   },
-  docsRepositoryBase: 'https://github.com/connectbot/connectbot.github.io/tree/develop',
+  docsRepositoryBase: 'https://github.com/connectbot/connectbot.github.io/tree/develop/src/content',
   footer: (
     <div
       style={{
@@ -122,6 +122,7 @@ const config = {
   feedback: {
     content: 'Question? Give us feedback →',
     labels: 'feedback',
+    link: 'https://github.com/connectbot/connectbot.github.io/issues/new?labels=feedback',
   },
   sidebar: {
     defaultMenuCollapseLevel: 1,
