@@ -2,7 +2,7 @@
 
 body {
   font-family: var(--font-raleway), Arial, sans-serif;
-  font-size: 0.85em;
+  font-size: 1rem;
 }
 
 article p {
