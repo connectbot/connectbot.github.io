@@ -25,7 +25,7 @@
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@commitlint/types": "^20.3.1",
-    "@eslint-react/eslint-plugin": "^2.6.4",
+    "@eslint-react/eslint-plugin": "^2.7.1",
     "@next/bundle-analyzer": "^16.1.2",
     "@next/eslint-plugin-next": "^16.1.2",
     "@types/node": "^25.0.9",
