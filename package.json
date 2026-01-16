@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "analyze": "next experimental-analyze",
     "analyze:export": "next experimental-analyze --output",
