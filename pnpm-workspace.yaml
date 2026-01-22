@@ -1,12 +1,11 @@
 shellEmulator: true
 
 trustPolicy: no-downgrade
-
 ignoredBuiltDependencies:
   - esbuild
-
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@swc/core'
   - lefthook
   - sharp
+  - workerd
