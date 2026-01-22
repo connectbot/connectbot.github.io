@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  deployments: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -55,9 +56,10 @@ jobs:
         run: pnpm run build
 
       - name: Deploy to Cloudflare Pages
-        if: github.ref == 'refs/heads/develop' && github.event_name == 'push' && github.repository == 'connectbot/connectbot.github.io'
+        if: github.repository == 'connectbot/connectbot.github.io' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
         uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy ./out --project-name=connectbot-website
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
