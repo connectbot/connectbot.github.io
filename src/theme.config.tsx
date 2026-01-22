@@ -18,7 +18,7 @@ const config = {
       </svg>
     ),
   },
-  docsRepositoryBase: 'https://github.com/connectbot/connectbot.github.io/tree/develop/src/content',
+  docsRepositoryBase: 'https://github.com/connectbot/connectbot.github.io/tree/develop',
   footer: (
     <div
       style={{

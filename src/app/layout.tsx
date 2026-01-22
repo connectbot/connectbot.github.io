@@ -95,6 +95,7 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
           lastUpdated={<LastUpdated>Last Updated</LastUpdated>}
           themeSwitch={themeConfig.themeSwitch.getOptions()}
           footer={themeConfig.footer}
+          docsRepositoryBase={themeConfig.docsRepositoryBase}
           editLink={themeConfig.editLink}
           feedback={themeConfig.feedback}
           toc={themeConfig.toc}
