@@ -35,7 +35,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-format": "^1.4.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-playwright": "^2.5.1",
+    "eslint-plugin-playwright": "^2.7.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
     "knip": "^5.83.1",
