@@ -121,7 +121,7 @@ export default function NotFoundCanvas() {
     };
 
     const drawScene = () => {
-      if (requestRef.current) {
+      if (requestRef.current !== undefined) {
         cancelAnimationFrame(requestRef.current);
       }
 
@@ -157,7 +157,8 @@ export default function NotFoundCanvas() {
       for (let y = 0, y2 = data.height; y < y2; y = y + 4) {
         for (let x = 0, x2 = data.width; x < x2; x = x + 4) {
           const index = (y * 4 * data.width) + (x * 4) + 3;
-          if (data.data[index] !== undefined && data.data[index]! > 128) {
+          const pixelValue = data.data[index];
+          if (pixelValue !== undefined && pixelValue > 128) {
             particlesRef.current.push(new Particle(x + padding, y + padding));
           }
         }
@@ -189,7 +190,7 @@ export default function NotFoundCanvas() {
     canvas.addEventListener('click', disperseParticlesMouse);
 
     return () => {
-      if (requestRef.current) {
+      if (requestRef.current !== undefined) {
         cancelAnimationFrame(requestRef.current);
       }
       window.removeEventListener('resize', drawScene);

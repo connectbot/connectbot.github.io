@@ -159,6 +159,7 @@ const config = {
   nextThemes: {
     defaultTheme: 'dark',
   },
+  // eslint-disable-next-line react/no-unnecessary-use-prefix
   useNextSeoProps() {
     return {
       titleTemplate: '%s | ConnectBot',
