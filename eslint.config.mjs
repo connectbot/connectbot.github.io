@@ -6,7 +6,9 @@ export default antfu(
   {
     react: true,
     nextjs: true,
-    typescript: true,
+    typescript: {
+      tsconfigPath: 'tsconfig.json',
+    },
 
     // Configuration preferences
     lessOpinionated: true,
@@ -35,6 +37,7 @@ export default antfu(
   // --- Custom Rule Overrides ---
   {
     rules: {
+      'react/no-implicit-key': 'off', // Fixes linting errors on configuration files
       'antfu/no-top-level-await': 'off', // Allow top-level await
       'style/brace-style': ['error', '1tbs'], // Use the default brace style
       'ts/consistent-type-definitions': ['error', 'type'], // Use `type` instead of `interface`

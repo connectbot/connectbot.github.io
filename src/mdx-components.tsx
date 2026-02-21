@@ -9,9 +9,9 @@ const docsComponents = getDocsMDXComponents({
   QRCode,
 });
 
-export const useMDXComponents: UseMDXComponents<typeof docsComponents> = (
+export const useMDXComponents: UseMDXComponents<MDXComponents> = (
   components?: MDXComponents,
 ) => ({
   ...docsComponents,
   ...components,
-}) as any;
+});
