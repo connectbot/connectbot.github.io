@@ -16,7 +16,7 @@ type PageProps = Readonly<{
   }>;
 }>;
 
-const Wrapper = getMDXComponents().wrapper;
+const Wrapper = getMDXComponents().wrapper!;
 
 const Page: FC<PageProps> = async (props) => {
   const params = await props.params;
