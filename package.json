@@ -39,7 +39,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
     "knip": "^5.84.1",
-    "lefthook": "^2.1.1",
+    "lefthook": "^2.1.2",
     "next-sitemap": "^4.2.3",
     "pagefind": "^1.4.0",
     "typescript": "^5.9.3",
