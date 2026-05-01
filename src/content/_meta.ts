@@ -18,6 +18,9 @@ const meta: MetaRecord = {
     title: 'Reporting Bugs',
     type: 'page',
   },
+  404: {
+    display: 'hidden',
+  },
 };
 
 export default meta;
