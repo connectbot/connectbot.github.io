@@ -1,0 +1,41 @@
+# ConnectBot Privacy Policy
+**Last Updated: May 1, 2026**
+
+This privacy policy applies to the **ConnectBot** application for Android. ConnectBot is an open-source terminal emulator and SSH client. We value your privacy and aim to be transparent about how data is handled by the application and third-party services.
+
+## 1. Data Collection and Developer Infrastructure
+**ConnectBot developers do not own or operate any servers or services that collect, store, or process user data.**
+* **OSS Builds (e.g., GitHub):** These builds contain no telemetry or tracking. No data is ever transmitted from these builds to the developers or any third-party analytics services.
+* **Google Play Builds:** These builds utilize Google Play Services for distribution and maintenance. While the ConnectBot developers do not collect personal data, Google may process technical data, including pseudonymous identifiers, diagnostics, and usage metrics, as governed by [Google’s Privacy Policy](https://policies.google.com/privacy) and [Google Play’s Data Safety](https://support.google.com/googleplay/answer/11416267) standards. We use the aggregated, de-identified reports provided by the [Google Play Console](https://support.google.com/googleplay/android-developer/answer/9842754) solely to improve app stability and performance.
+
+## 2. Permissions and Device Capabilities
+To provide a functional terminal and SSH experience, ConnectBot requires access to certain device capabilities.
+
+* **Network Access & Connectivity:** Required to transmit and receive data between your device and the remote servers you choose to connect to. This data is sent directly to your specified destination and is never routed through or intercepted by ConnectBot developer infrastructure.
+* **Session Persistence:** Allows ConnectBot to maintain active terminal sessions and SSH tunnels in the background so connections are not interrupted when the app is minimized.
+* **File & Key Management:** Used to facilitate the local shell and to allow the user to manually import or export public keys and configuration files. Depending on your Android version, this may utilize the Storage Access Framework or specific file permissions.
+* **User Interface & Notifications:** Used for haptic feedback and to provide a persistent notification while a session is active.
+
+For a technical list of specific Android permissions required by the current version of the app, please refer to the [AndroidManifest.xml](https://github.com/connectbot/connectbot/blob/master/app/src/main/AndroidManifest.xml) in our repository.
+
+## 3. Data Backup and Storage
+ConnectBot utilizes the standard **Android Backup Service** to allow for data migration between devices.
+
+* **Host Configurations:** Descriptions, hostnames, and port forward settings are included in the system backup by default.
+* **Private Keys:** For security, **private keys are excluded from backups by default.** Users must explicitly opt-in via the application settings if they wish to include private keys in their system backup.
+* **Storage Location:** Backed-up data is stored by Google as part of your Android system backup; it is never sent to or stored by the ConnectBot developers.
+
+## 4. Data Deletion and Account Policy
+ConnectBot does not utilize developer-managed user accounts, cloud-based profiles, or centralized storage.
+* **Remote Server Credentials:** ConnectBot stores the usernames and passwords you provide strictly to facilitate connections to your remote servers. This data is stored locally on your device (and optionally in your system backup, as described in Section 3). The ConnectBot developers have no access to these credentials.
+* **No Developer Accounts:** Because we do not maintain a central user database or accounts on our own infrastructure, there is no personal profile data to delete from our servers.
+* **Manual Deletion:** You may delete all local host configurations and stored credentials at any time by clearing the application data in Android System Settings or by uninstalling the app.
+* **Backup Deletion:** Any credentials stored via the Android Backup Service can be removed by managing your Google Account backup settings.
+
+## 5. Open Source Transparency
+As an open-source project, our code is available for public audit. You can verify our data handling practices by reviewing the source code at:
+[https://github.com/connectbot/connectbot/](https://github.com/connectbot/connectbot/)
+
+## 6. Contact Information
+If you have questions regarding this policy, please contact the developers at:
+**developers@connectbot.org**
