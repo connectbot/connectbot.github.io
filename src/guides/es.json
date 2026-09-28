@@ -1,0 +1,114 @@
+[
+  {
+    "id": "special-keys",
+    "title": "Mantener visibles las teclas especiales",
+    "description": "Ten siempre a mano Ctrl, Esc, las flechas y otras teclas del terminal.",
+    "steps": [
+      {
+        "id": "open-menu",
+        "title": "Abre el menú de la lista de hosts",
+        "text": "En la lista de hosts, toca el menú de tres puntos de la esquina superior."
+      },
+      {
+        "id": "open-settings",
+        "title": "Abre Configuración",
+        "text": "Elige Configuración. Esto cambia los ajustes generales de ConnectBot, en lugar de los ajustes de un host concreto."
+      },
+      {
+        "id": "find-keyboard",
+        "title": "Busca la sección Teclado",
+        "text": "Desplázate hacia abajo hasta la sección Teclado. Busca Teclas especiales siempre visibles."
+      },
+      {
+        "id": "enable-special-keys",
+        "title": "Mantén visibles las teclas especiales",
+        "text": "Activa Teclas especiales siempre visibles. Esto mantiene en pantalla la barra de teclas especiales del terminal."
+      },
+      {
+        "id": "return-to-hosts",
+        "title": "Vuelve a la lista de hosts",
+        "text": "Vuelve a la lista de hosts. El ajuste se guarda automáticamente."
+      },
+      {
+        "id": "show-result",
+        "title": "Prueba una sesión de terminal",
+        "text": "Abre una sesión de terminal. Las teclas especiales ahora permanecen visibles y no se superponen al terminal."
+      }
+    ]
+  },
+  {
+    "id": "add-host",
+    "title": "Añadir un host SSH",
+    "description": "Guarda un servidor para abrirlo desde la lista de hosts.",
+    "steps": [
+      {
+        "id": "add-host",
+        "title": "Añade un host",
+        "text": "En la lista de hosts, toca el botón más para añadir un host."
+      },
+      {
+        "id": "enter-address",
+        "title": "Introduce los datos de conexión",
+        "text": "En Conexión rápida, introduce tu nombre de usuario, la dirección del servidor y, si lo deseas, el puerto; por ejemplo, demo@example.com. Recuerda que este host es solo un ejemplo, así que debes sustituir estos datos por los tuyos. El puerto habitual de SSH es el 22.",
+        "spoken": "En Conexión rápida, introduce tu nombre de usuario, la dirección del servidor y, si lo deseas, el puerto. Por ejemplo: demo, arroba, example punto com. Recuerda que este host es solo un ejemplo, así que debes sustituir estos datos por los tuyos. El puerto habitual de SSH es el veintidós."
+      },
+      {
+        "id": "save-host",
+        "title": "Guarda el host",
+        "text": "Toca Añadir host para guardar la conexión."
+      },
+      {
+        "id": "show-result",
+        "title": "Busca el host guardado",
+        "text": "El host guardado aparece en la lista de hosts. Solo tienes que tocarlo cuando estés listo para conectarte."
+      }
+    ]
+  },
+  {
+    "id": "terminal-appearance",
+    "title": "Personalizar el aspecto del terminal",
+    "description": "Usa un perfil para elegir un esquema de colores y un tamaño de fuente legible para el terminal.",
+    "steps": [
+      {
+        "id": "open-menu",
+        "title": "Abre el menú de la lista de hosts",
+        "text": "En la lista de hosts, abre el menú de tres puntos."
+      },
+      {
+        "id": "open-profiles",
+        "title": "Abre Perfiles",
+        "text": "Elige Perfiles. Los perfiles permiten reutilizar los ajustes del aspecto del terminal en varios hosts."
+      },
+      {
+        "id": "create-profile",
+        "title": "Crea un perfil",
+        "text": "Toca el botón más y dale al nuevo perfil un nombre fácil de recordar. En este ejemplo usaré «Readable»."
+      },
+      {
+        "id": "choose-colors",
+        "title": "Elige un esquema de colores",
+        "text": "En Esquema de colores, selecciona Solarized Dark. Los colores del terminal son independientes del tema claro u oscuro de la aplicación."
+      },
+      {
+        "id": "choose-font",
+        "title": "Elige un tamaño de fuente",
+        "text": "Ajusta Tamaño de fuente a un tamaño cómodo para tu pantalla."
+      },
+      {
+        "id": "save-profile",
+        "title": "Guarda el perfil",
+        "text": "Toca Guardar y vuelve a la lista de hosts."
+      },
+      {
+        "id": "assign-profile",
+        "title": "Asigna el perfil a un host",
+        "text": "Edita el host que quieras personalizar, elige Readable en Perfil y guarda el host."
+      },
+      {
+        "id": "show-result",
+        "title": "Abre el terminal",
+        "text": "La próxima sesión de este host usará los colores y el tamaño de fuente que hayas elegido."
+      }
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "provenance": {
+    "apkSha256": "97eab8166c939419c46a6a641c05e7cfe820558380635599b1a55e629cc1467c",
+    "resourceTag": "a89483f3",
+    "profile": {
+      "device": "Pixel 10 Pro XL",
+      "kind": "physical"
+    },
+    "systemImage": "google/mustang/mustang:DEV/ZVS1.260918.001.A2/16406342:userdebug/dev-keys",
+    "ime": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+    "adb": "Android Debug Bridge version 1.0.41\nVersion 36.0.0-13206524\nInstalled as /home/kenny/android-sdk-linux/platform-tools/adb\nRunning on Linux 7.2.4-200.fc44.x86_64 (x86_64)"
+  },
+  "ffmpeg": "ffmpeg version 7.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2024 the FFmpeg developers",
+  "encodings": {
+    "mp4": {
+      "bytes": 1722460,
+      "duration": 37.933,
+      "bitrate": "363263",
+      "keyframes": [
+        0.0,
+        2.0,
+        3.266667,
+        4.2,
+        6.2,
+        6.7,
+        8.7,
+        10.7,
+        12.7,
+        14.7,
+        16.7,
+        18.7,
+        20.7,
+        22.7,
+        24.7,
+        26.7,
+        27.8,
+        29.8,
+        31.8,
+        32.4,
+        34.4,
+        36.4
+      ]
+    },
+    "webm": {
+      "bytes": 1647600,
+      "duration": 37.941,
+      "bitrate": "347402",
+      "keyframes": [
+        0.0,
+        2.0,
+        4.0,
+        6.0,
+        6.7,
+        8.7,
+        10.7,
+        12.7,
+        14.7,
+        16.7,
+        18.7,
+        20.7,
+        22.7,
+        24.7,
+        26.7,
+        27.8,
+        29.8,
+        31.8,
+        32.4,
+        34.4,
+        36.4
+      ]
+    }
+  }
+}

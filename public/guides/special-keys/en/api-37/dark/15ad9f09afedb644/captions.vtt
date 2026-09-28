@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:04.140
+From the Host List, tap the three-dot menu in the top corner.
+
+2
+00:00:04.767 --> 00:00:12.287
+Choose Settings. This changes ConnectBot&#x27;s app-wide settings, rather than the settings for an individual host.
+
+3
+00:00:12.900 --> 00:00:17.940
+Scroll down to the Keyboard section. Look for Special keys always visible.
+
+4
+00:00:18.567 --> 00:00:24.967
+Turn on Special keys always visible. This keeps the terminal&#x27;s special-key toolbar on screen
+
+5
+00:00:25.567 --> 00:00:29.567
+Go back to the Host List. Your setting is saved automatically.
+
+6
+00:00:30.167 --> 00:00:36.087
+Open a terminal session. The special keys now stay visible and doesn&#x27;t overlap the terminal.

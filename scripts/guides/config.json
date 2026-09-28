@@ -1,0 +1,15 @@
+{
+  "release": {
+    "version": "1.10.9-oss",
+    "tag": "v1.10.9",
+    "url": "https://github.com/connectbot/connectbot/releases/download/v1.10.9/ConnectBot-v1.10.9-oss.apk",
+    "sha256": "37a7613039c75202e5f42d7f3c4c28f5cd51a534f1f9c0f28e15259f9f76074d",
+    "package": "org.connectbot"
+  },
+  "defaults": { "languages": ["en"], "apiLevels": [36], "themes": ["light", "dark"] },
+  "profiles": {
+    "29": { "image": "system-images;android-29;google_apis;x86_64", "width": 1080, "height": 1920, "density": 420, "navigation": "threebutton" },
+    "36": { "image": "system-images;android-36;google_apis;x86_64", "width": 1080, "height": 1920, "density": 420, "navigation": "threebutton" }
+  },
+  "speech": { "format": "wav", "maxCharacters": 3500, "timeoutSeconds": 120, "attempts": 3, "voices": {}, "options": {} }
+}
