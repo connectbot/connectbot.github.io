@@ -1,0 +1,118 @@
+{
+  "guide": "special-keys",
+  "language": "en",
+  "apiLevel": 37,
+  "theme": "light",
+  "width": 1080,
+  "height": 2404,
+  "appVersion": "git-v1.10.9-144-ga89483f3",
+  "id": "special-keys/en/api-37/light",
+  "build": "89b1f60265be8d0a",
+  "duration": 40.03333333333333,
+  "poster": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/poster.webp",
+  "webm": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/video.webm",
+  "mp4": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/video.mp4",
+  "chapters": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/chapters.vtt",
+  "narrated": true,
+  "transcript": [
+    {
+      "id": "open-menu",
+      "title": "Open the Host List menu",
+      "text": "From the Host List, tap the three-dot menu in the top corner."
+    },
+    {
+      "id": "open-settings",
+      "title": "Open Settings",
+      "text": "Choose Settings. This changes ConnectBot's app-wide settings, rather than the settings for an individual host."
+    },
+    {
+      "id": "find-keyboard",
+      "title": "Find the Keyboard section",
+      "text": "Scroll down to the Keyboard section. Look for Special keys always visible."
+    },
+    {
+      "id": "enable-special-keys",
+      "title": "Keep the special keys visible",
+      "text": "Turn on Special keys always visible. This keeps the terminal's special-key toolbar on screen"
+    },
+    {
+      "id": "return-to-hosts",
+      "title": "Return to the Host List",
+      "text": "Go back to the Host List. Your setting is saved automatically."
+    },
+    {
+      "id": "show-result",
+      "title": "Try a terminal session",
+      "text": "Open a terminal session. The special keys now stay visible and doesn't overlap the terminal."
+    }
+  ],
+  "steps": [
+    {
+      "id": "open-menu",
+      "startSeconds": 0.0,
+      "endSeconds": 4.466666666666667,
+      "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/open-menu.webp",
+      "hotspot": {
+        "x": 0.9101851851851852,
+        "y": 0.08735440931780367,
+        "width": 0.05462962962962963,
+        "height": 0.02454242928452579
+      }
+    },
+    {
+      "id": "open-settings",
+      "startSeconds": 4.466666666666667,
+      "endSeconds": 12.6,
+      "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/open-settings.webp",
+      "hotspot": {
+        "x": 0.7212962962962963,
+        "y": 0.194675540765391,
+        "width": 0.11944444444444445,
+        "height": 0.02038269550748752
+      }
+    },
+    {
+      "id": "find-keyboard",
+      "startSeconds": 12.6,
+      "endSeconds": 18.266666666666666,
+      "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/find-keyboard.webp"
+    },
+    {
+      "id": "enable-special-keys",
+      "startSeconds": 18.266666666666666,
+      "endSeconds": 25.266666666666666,
+      "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/enable-special-keys.webp",
+      "hotspot": {
+        "x": 0.03611111111111111,
+        "y": 0.5632279534109818,
+        "width": 0.4564814814814815,
+        "height": 0.02454242928452579
+      }
+    },
+    {
+      "id": "return-to-hosts",
+      "startSeconds": 25.266666666666666,
+      "endSeconds": 29.866666666666667,
+      "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/return-to-hosts.webp",
+      "hotspot": {
+        "x": 0.16666666666666666,
+        "y": 0.9534109816971714,
+        "width": 0.16666666666666666,
+        "height": 0.044509151414309486
+      }
+    },
+    {
+      "id": "show-result",
+      "startSeconds": 29.866666666666667,
+      "endSeconds": 40.03333333333333,
+      "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/show-result.webp",
+      "hotspot": {
+        "x": 0.18981481481481483,
+        "y": 0.1622296173044925,
+        "width": 0.25277777777777777,
+        "height": 0.02454242928452579
+      }
+    }
+  ],
+  "captions": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/captions.vtt"
+}

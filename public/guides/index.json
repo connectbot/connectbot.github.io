@@ -1,0 +1,727 @@
+{
+  "schemaVersion": 1,
+  "variants": [
+    {
+      "guide": "add-host",
+      "language": "en",
+      "apiLevel": 37,
+      "theme": "dark",
+      "width": 1080,
+      "height": 2404,
+      "appVersion": "git-v1.10.9-144-ga89483f3",
+      "id": "add-host/en/api-37/dark",
+      "build": "de2f8ceb16a5db68",
+      "duration": 37.93333333333333,
+      "poster": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/poster.webp",
+      "webm": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/video.webm",
+      "mp4": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/video.mp4",
+      "chapters": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/chapters.vtt",
+      "narrated": true,
+      "transcript": [
+        {
+          "id": "add-host",
+          "title": "Add a host",
+          "text": "From the Host List, tap the plus button to add a host."
+        },
+        {
+          "id": "enter-address",
+          "title": "Enter the connection details",
+          "text": "In Quick connect, enter your username, server address, and optionally port, like demo@example.com. Remember, this is only an example host, so you must replace these example details with your own. Port 22 is the usual SSH port.",
+          "spoken": "In Quick connect, enter your username, server address, and optionally port. For example: demo, at, example dot com. Remember, this is only an example host, so you must replace these example details with your own. Port twenty-two is the usual SSH port."
+        },
+        {
+          "id": "save-host",
+          "title": "Save the host",
+          "text": "Tap Add host to save the connection."
+        },
+        {
+          "id": "show-result",
+          "title": "Find your saved host",
+          "text": "The saved host appears in the Host List. Simply tap it when you are ready to connect."
+        }
+      ],
+      "steps": [
+        {
+          "id": "add-host",
+          "startSeconds": 0.0,
+          "endSeconds": 6.666666666666667,
+          "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/add-host.webp",
+          "hotspot": {
+            "x": 0.837037037037037,
+            "y": 0.8781198003327787,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "enter-address",
+          "startSeconds": 6.666666666666667,
+          "endSeconds": 27.766666666666666,
+          "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/enter-address.webp",
+          "hotspot": {
+            "x": 0.03611111111111111,
+            "y": 0.1480865224625624,
+            "width": 0.9277777777777778,
+            "height": 0.0819467554076539
+          }
+        },
+        {
+          "id": "save-host",
+          "startSeconds": 27.766666666666666,
+          "endSeconds": 32.36666666666667,
+          "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/save-host.webp",
+          "hotspot": {
+            "x": 0.837037037037037,
+            "y": 0.8781198003327787,
+            "width": 0.12685185185185185,
+            "height": 0.05698835274542429
+          }
+        },
+        {
+          "id": "show-result",
+          "startSeconds": 32.36666666666667,
+          "endSeconds": 37.93333333333333,
+          "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/show-result.webp"
+        }
+      ],
+      "captions": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/captions.vtt"
+    },
+    {
+      "guide": "add-host",
+      "language": "en",
+      "apiLevel": 37,
+      "theme": "light",
+      "width": 1080,
+      "height": 2404,
+      "appVersion": "git-v1.10.9-144-ga89483f3",
+      "id": "add-host/en/api-37/light",
+      "build": "f1c5a7565a5662a5",
+      "duration": 35.9,
+      "poster": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/poster.webp",
+      "webm": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/video.webm",
+      "mp4": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/video.mp4",
+      "chapters": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/chapters.vtt",
+      "narrated": true,
+      "transcript": [
+        {
+          "id": "add-host",
+          "title": "Add a host",
+          "text": "From the Host List, tap the plus button to add a host."
+        },
+        {
+          "id": "enter-address",
+          "title": "Enter the connection details",
+          "text": "In Quick connect, enter your username, server address, and optionally port, like demo@example.com. Remember, this is only an example host, so you must replace these example details with your own. Port 22 is the usual SSH port.",
+          "spoken": "In Quick connect, enter your username, server address, and optionally port. For example: demo, at, example dot com. Remember, this is only an example host, so you must replace these example details with your own. Port twenty-two is the usual SSH port."
+        },
+        {
+          "id": "save-host",
+          "title": "Save the host",
+          "text": "Tap Add host to save the connection."
+        },
+        {
+          "id": "show-result",
+          "title": "Find your saved host",
+          "text": "The saved host appears in the Host List. Simply tap it when you are ready to connect."
+        }
+      ],
+      "steps": [
+        {
+          "id": "add-host",
+          "startSeconds": 0.0,
+          "endSeconds": 4.4,
+          "image": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/add-host.webp",
+          "hotspot": {
+            "x": 0.837037037037037,
+            "y": 0.8781198003327787,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "enter-address",
+          "startSeconds": 4.4,
+          "endSeconds": 25.5,
+          "image": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/enter-address.webp",
+          "hotspot": {
+            "x": 0.03611111111111111,
+            "y": 0.1480865224625624,
+            "width": 0.9277777777777778,
+            "height": 0.0819467554076539
+          }
+        },
+        {
+          "id": "save-host",
+          "startSeconds": 25.5,
+          "endSeconds": 30.333333333333332,
+          "image": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/save-host.webp",
+          "hotspot": {
+            "x": 0.837037037037037,
+            "y": 0.8781198003327787,
+            "width": 0.12685185185185185,
+            "height": 0.05698835274542429
+          }
+        },
+        {
+          "id": "show-result",
+          "startSeconds": 30.333333333333332,
+          "endSeconds": 35.9,
+          "image": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/show-result.webp"
+        }
+      ],
+      "captions": "/guides/add-host/en/api-37/light/f1c5a7565a5662a5/captions.vtt"
+    },
+    {
+      "guide": "special-keys",
+      "language": "en",
+      "apiLevel": 37,
+      "theme": "dark",
+      "width": 1080,
+      "height": 2404,
+      "appVersion": "git-v1.10.9-144-ga89483f3",
+      "id": "special-keys/en/api-37/dark",
+      "build": "15ad9f09afedb644",
+      "duration": 40.233333333333334,
+      "poster": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/poster.webp",
+      "webm": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/video.webm",
+      "mp4": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/video.mp4",
+      "chapters": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/chapters.vtt",
+      "narrated": true,
+      "transcript": [
+        {
+          "id": "open-menu",
+          "title": "Open the Host List menu",
+          "text": "From the Host List, tap the three-dot menu in the top corner."
+        },
+        {
+          "id": "open-settings",
+          "title": "Open Settings",
+          "text": "Choose Settings. This changes ConnectBot's app-wide settings, rather than the settings for an individual host."
+        },
+        {
+          "id": "find-keyboard",
+          "title": "Find the Keyboard section",
+          "text": "Scroll down to the Keyboard section. Look for Special keys always visible."
+        },
+        {
+          "id": "enable-special-keys",
+          "title": "Keep the special keys visible",
+          "text": "Turn on Special keys always visible. This keeps the terminal's special-key toolbar on screen"
+        },
+        {
+          "id": "return-to-hosts",
+          "title": "Return to the Host List",
+          "text": "Go back to the Host List. Your setting is saved automatically."
+        },
+        {
+          "id": "show-result",
+          "title": "Try a terminal session",
+          "text": "Open a terminal session. The special keys now stay visible and doesn't overlap the terminal."
+        }
+      ],
+      "steps": [
+        {
+          "id": "open-menu",
+          "startSeconds": 0.0,
+          "endSeconds": 4.466666666666667,
+          "image": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/open-menu.webp",
+          "hotspot": {
+            "x": 0.9101851851851852,
+            "y": 0.08735440931780367,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "open-settings",
+          "startSeconds": 4.466666666666667,
+          "endSeconds": 12.6,
+          "image": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/open-settings.webp",
+          "hotspot": {
+            "x": 0.7212962962962963,
+            "y": 0.194675540765391,
+            "width": 0.11944444444444445,
+            "height": 0.02038269550748752
+          }
+        },
+        {
+          "id": "find-keyboard",
+          "startSeconds": 12.6,
+          "endSeconds": 18.266666666666666,
+          "image": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/find-keyboard.webp"
+        },
+        {
+          "id": "enable-special-keys",
+          "startSeconds": 18.266666666666666,
+          "endSeconds": 25.266666666666666,
+          "image": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/enable-special-keys.webp",
+          "hotspot": {
+            "x": 0.03611111111111111,
+            "y": 0.5632279534109818,
+            "width": 0.4564814814814815,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "return-to-hosts",
+          "startSeconds": 25.266666666666666,
+          "endSeconds": 29.866666666666667,
+          "image": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/return-to-hosts.webp",
+          "hotspot": {
+            "x": 0.16666666666666666,
+            "y": 0.9534109816971714,
+            "width": 0.16666666666666666,
+            "height": 0.044509151414309486
+          }
+        },
+        {
+          "id": "show-result",
+          "startSeconds": 29.866666666666667,
+          "endSeconds": 40.233333333333334,
+          "image": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/show-result.webp",
+          "hotspot": {
+            "x": 0.18981481481481483,
+            "y": 0.1622296173044925,
+            "width": 0.25277777777777777,
+            "height": 0.02454242928452579
+          }
+        }
+      ],
+      "captions": "/guides/special-keys/en/api-37/dark/15ad9f09afedb644/captions.vtt"
+    },
+    {
+      "guide": "special-keys",
+      "language": "en",
+      "apiLevel": 37,
+      "theme": "light",
+      "width": 1080,
+      "height": 2404,
+      "appVersion": "git-v1.10.9-144-ga89483f3",
+      "id": "special-keys/en/api-37/light",
+      "build": "89b1f60265be8d0a",
+      "duration": 40.03333333333333,
+      "poster": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/poster.webp",
+      "webm": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/video.webm",
+      "mp4": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/video.mp4",
+      "chapters": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/chapters.vtt",
+      "narrated": true,
+      "transcript": [
+        {
+          "id": "open-menu",
+          "title": "Open the Host List menu",
+          "text": "From the Host List, tap the three-dot menu in the top corner."
+        },
+        {
+          "id": "open-settings",
+          "title": "Open Settings",
+          "text": "Choose Settings. This changes ConnectBot's app-wide settings, rather than the settings for an individual host."
+        },
+        {
+          "id": "find-keyboard",
+          "title": "Find the Keyboard section",
+          "text": "Scroll down to the Keyboard section. Look for Special keys always visible."
+        },
+        {
+          "id": "enable-special-keys",
+          "title": "Keep the special keys visible",
+          "text": "Turn on Special keys always visible. This keeps the terminal's special-key toolbar on screen"
+        },
+        {
+          "id": "return-to-hosts",
+          "title": "Return to the Host List",
+          "text": "Go back to the Host List. Your setting is saved automatically."
+        },
+        {
+          "id": "show-result",
+          "title": "Try a terminal session",
+          "text": "Open a terminal session. The special keys now stay visible and doesn't overlap the terminal."
+        }
+      ],
+      "steps": [
+        {
+          "id": "open-menu",
+          "startSeconds": 0.0,
+          "endSeconds": 4.466666666666667,
+          "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/open-menu.webp",
+          "hotspot": {
+            "x": 0.9101851851851852,
+            "y": 0.08735440931780367,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "open-settings",
+          "startSeconds": 4.466666666666667,
+          "endSeconds": 12.6,
+          "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/open-settings.webp",
+          "hotspot": {
+            "x": 0.7212962962962963,
+            "y": 0.194675540765391,
+            "width": 0.11944444444444445,
+            "height": 0.02038269550748752
+          }
+        },
+        {
+          "id": "find-keyboard",
+          "startSeconds": 12.6,
+          "endSeconds": 18.266666666666666,
+          "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/find-keyboard.webp"
+        },
+        {
+          "id": "enable-special-keys",
+          "startSeconds": 18.266666666666666,
+          "endSeconds": 25.266666666666666,
+          "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/enable-special-keys.webp",
+          "hotspot": {
+            "x": 0.03611111111111111,
+            "y": 0.5632279534109818,
+            "width": 0.4564814814814815,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "return-to-hosts",
+          "startSeconds": 25.266666666666666,
+          "endSeconds": 29.866666666666667,
+          "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/return-to-hosts.webp",
+          "hotspot": {
+            "x": 0.16666666666666666,
+            "y": 0.9534109816971714,
+            "width": 0.16666666666666666,
+            "height": 0.044509151414309486
+          }
+        },
+        {
+          "id": "show-result",
+          "startSeconds": 29.866666666666667,
+          "endSeconds": 40.03333333333333,
+          "image": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/show-result.webp",
+          "hotspot": {
+            "x": 0.18981481481481483,
+            "y": 0.1622296173044925,
+            "width": 0.25277777777777777,
+            "height": 0.02454242928452579
+          }
+        }
+      ],
+      "captions": "/guides/special-keys/en/api-37/light/89b1f60265be8d0a/captions.vtt"
+    },
+    {
+      "guide": "terminal-appearance",
+      "language": "en",
+      "apiLevel": 37,
+      "theme": "dark",
+      "width": 1080,
+      "height": 2404,
+      "appVersion": "git-v1.10.9-144-ga89483f3",
+      "id": "terminal-appearance/en/api-37/dark",
+      "build": "92706034da30dbef",
+      "duration": 59.6,
+      "poster": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/poster.webp",
+      "webm": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/video.webm",
+      "mp4": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/video.mp4",
+      "chapters": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/chapters.vtt",
+      "narrated": true,
+      "transcript": [
+        {
+          "id": "open-menu",
+          "title": "Open the Host List menu",
+          "text": "From the Host List, open the three-dot menu."
+        },
+        {
+          "id": "open-profiles",
+          "title": "Open Profiles",
+          "text": "Choose Profiles. Profiles let you reuse terminal appearance settings across hosts."
+        },
+        {
+          "id": "create-profile",
+          "title": "Create a profile",
+          "text": "Tap the plus button and name the new profile something memorable. I'll use 'Readable' in this example."
+        },
+        {
+          "id": "choose-colors",
+          "title": "Choose a color scheme",
+          "text": "Under Color Scheme, select Solarized Dark. Terminal colors are independent of the app's light or dark theme."
+        },
+        {
+          "id": "choose-font",
+          "title": "Choose a font size",
+          "text": "Set Font Size to a font size that is comfortable on your screen."
+        },
+        {
+          "id": "save-profile",
+          "title": "Save the profile",
+          "text": "Tap Save, then return to the Host List."
+        },
+        {
+          "id": "assign-profile",
+          "title": "Assign the profile to a host",
+          "text": "Edit the host you want to customize, choose Readable under Profile, and save the host."
+        },
+        {
+          "id": "show-result",
+          "title": "Open the terminal",
+          "text": "The next session for the host will use the colors and font size you chose."
+        }
+      ],
+      "steps": [
+        {
+          "id": "open-menu",
+          "startSeconds": 0.0,
+          "endSeconds": 4.433333333333334,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/open-menu.webp",
+          "hotspot": {
+            "x": 0.9101851851851852,
+            "y": 0.08735440931780367,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "open-profiles",
+          "startSeconds": 4.433333333333334,
+          "endSeconds": 10.733333333333333,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/open-profiles.webp",
+          "hotspot": {
+            "x": 0.7212962962962963,
+            "y": 0.24334442595673877,
+            "width": 0.11203703703703703,
+            "height": 0.02038269550748752
+          }
+        },
+        {
+          "id": "create-profile",
+          "startSeconds": 10.733333333333333,
+          "endSeconds": 19.333333333333332,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/create-profile.webp",
+          "hotspot": {
+            "x": 0.8731481481481481,
+            "y": 0.8943427620632279,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "choose-colors",
+          "startSeconds": 19.333333333333332,
+          "endSeconds": 27.866666666666667,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/choose-colors.webp",
+          "hotspot": {
+            "x": 0.03611111111111111,
+            "y": 0.41098169717138106,
+            "width": 0.9277777777777778,
+            "height": 0.05698835274542429
+          }
+        },
+        {
+          "id": "choose-font",
+          "startSeconds": 27.866666666666667,
+          "endSeconds": 32.96666666666667,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/choose-font.webp",
+          "hotspot": {
+            "x": 0.013888888888888888,
+            "y": 0.668053244592346,
+            "width": 0.9722222222222222,
+            "height": 0.044509151414309486
+          }
+        },
+        {
+          "id": "save-profile",
+          "startSeconds": 32.96666666666667,
+          "endSeconds": 38.766666666666666,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/save-profile.webp",
+          "hotspot": {
+            "x": 0.837037037037037,
+            "y": 0.8781198003327787,
+            "width": 0.12685185185185185,
+            "height": 0.05698835274542429
+          }
+        },
+        {
+          "id": "assign-profile",
+          "startSeconds": 38.766666666666666,
+          "endSeconds": 49.233333333333334,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/assign-profile.webp",
+          "hotspot": {
+            "x": 0.8555555555555555,
+            "y": 0.1726289517470882,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "show-result",
+          "startSeconds": 49.233333333333334,
+          "endSeconds": 59.6,
+          "image": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/show-result.webp",
+          "hotspot": {
+            "x": 0.18981481481481483,
+            "y": 0.1622296173044925,
+            "width": 0.25277777777777777,
+            "height": 0.02454242928452579
+          }
+        }
+      ],
+      "captions": "/guides/terminal-appearance/en/api-37/dark/92706034da30dbef/captions.vtt"
+    },
+    {
+      "guide": "terminal-appearance",
+      "language": "en",
+      "apiLevel": 37,
+      "theme": "light",
+      "width": 1080,
+      "height": 2404,
+      "appVersion": "git-v1.10.9-144-ga89483f3",
+      "id": "terminal-appearance/en/api-37/light",
+      "build": "2dd747a391d33877",
+      "duration": 58.1,
+      "poster": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/poster.webp",
+      "webm": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/video.webm",
+      "mp4": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/video.mp4",
+      "chapters": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/chapters.vtt",
+      "narrated": true,
+      "transcript": [
+        {
+          "id": "open-menu",
+          "title": "Open the Host List menu",
+          "text": "From the Host List, open the three-dot menu."
+        },
+        {
+          "id": "open-profiles",
+          "title": "Open Profiles",
+          "text": "Choose Profiles. Profiles let you reuse terminal appearance settings across hosts."
+        },
+        {
+          "id": "create-profile",
+          "title": "Create a profile",
+          "text": "Tap the plus button and name the new profile something memorable. I'll use 'Readable' in this example."
+        },
+        {
+          "id": "choose-colors",
+          "title": "Choose a color scheme",
+          "text": "Under Color Scheme, select Solarized Dark. Terminal colors are independent of the app's light or dark theme."
+        },
+        {
+          "id": "choose-font",
+          "title": "Choose a font size",
+          "text": "Set Font Size to a font size that is comfortable on your screen."
+        },
+        {
+          "id": "save-profile",
+          "title": "Save the profile",
+          "text": "Tap Save, then return to the Host List."
+        },
+        {
+          "id": "assign-profile",
+          "title": "Assign the profile to a host",
+          "text": "Edit the host you want to customize, choose Readable under Profile, and save the host."
+        },
+        {
+          "id": "show-result",
+          "title": "Open the terminal",
+          "text": "The next session for the host will use the colors and font size you chose."
+        }
+      ],
+      "steps": [
+        {
+          "id": "open-menu",
+          "startSeconds": 0.0,
+          "endSeconds": 4.433333333333334,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/open-menu.webp",
+          "hotspot": {
+            "x": 0.9101851851851852,
+            "y": 0.08735440931780367,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "open-profiles",
+          "startSeconds": 4.433333333333334,
+          "endSeconds": 10.733333333333333,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/open-profiles.webp",
+          "hotspot": {
+            "x": 0.7212962962962963,
+            "y": 0.24334442595673877,
+            "width": 0.11203703703703703,
+            "height": 0.02038269550748752
+          }
+        },
+        {
+          "id": "create-profile",
+          "startSeconds": 10.733333333333333,
+          "endSeconds": 18.966666666666665,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/create-profile.webp",
+          "hotspot": {
+            "x": 0.8731481481481481,
+            "y": 0.8943427620632279,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "choose-colors",
+          "startSeconds": 18.966666666666665,
+          "endSeconds": 27.5,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/choose-colors.webp",
+          "hotspot": {
+            "x": 0.03611111111111111,
+            "y": 0.41098169717138106,
+            "width": 0.9277777777777778,
+            "height": 0.05698835274542429
+          }
+        },
+        {
+          "id": "choose-font",
+          "startSeconds": 27.5,
+          "endSeconds": 32.4,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/choose-font.webp",
+          "hotspot": {
+            "x": 0.013888888888888888,
+            "y": 0.668053244592346,
+            "width": 0.9722222222222222,
+            "height": 0.044509151414309486
+          }
+        },
+        {
+          "id": "save-profile",
+          "startSeconds": 32.4,
+          "endSeconds": 37.766666666666666,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/save-profile.webp",
+          "hotspot": {
+            "x": 0.837037037037037,
+            "y": 0.8781198003327787,
+            "width": 0.12685185185185185,
+            "height": 0.05698835274542429
+          }
+        },
+        {
+          "id": "assign-profile",
+          "startSeconds": 37.766666666666666,
+          "endSeconds": 48.13333333333333,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/assign-profile.webp",
+          "hotspot": {
+            "x": 0.8555555555555555,
+            "y": 0.1726289517470882,
+            "width": 0.05462962962962963,
+            "height": 0.02454242928452579
+          }
+        },
+        {
+          "id": "show-result",
+          "startSeconds": 48.13333333333333,
+          "endSeconds": 58.1,
+          "image": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/show-result.webp",
+          "hotspot": {
+            "x": 0.18981481481481483,
+            "y": 0.1622296173044925,
+            "width": 0.25277777777777777,
+            "height": 0.02454242928452579
+          }
+        }
+      ],
+      "captions": "/guides/terminal-appearance/en/api-37/light/2dd747a391d33877/captions.vtt"
+    }
+  ]
+}

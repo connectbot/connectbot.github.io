@@ -11,6 +11,10 @@ const baseConfig: NextConfig = {
   devIndicators: {
     position: 'bottom-right',
   },
+  allowedDevOrigins: [
+    '127.0.0.1',
+    ...(process.env.NEXT_ALLOWED_DEV_ORIGINS ?? '').split(',').map(host => host.trim()).filter(Boolean),
+  ],
   poweredByHeader: false,
   reactStrictMode: true,
   reactCompiler: true,

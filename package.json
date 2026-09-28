@@ -11,7 +11,14 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postbuild": "pagefind --site .next/server/app --output-path out/_pagefind && cp out/404/index.html out/404.html && next-sitemap"
+    "postbuild": "pagefind --site .next/server/app --output-path out/_pagefind && cp out/404/index.html out/404.html && next-sitemap",
+    "capture:guides": "UV_CACHE_DIR=local/uv-cache uv run --no-project --with-requirements scripts/guides/requirements.lock python scripts/guides/cli.py capture",
+    "narrate:guides": "UV_CACHE_DIR=local/uv-cache uv run --no-project --with-requirements scripts/guides/requirements.lock python scripts/guides/cli.py narrate",
+    "render:guides": "UV_CACHE_DIR=local/uv-cache uv run --no-project --with-requirements scripts/guides/requirements.lock python scripts/guides/cli.py render",
+    "prune:guides": "python3 scripts/guides/prune.py",
+    "check:guides": "UV_CACHE_DIR=local/uv-cache uv run --no-project --with-requirements scripts/guides/requirements.lock python scripts/guides/cli.py check",
+    "test:guides": "UV_CACHE_DIR=local/uv-cache uv run --no-project --with-requirements scripts/guides/requirements.lock python -m unittest discover -s scripts/guides/tests -v",
+    "test:guides:browser": "UV_CACHE_DIR=local/uv-cache uv run --no-project --with-requirements scripts/guides/requirements.lock python scripts/guides/browser_fixtures.py && PLAYWRIGHT_BROWSERS_PATH=local/playwright playwright test"
   },
   "dependencies": {
     "next": "^16.2.3",
@@ -30,6 +37,7 @@
     "@eslint-react/eslint-plugin": "^2.13.0",
     "@next/bundle-analyzer": "^16.2.3",
     "@next/eslint-plugin-next": "^16.2.3",
+    "@playwright/test": "1.57.0",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "babel-plugin-react-compiler": "^1.0.0",

@@ -1,0 +1,85 @@
+{
+  "guide": "add-host",
+  "language": "en",
+  "apiLevel": 37,
+  "theme": "dark",
+  "width": 1080,
+  "height": 2404,
+  "appVersion": "git-v1.10.9-144-ga89483f3",
+  "id": "add-host/en/api-37/dark",
+  "build": "de2f8ceb16a5db68",
+  "duration": 37.93333333333333,
+  "poster": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/poster.webp",
+  "webm": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/video.webm",
+  "mp4": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/video.mp4",
+  "chapters": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/chapters.vtt",
+  "narrated": true,
+  "transcript": [
+    {
+      "id": "add-host",
+      "title": "Add a host",
+      "text": "From the Host List, tap the plus button to add a host."
+    },
+    {
+      "id": "enter-address",
+      "title": "Enter the connection details",
+      "text": "In Quick connect, enter your username, server address, and optionally port, like demo@example.com. Remember, this is only an example host, so you must replace these example details with your own. Port 22 is the usual SSH port.",
+      "spoken": "In Quick connect, enter your username, server address, and optionally port. For example: demo, at, example dot com. Remember, this is only an example host, so you must replace these example details with your own. Port twenty-two is the usual SSH port."
+    },
+    {
+      "id": "save-host",
+      "title": "Save the host",
+      "text": "Tap Add host to save the connection."
+    },
+    {
+      "id": "show-result",
+      "title": "Find your saved host",
+      "text": "The saved host appears in the Host List. Simply tap it when you are ready to connect."
+    }
+  ],
+  "steps": [
+    {
+      "id": "add-host",
+      "startSeconds": 0.0,
+      "endSeconds": 6.666666666666667,
+      "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/add-host.webp",
+      "hotspot": {
+        "x": 0.837037037037037,
+        "y": 0.8781198003327787,
+        "width": 0.05462962962962963,
+        "height": 0.02454242928452579
+      }
+    },
+    {
+      "id": "enter-address",
+      "startSeconds": 6.666666666666667,
+      "endSeconds": 27.766666666666666,
+      "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/enter-address.webp",
+      "hotspot": {
+        "x": 0.03611111111111111,
+        "y": 0.1480865224625624,
+        "width": 0.9277777777777778,
+        "height": 0.0819467554076539
+      }
+    },
+    {
+      "id": "save-host",
+      "startSeconds": 27.766666666666666,
+      "endSeconds": 32.36666666666667,
+      "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/save-host.webp",
+      "hotspot": {
+        "x": 0.837037037037037,
+        "y": 0.8781198003327787,
+        "width": 0.12685185185185185,
+        "height": 0.05698835274542429
+      }
+    },
+    {
+      "id": "show-result",
+      "startSeconds": 32.36666666666667,
+      "endSeconds": 37.93333333333333,
+      "image": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/show-result.webp"
+    }
+  ],
+  "captions": "/guides/add-host/en/api-37/dark/de2f8ceb16a5db68/captions.vtt"
+}

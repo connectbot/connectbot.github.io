@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.740
+From the Host List, tap the plus button to add a host.
+
+2
+00:00:04.700 --> 00:00:25.180
+In Quick connect, enter your username, server address, and optionally port. For example: demo, at, example dot com. Remember, this is only an example host, so you must replace these example details with your own. Port twenty-two is the usual SSH port.
+
+3
+00:00:25.800 --> 00:00:28.360
+Tap Add host to save the connection.
+
+4
+00:00:30.633 --> 00:00:35.593
+The saved host appears in the Host List. Simply tap it when you are ready to connect.

@@ -1,0 +1,33 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.100
+From the Host List, open the three-dot menu.
+
+2
+00:00:04.733 --> 00:00:10.413
+Choose Profiles. Profiles let you reuse terminal appearance settings across hosts.
+
+3
+00:00:11.033 --> 00:00:17.833
+Tap the plus button and name the new profile something memorable. I&#x27;ll use &#x27;Readable&#x27; in this example.
+
+4
+00:00:19.633 --> 00:00:27.553
+Under Color Scheme, select Solarized Dark. Terminal colors are independent of the app&#x27;s light or dark theme.
+
+5
+00:00:28.167 --> 00:00:32.327
+Set Font Size to a font size that is comfortable on your screen.
+
+6
+00:00:33.267 --> 00:00:35.827
+Tap Save, then return to the Host List.
+
+7
+00:00:39.067 --> 00:00:44.587
+Edit the host you want to customize, choose Readable under Profile, and save the host.
+
+8
+00:00:49.533 --> 00:00:53.853
+The next session for the host will use the colors and font size you chose.

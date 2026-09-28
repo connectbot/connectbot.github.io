@@ -1,0 +1,41 @@
+[
+  {
+    "id": "special-keys",
+    "title": "Keep special keys visible",
+    "description": "Keep Ctrl, Esc, arrows, and other terminal keys within reach.",
+    "steps": [
+      { "id": "open-menu", "title": "Open the Host List menu", "text": "From the Host List, tap the three-dot menu in the top corner." },
+      { "id": "open-settings", "title": "Open Settings", "text": "Choose Settings. This changes ConnectBot's app-wide settings, rather than the settings for an individual host." },
+      { "id": "find-keyboard", "title": "Find the Keyboard section", "text": "Scroll down to the Keyboard section. Look for Special keys always visible." },
+      { "id": "enable-special-keys", "title": "Keep the special keys visible", "text": "Turn on Special keys always visible. This keeps the terminal's special-key toolbar on screen" },
+      { "id": "return-to-hosts", "title": "Return to the Host List", "text": "Go back to the Host List. Your setting is saved automatically." },
+      { "id": "show-result", "title": "Try a terminal session", "text": "Open a terminal session. The special keys now stay visible and doesn't overlap the terminal." }
+    ]
+  },
+  {
+    "id": "add-host",
+    "title": "Add an SSH host",
+    "description": "Save a server so it is ready to open from the Host List.",
+    "steps": [
+      { "id": "add-host", "title": "Add a host", "text": "From the Host List, tap the plus button to add a host." },
+      { "id": "enter-address", "title": "Enter the connection details", "text": "In Quick connect, enter your username, server address, and optionally port, like demo@example.com. Remember, this is only an example host, so you must replace these example details with your own. Port 22 is the usual SSH port.", "spoken": "In Quick connect, enter your username, server address, and optionally port. For example: demo, at, example dot com. Remember, this is only an example host, so you must replace these example details with your own. Port twenty-two is the usual SSH port." },
+      { "id": "save-host", "title": "Save the host", "text": "Tap Add host to save the connection." },
+      { "id": "show-result", "title": "Find your saved host", "text": "The saved host appears in the Host List. Simply tap it when you are ready to connect." }
+    ]
+  },
+  {
+    "id": "terminal-appearance",
+    "title": "Customize terminal appearance",
+    "description": "Use a profile to choose a terminal color scheme and a readable font size.",
+    "steps": [
+      { "id": "open-menu", "title": "Open the Host List menu", "text": "From the Host List, open the three-dot menu." },
+      { "id": "open-profiles", "title": "Open Profiles", "text": "Choose Profiles. Profiles let you reuse terminal appearance settings across hosts." },
+      { "id": "create-profile", "title": "Create a profile", "text": "Tap the plus button and name the new profile something memorable. I'll use 'Readable' in this example." },
+      { "id": "choose-colors", "title": "Choose a color scheme", "text": "Under Color Scheme, select Solarized Dark. Terminal colors are independent of the app's light or dark theme." },
+      { "id": "choose-font", "title": "Choose a font size", "text": "Set Font Size to a font size that is comfortable on your screen." },
+      { "id": "save-profile", "title": "Save the profile", "text": "Tap Save, then return to the Host List." },
+      { "id": "assign-profile", "title": "Assign the profile to a host", "text": "Edit the host you want to customize, choose Readable under Profile, and save the host." },
+      { "id": "show-result", "title": "Open the terminal", "text": "The next session for the host will use the colors and font size you chose." }
+    ]
+  }
+]

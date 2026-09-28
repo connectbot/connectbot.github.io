@@ -70,3 +70,7 @@ build-archive.log
 
 # pagefind search
 _pagefind/
+
+# Guide tooling and incomplete renders
+__pycache__/
+public/guides/.pending-*/

@@ -14,9 +14,21 @@ const meta: MetaRecord = {
     title: 'About',
     type: 'page',
   },
+  guides: {
+    title: 'Features & FAQ',
+    type: 'doc',
+  },
+  features: {
+    title: 'Features & FAQ',
+    type: 'page',
+    href: '/guides/',
+  },
   bugs: {
     title: 'Reporting Bugs',
     type: 'page',
+  },
+  privacy: {
+    title: 'Privacy Policy',
   },
   404: {
     display: 'hidden',
