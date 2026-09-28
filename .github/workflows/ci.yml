@@ -54,7 +54,7 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/develop' && github.repository == 'connectbot/connectbot.github.io' && github.event_name == 'push'
-        uses: cloudflare/wrangler-action@4e88846969242f7752bcfdaf5511bfbb3985ca47 # v4.1.1
+        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4.1.3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
