@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import tempfile
 
@@ -16,9 +17,41 @@ CONFIG = json.loads((Path(__file__).parent / "config.json").read_text())
 FPS = 30
 
 
-def run(args, **kwargs):
-    kwargs.setdefault("timeout", 180)
-    return subprocess.run([str(a) for a in args], check=True, capture_output=True, text=True, **kwargs).stdout.strip()
+def run(args, *, timeout=180, input=None, env=None, cwd=None):
+    """Execute a pipeline tool, never a shell or an arbitrary caller-selected program.
+
+    Argument lists prevent shell expansion, but operands must still be protected
+    from option parsing at the call site (for example Git revisions and paths).
+    Executable overrides are trusted local configuration, not narration input.
+    """
+    if not isinstance(args, (list, tuple)) or not args:
+        raise ValueError("Commands require a nonempty argument list")
+    argv = []
+    for arg in args:
+        if not isinstance(arg, (str, os.PathLike, int, float)):
+            raise ValueError("Unsupported command argument type")
+        value = str(arg)
+        if "\0" in value:
+            raise ValueError("Command arguments cannot contain NUL")
+        argv.append(value)
+    sdk = Path(os.environ.get("ANDROID_SDK_ROOT", os.environ.get("ANDROID_HOME", Path.home() / "android-sdk-linux"))).resolve()
+    allowed = {
+        "git",
+        os.environ.get("FFMPEG", "ffmpeg"),
+        os.environ.get("FFPROBE", "ffprobe"),
+        str(sdk / "platform-tools/adb"),
+        str(sdk / "cmdline-tools/latest/bin/avdmanager"),
+    }
+    if argv[0] not in allowed:
+        raise ValueError("Command executable is not an approved guide tool")
+    executable = shutil.which(argv[0])
+    if executable is None:
+        raise FileNotFoundError(f"Guide tool is not installed: {argv[0]}")
+    argv[0] = str(Path(executable).resolve())
+    return subprocess.run(
+        argv, check=True, capture_output=True, text=True, shell=False,
+        timeout=timeout, input=input, env=env, cwd=cwd,
+    ).stdout.strip()
 
 
 def write_json(path: Path, data, *, mode=0o600):
@@ -69,7 +102,7 @@ def guide_content(guide_id, language="en"):
 
 
 def probe(path):
-    return json.loads(run([os.environ.get("FFPROBE", "ffprobe"), "-v", "error", "-show_format", "-show_streams", "-of", "json", path]))
+    return json.loads(run([os.environ.get("FFPROBE", "ffprobe"), "-v", "error", "-show_format", "-show_streams", "-of", "json", Path(path).resolve()]))
 
 
 def duration(path):
