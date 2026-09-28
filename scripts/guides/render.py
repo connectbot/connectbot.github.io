@@ -106,7 +106,7 @@ def render_segment(capture_dir, step, speech, work):
     audio = None
     if speech:
         audio = work / f"{identifier}.wav"
-        ffmpeg("-i", speech["steps"][identifier]["path"], "-af", "adelay=300:all=1,apad", "-t", str(seconds), "-ar", "48000", "-ac", "1", audio)
+        ffmpeg("-i", Path(speech["steps"][identifier]["path"]).resolve(), "-af", "adelay=300:all=1,apad", "-t", str(seconds), "-ar", "48000", "-ac", "1", audio)
     return segment, audio
 
 

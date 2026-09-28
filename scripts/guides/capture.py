@@ -20,7 +20,7 @@ from common import CACHE, CONFIG, content, duration, guide_content, language_tag
 
 
 def sdk_root():
-    path = Path(os.environ.get("ANDROID_SDK_ROOT", os.environ.get("ANDROID_HOME", Path.home() / "android-sdk-linux")))
+    path = Path(os.environ.get("ANDROID_SDK_ROOT", os.environ.get("ANDROID_HOME", Path.home() / "android-sdk-linux"))).resolve()
     if not (path / "platform-tools/adb").exists():
         raise ValueError("Set ANDROID_SDK_ROOT to an installed Android SDK")
     return path
@@ -43,6 +43,9 @@ def download(url, destination, checksum=None):
 
 def resources(language, repo, tag):
     """Release string names remain stable; text follows Android locale fallback."""
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._/-]*", tag) or ".." in tag or any(part in ("", ".") for part in tag.split("/")):
+        raise ValueError("Invalid resource tag or commit")
+    language_tag(language)
     values = {}
     folders = ["values"]
     if language != "en":
@@ -55,7 +58,7 @@ def resources(language, repo, tag):
         path = f"app/src/main/res/{folder}/strings.xml"
         try:
             if repo and Path(repo).is_dir():
-                source = run(["git", "-C", repo, "show", f"{tag}:{path}"])
+                source = run(["git", "-C", Path(repo).resolve(), "show", "--end-of-options", f"{tag}:{path}", "--"])
             else:
                 target = CACHE / "resources" / tag / folder / "strings.xml"
                 download(f"https://raw.githubusercontent.com/connectbot/connectbot/{tag}/{path}", target)
@@ -79,7 +82,7 @@ class Emulator:
         self.api = api
         self.profile = profile
         self.sdk = sdk_root()
-        self.adb_path = self.sdk / "platform-tools/adb"
+        self.adb_path = self.sdk.resolve() / "platform-tools/adb"
         self.port = int(os.environ.get("GUIDES_EMULATOR_PORT", "5580"))
         self.serial = f"emulator-{self.port}"
         self.process = None
@@ -202,7 +205,7 @@ class Phone(Emulator):
     """Use the installed APK in an owned disposable Android user, never user 0."""
     def __init__(self, serial):
         self.sdk = sdk_root()
-        self.adb_path = self.sdk / "platform-tools/adb"
+        self.adb_path = self.sdk.resolve() / "platform-tools/adb"
         self.serial = serial
         self.api = int(self.shell("getprop", "ro.build.version.sdk"))
         if self.api < 33:
