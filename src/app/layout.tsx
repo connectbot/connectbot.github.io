@@ -10,6 +10,7 @@ import {
 } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
+import { HeaderSearch } from '@/components/HeaderSearch';
 import { MobileNavigation } from '@/components/MobileNavigation';
 import { SupportLink } from '@/components/SupportLink';
 import themeConfig from '@/theme.config';
@@ -94,6 +95,7 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
       <body>
         <Layout
           navbar={navbar}
+          search={<HeaderSearch />}
           sidebar={themeConfig.sidebar}
           nextThemes={themeConfig.nextThemes}
           pageMap={pageMap}
