@@ -1,0 +1,35 @@
+---
+title: Administer a remote Linux machine
+---
+
+# Administer a remote Linux machine
+
+Check a server, inspect logs, or work on a remote development machine from your Android phone with ConnectBot.
+
+## Before connecting
+
+Ask your server administrator or hosting provider for the server's hostname or IP address, SSH port, username, authentication method, and host-key fingerprint. SSH must be enabled and reachable from your phone's network. A server on a private network may require a VPN.
+
+[Get ConnectBot on Google Play](https://play.google.com/store/apps/details?id=org.connectbot), then follow [Add an SSH host](/guides/add-host/). Save the host and open it from the Host List. Verify the host key before entering credentials.
+
+## Check your server
+
+These commands inspect the remote machine without changing its configuration:
+
+```sh
+whoami
+hostname
+uptime
+df -h
+```
+
+On a Linux server using systemd, `systemctl --failed` lists failed services and `journalctl -n 50` shows recent log entries visible to your account. Available commands and permissions depend on the server.
+
+## Work comfortably
+
+- [Keep special keys visible](/guides/special-keys/) to use Ctrl, Esc, Tab, and arrows.
+- [Adjust colors and font size](/guides/terminal-appearance/) for readable output.
+- Save separate hosts for the machines you use and keep multiple sessions open to switch between them.
+- For work that must remain running after disconnecting, use a server-side terminal multiplexer such as `tmux` if installed.
+
+Use `exit` to leave the shell. For changing Wi-Fi or mobile networks, consider [Mosh](/guides/mosh/). If login fails, follow [connection help](/bugs/#connection-help).

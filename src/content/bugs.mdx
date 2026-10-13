@@ -1,4 +1,18 @@
-# Reporting Issues
+# Help & Reporting Issues
+
+## Connection help
+
+- **Connection refused:** Check the hostname and port, and confirm that the server's SSH service is running. SSH commonly uses port `22`, but your administrator may choose another.
+- **Connection timed out:** Check that your phone can reach the server's network. A private home-network address usually requires the same network or a VPN when you're away. Check the server's firewall too.
+- **Authentication failed:** Confirm the username and password. For key login, check that the selected key's public key is authorized for that server account.
+- **Host key changed:** Verify the new fingerprint with your server administrator before accepting it.
+- **Disconnected after changing networks:** Reopen an SSH connection, or [set up Mosh](/guides/mosh/) for an interactive terminal that can recover across network changes.
+
+For keyboard help, [keep special keys visible](/guides/special-keys/). For first-time setup, follow [Add an SSH host](/guides/add-host/).
+
+## Get more help
+
+Ask in [#connectbot on Libera.Chat](https://web.libera.chat/#connectbot) or use the support link below. Include the ConnectBot version, Android version, connection type, and error message. Do not include passwords or private keys.
 
 Please use GitHub issues to report problems with ConnectBot, this website, or
 the Play Store listing. Choose the appropriate issue type below.

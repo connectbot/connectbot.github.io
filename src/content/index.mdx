@@ -1,58 +1,77 @@
 ---
-title: Home
+title: SSH and Mosh client for Android
 searchable: false
 ---
 
-<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0', gap: '0.5rem' }}>
-  <img src="/logo.png" alt="ConnectBot logo" width={128} height={128} />
-  <h1 style={{ fontFamily: 'var(--font-datatype-thin)', fontSize: '2.5rem', margin: 0, lineHeight: 1 }}>ConnectBot</h1>
-  <p className="tagline" style={{ fontSize: '1.2rem', color: '#666', margin: 0 }}>The first SSH client for Android.</p>
-</div>
+import { ContentSection, DonationCallout, FeatureCard, GuideCard, HelpCallout, HomeHero } from '@/components/landing/Landing';
 
-ConnectBot is a secure shell client for the Android platform. Its ultimate goal is to create a secure connection through which you can use a shell on a remote machine and transfer files back and forth to your phone.
+<HomeHero
+  tagline="Your servers, from your phone."
+  description="An open-source SSH and Mosh client for Android. Access your Linux server, Raspberry Pi, or remote development machine wherever you are."
+  prompt="Already have ConnectBot?"
+  action={{ href: '/guides/add-host/', label: 'Connect to your first server' }}
+/>
 
-# Learn ConnectBot
+<ContentSection
+  id="features-heading"
+  title="Work from anywhere"
+  description="A capable terminal for the machines you already use."
+  layout="features"
+>
+  <FeatureCard
+    title="Multiple sessions"
+    description="Keep several terminals open and switch between your servers."
+  />
+  <FeatureCard
+    title="Secure connections"
+    description="Sign in with a password or SSH key and create secure tunnels with SSH port forwarding."
+  />
+  <FeatureCard
+    title="Changing networks"
+    description="Mosh helps your terminal recover from interruptions. Requires compatible server software."
+    action={{ href: '/guides/mosh/', label: 'Set up Mosh' }}
+  />
+  <FeatureCard
+    title="Your terminal, your way"
+    description="Keep special keys visible, copy scrollback, and customize colors and font size."
+    action={{ href: '/guides/terminal-appearance/', label: 'Customize your terminal' }}
+  />
+</ContentSection>
 
-[Explore features and frequently asked questions](/guides/), including keeping special keys visible, saving SSH hosts, and customizing your terminal.
+<ContentSection
+  id="guides-heading"
+  title="What would you like to connect to?"
+  description="Start with a reachable SSH server and your account credentials."
+  layout="guides"
+  action={{ href: '/guides/', label: 'All guides' }}
+>
+  <GuideCard
+    title="Raspberry Pi"
+    description="Enable SSH and open your Pi's terminal from your phone."
+    href="/guides/raspberry-pi/"
+    label="Connect to your Pi"
+  />
+  <GuideCard
+    title="Linux server"
+    description="Check your server or work on a remote development machine."
+    href="/guides/linux-server/"
+    label="Connect to Linux"
+  />
+  <GuideCard
+    title="Your first SSH host"
+    description="Save an address, verify the host key, and sign in."
+    href="/guides/add-host/"
+    label="Follow the walkthrough"
+  />
+</ContentSection>
 
-# Development Team
+<DonationCallout
+  title="One developer. Since 2007."
+  description="I’m Kenny Root, ConnectBot’s creator and solo developer. I’ve kept this project going since 2007, with contributions from the community. Your donation helps me buy Android test devices and make time for fixes, security improvements, and new features."
+/>
 
-The main developer is [Kenny Root](https://the-b.org/) with various contributions from the community.
-
-All of us are on the <strong>#connectbot</strong> channel on [Libera.Chat](https://libera.chat/) if you have questions. You can join via Libera.Chat's [webchat](https://web.libera.chat/) system or your own IRC client.
-
-If you're a developer, check out details about how the current codebase is designed.
-
-# Support the Project
-
-If you'd like to support ConnectBot development, you can donate via:
-- [GitHub Sponsors](https://github.com/sponsors/kruton)
-- [BuyMeACoffee](https://buymeacoffee.com/kruton)
-
-
-# Available in Google Play Store
-
-*The latest stable version of ConnectBot is [available in the Google Play Store](https://play.google.com/store/apps/details?id=org.connectbot).* You can scan the QR code below using the Barcode Scanner application:
-
-<QRCode value="https://play.google.com/store/apps/details?id=org.connectbot" />
-
-## Getting Early Builds
-
-ConnectBot is under active development. If you want to get an early build, you can join the open testing group (a.k.a., beta testers). You can also go to the next level and join the elite closed testing group (a.k.a., alpha testers).
-
-### Beta Testers
-
-To join the Beta Testing team, there is one step:
-
-1. [Opt-in to ConnectBot testing](https://play.google.com/apps/testing/org.connectbot)
-
-### Alpha Testers
-
-To join the Alpha Testing Team, there are two steps:
-
-1. [Opt-in to ConnectBot testing](https://play.google.com/apps/testing/org.connectbot)
-2. [Join the ConnectBot Alpha group](https://groups.google.com/g/connectbot-alpha)
-
-## Getting the APK
-
-You may also download ConnectBot from our [releases page](https://github.com/connectbot/connectbot/releases). Historical downloads may be available from the old Google Code site [downloads page](https://code.google.com/archive/p/connectbot/downloads).
+<HelpCallout
+  title="Need a hand?"
+  description="Find connection fixes, keyboard tips, and ways to ask for help."
+  action={{ href: '/bugs/', label: 'Get help' }}
+/>

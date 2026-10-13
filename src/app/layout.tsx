@@ -10,6 +10,8 @@ import {
 } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
+import { MobileNavigation } from '@/components/MobileNavigation';
+import { SupportLink } from '@/components/SupportLink';
 import themeConfig from '@/theme.config';
 import './styles.css';
 
@@ -41,7 +43,7 @@ const datatypeThin = localFont({
 
 export const metadata: Metadata = {
   description:
-    'ConnectBot is a secure shell client for the Android platform.',
+    'Open-source SSH and Mosh client for Android. Access remote terminals, switch between sessions, and create secure SSH tunnels.',
   title: {
     absolute: '',
     template: '%s | ConnectBot',
@@ -63,13 +65,16 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
   const pageMap = await getPageMap();
 
   const navbar = (
-    <Navbar
-      logo={themeConfig.logo}
-      projectLink={themeConfig.project.link}
-      chatLink={themeConfig.chat.link}
-      chatIcon={themeConfig.chat.icon}
-    >
-    </Navbar>
+    <header className="site-header">
+      <Navbar
+        logo={themeConfig.logo}
+        projectLink={themeConfig.project.link}
+        className="site-navbar"
+      >
+        <SupportLink />
+      </Navbar>
+      <MobileNavigation />
+    </header>
   );
 
   return (
