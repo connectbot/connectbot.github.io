@@ -6,6 +6,16 @@ import { GuideContent } from '@/components/GuideContent';
 
 # Add an SSH host
 
-To ad a host, you will need your server address and username.
+You'll need a reachable server with SSH enabled, its hostname or IP address, your username, and a password or SSH key. For example, `alex@192.168.1.50:22` means username `alex`, server `192.168.1.50`, and SSH port `22`. Use your own details.
+
+[Get ConnectBot on Google Play](https://play.google.com/store/apps/details?id=org.connectbot) before following the walkthrough. If you're setting up a new server, start with the [Raspberry Pi guide](/guides/raspberry-pi/) or [Linux server guide](/guides/linux-server/).
 
 <GuideContent id="add-host" />
+
+## Connect and sign in
+
+After saving, tap the host in the Host List to connect. On your first connection, compare the displayed host-key fingerprint with the fingerprint supplied by your server administrator before accepting it. Then enter your password, or use the SSH key authorized for your account on the server.
+
+If you use a key, import your private key into ConnectBot's key manager and select it for the host. The corresponding public key must already be authorized on the server.
+
+Once connected, try `whoami` to check which account you're using. [Keep special keys visible](/guides/special-keys/) for easier terminal input. If the connection fails, [check these common causes](/bugs/#connection-help).

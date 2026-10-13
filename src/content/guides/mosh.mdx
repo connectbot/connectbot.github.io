@@ -1,0 +1,36 @@
+---
+title: Set up Mosh for changing networks
+---
+
+# Set up Mosh for changing networks
+
+Mosh helps an interactive terminal recover from temporary network interruptions and changes between Wi-Fi and mobile data. ConnectBot includes the client; your remote machine needs compatible `mosh-server` software.
+
+[Get ConnectBot on Google Play](https://play.google.com/store/apps/details?id=org.connectbot) to get started.
+
+## Prepare the server
+
+First confirm that you can [connect over SSH](/guides/add-host/) with your username and password or SSH key. Mosh uses SSH to sign in and start the server process, then uses UDP for terminal traffic.
+
+On Debian or Ubuntu, an administrator can install the server package with:
+
+```sh
+sudo apt-get install mosh
+```
+
+Allow inbound UDP traffic for the Mosh ports on the server's firewall and any intervening network firewall. The default range is `60000–61000`; the SSH port must also remain reachable. See the official [Mosh installation and usage instructions](https://mosh.org/#getting) for other systems and port configuration.
+
+## Add a Mosh connection
+
+1. Add a connection in ConnectBot and choose `mosh` in the protocol selector.
+2. Enter the same hostname, username, and SSH port that work for your SSH connection.
+3. Use the same password or authorized SSH key. Leave Mosh-specific settings at their defaults unless your server requires a different server path or UDP port.
+4. Save, then open the host from the Host List.
+
+## If it does not connect
+
+If SSH login works but Mosh stalls, check that `mosh-server` is installed and available on the server's command path, and that UDP traffic can reach it. A network that permits SSH may still block UDP.
+
+Mosh supports interactive terminals; use SSH connections for port forwarding. Mosh can recover while the server process and client session remain alive. For work that should survive closing the app or a server-side session ending, use a terminal multiplexer such as `tmux` on the server.
+
+Read more about roaming and network requirements in the [official Mosh documentation](https://mosh.org/), or see [connection help](/bugs/#connection-help).

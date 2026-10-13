@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const config = {
   logo: (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+    <div className="navbar-brand">
       <Image src="/logo.png" alt="ConnectBot logo" width={32} height={32} />
-      <span style={{ fontWeight: 'bold' }}>ConnectBot</span>
+      <span>ConnectBot</span>
     </div>
   ),
   project: {
@@ -44,7 +45,7 @@ const config = {
             ConnectBot
           </strong>
           <p style={{ margin: 0, fontSize: '0.875rem', opacity: 0.7, lineHeight: 1.6 }}>
-            The first SSH client for Android
+            Open-source SSH and Mosh client for Android
           </p>
         </div>
         <div style={{ flex: '1 1 200px' }}>
@@ -88,6 +89,7 @@ const config = {
               </svg>
               Support Development
             </a>
+            <Link href="/privacy/" className="footer-link">Privacy policy</Link>
           </div>
         </div>
       </div>
@@ -135,7 +137,7 @@ const config = {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="ConnectBot" />
-      <meta property="og:description" content="ConnectBot is a secure shell client for the Android platform." />
+      <meta property="og:description" content="Open-source SSH and Mosh client for Android. Access remote terminals, switch between sessions, and create secure SSH tunnels." />
       <meta name="apple-mobile-web-app-title" content="ConnectBot" />
     </>
   ),
@@ -163,7 +165,7 @@ const config = {
   useNextSeoProps() {
     return {
       titleTemplate: '%s | ConnectBot',
-      description: 'ConnectBot is a secure shell client for the Android platform.',
+      description: 'Open-source SSH and Mosh client for Android. Access remote terminals, switch between sessions, and create secure SSH tunnels.',
     };
   },
 };

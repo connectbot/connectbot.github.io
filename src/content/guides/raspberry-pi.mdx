@@ -1,0 +1,28 @@
+---
+title: Connect to a Raspberry Pi
+---
+
+# Connect to a Raspberry Pi
+
+Use ConnectBot to open a terminal on your Raspberry Pi from Android. You'll need a Pi running Raspberry Pi OS, an account on it, and a phone that can reach its network.
+
+## Prepare your Pi
+
+1. Enable SSH in Raspberry Pi Imager when preparing the SD card, or enable it on an existing installation using `sudo raspi-config` under **Interface Options → SSH**.
+2. Find the Pi's hostname or IP address. If you have a terminal on the Pi, `hostname -I` shows its addresses.
+3. Use the username and password you created during setup, or an SSH key authorized for that account.
+
+See the official [Raspberry Pi remote-access documentation](https://www.raspberrypi.com/documentation/computers/remote-access.html) for SSH setup and finding your Pi on the network.
+
+## Connect from Android
+
+1. [Get ConnectBot on Google Play](https://play.google.com/store/apps/details?id=org.connectbot).
+2. Put your phone on the same network as your Pi for the first connection.
+3. [Add an SSH host](/guides/add-host/) using your Pi's address, your username, and its SSH port (usually `22`).
+4. Save the host, tap it in the Host List, verify its host-key fingerprint, and sign in.
+
+Try `hostname` to confirm which machine you're using, then `uptime` to see how long it has been running. Use `exit` when you're done.
+
+## Next steps
+
+[Keep special keys visible](/guides/special-keys/) for Ctrl, Tab, Esc, and arrows. To connect away from home, use a VPN or another network route to your Pi; its private address will not be reachable directly over mobile data. If you cannot connect, check [connection help](/bugs/#connection-help).

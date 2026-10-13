@@ -10,25 +10,30 @@ const meta: MetaRecord = {
       copyPage: false,
     },
   },
-  about: {
-    title: 'About',
-    type: 'page',
-  },
   guides: {
-    title: 'Features & FAQ',
+    title: 'Guides',
     type: 'doc',
   },
   features: {
-    title: 'Features & FAQ',
+    title: 'Guides',
     type: 'page',
     href: '/guides/',
   },
   bugs: {
-    title: 'Reporting Bugs',
+    title: 'Help',
+    type: 'page',
+  },
+  download: {
+    title: 'Download',
+    type: 'page',
+  },
+  about: {
+    title: 'About',
     type: 'page',
   },
   privacy: {
     title: 'Privacy Policy',
+    display: 'hidden',
   },
   404: {
     display: 'hidden',
