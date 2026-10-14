@@ -142,12 +142,12 @@ const config = {
     </>
   ),
   primaryHue: {
-    dark: 120,
-    light: 0,
+    dark: 217,
+    light: 224,
   },
   primarySaturation: {
-    dark: 100,
-    light: 100,
+    dark: 91,
+    light: 76,
   },
   themeSwitch: {
     getOptions() {
