@@ -1,5 +1,14 @@
 @import 'nextra-theme-docs/style.css';
 
+:root {
+  --site-header-height: var(--nextra-navbar-height);
+}
+
+html,
+html:not(:has(*:focus)) {
+  scroll-padding-top: calc(var(--site-header-height) + 1rem);
+}
+
 body {
   font-family: var(--font-raleway), Arial, sans-serif;
   font-size: 1rem;
@@ -510,8 +519,13 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
 }
 
 @media (width < 768px) {
+  :root {
+    /* Navigation buttons, vertical padding, and the bottom border. */
+    --site-header-height: calc(var(--nextra-navbar-height) + 44px + 0.5rem + 1px);
+  }
+
   .nextra-mobile-nav {
-    padding-top: calc(var(--nextra-navbar-height) + 52px);
+    padding-top: var(--site-header-height);
   }
 
   .mobile-primary-nav {
