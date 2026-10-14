@@ -7,6 +7,7 @@ import {
   LastUpdated,
   Layout,
   Navbar,
+  ThemeSwitch,
 } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
@@ -69,9 +70,9 @@ const RootLayout: FC<LayoutProps> = async ({ children }) => {
     <header className="site-header">
       <Navbar
         logo={themeConfig.logo}
-        projectLink={themeConfig.project.link}
         className="site-navbar"
       >
+        <ThemeSwitch lite className="header-theme-switch" />
         <SupportLink />
       </Navbar>
       <MobileNavigation />
