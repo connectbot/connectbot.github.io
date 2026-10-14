@@ -14,6 +14,7 @@ export const guideGroups = [
       { slug: 'mosh', title: 'Set up Mosh' },
       { slug: 'ssh-keys', title: 'SSH keys and biometric protection' },
       { slug: 'port-forwarding', title: 'Local, remote, and dynamic forwards' },
+      { slug: 'post-login-automation', title: 'Post-login automation' },
     ],
   },
   {
