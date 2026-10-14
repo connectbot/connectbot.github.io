@@ -1,0 +1,120 @@
+---
+title: Post-login automation
+---
+
+# Post-login automation
+
+Written for **ConnectBot v1.11.1**.
+
+Post-login automation turns a saved host into a repeatable workspace. ConnectBot can wait for a prompt, type a command, press keys, pause, control a port forward, and disconnect—all in the order you choose.
+
+Use it to open a project directory, attach to a terminal multiplexer, navigate a text-based menu, or wait for a service to announce that it is ready before enabling a tunnel.
+
+## Set up an action sequence
+
+1. [Save a host](/guides/add-host/) and check that you can connect normally.
+2. Edit the saved host and select **Post-login automation**. A new host must be saved before this option is available.
+3. Select **Add action**, choose an action type, and fill in its settings.
+4. Save the action. Add more actions, then drag them into order or use **Move up** and **Move down**. You can also edit or delete individual actions.
+5. Save the overall sequence and connect to the host to try it.
+
+Actions belong to that host and run sequentially when its terminal session starts. They run after the connection is established, so they do not replace SSH authentication or answer its initial password, key, or host-verification prompts. A new connection can run the sequence again; make commands safe to repeat. Editing the saved sequence does not change a run already in progress.
+
+## The available actions
+
+| Action | What it does | Useful for |
+| --- | --- | --- |
+| **Wait for string** | Waits for incoming text to contain a literal string or match a regular expression, up to a timeout. | Recognizing a shell prompt, menu, or readiness message. |
+| **Send string** | Sends the text you enter to the terminal. | Typing a command, a menu answer, or several lines of input. |
+| **Send special key** | Sends a selected key, optionally with Shift, Ctrl, or Alt. | Submitting a command with Enter, moving through a menu, or sending Ctrl+C. |
+| **Wait** | Pauses for a fixed duration in seconds. | Giving an application a short settling period when it has no useful readiness message. |
+| **Disconnect** | Closes the connection and ends the sequence. | Finishing a short task after confirming its completion. |
+| **Enable port forward** | Enables a selected saved forward for this SSH host. | Making a tunnel available at a chosen point in the sequence. |
+| **Disable port forward** | Disables a selected saved forward for this SSH host. | Turning off a tunnel when a task no longer needs it. |
+
+Wait durations and text-wait timeouts must be greater than zero. New **Wait** actions start at one second; new **Wait for string** actions start with a 30-second timeout. Adjust these for your server and connection.
+
+### Sending text and keys
+
+**Send string does not add Enter automatically.** For a command, send its text and follow it with **Send special key → Enter**. Actual line breaks in a multiline string are sent as input too; typing the two characters `\n` does not turn them into a newline.
+
+Special keys include Enter, Tab, Escape, Backspace, Delete, the arrow keys, Home, End, Insert, Page Up, Page Down, and F1–F12. The picker also includes A–Z and selected punctuation so you can make combinations such as **Ctrl+C**, **Ctrl+D**, or **Ctrl+L**. Modifier combinations are sent to the terminal; how a remote application responds depends on that application and its terminal settings.
+
+Sending input successfully means it was sent, not that a shell command succeeded. Add a text wait when later actions depend on a result.
+
+### Waiting for text
+
+Start with a distinctive literal string that you can see in the server's output, such as `Workspace ready`. Literal matching is case-sensitive and can match part of a longer message. With **Regular expression** enabled, the field becomes a pattern using RE2 syntax. Lookaround and backreferences are not supported.
+
+For example, `(?m)^Workspace ready$` matches that entire line, while `(?m)^READY:[0-9]+$` can match a readiness marker containing a changing number. Leave the regular-expression option off when you want characters such as `$`, `[`, or `.` treated literally.
+
+ConnectBot matches incoming decoded text with ANSI formatting removed and line endings normalized. It watches the output stream, rather than searching the visible screen or old scrollback. Colorful prompts can work, but full-screen applications that redraw or reposition text may not produce the straightforward text you expect.
+
+Text received earlier in the same run can satisfy a wait. A successful wait consumes output through its match, leaving later text available for the next wait. Sending a string or special key clears the captured text before sending, so a following wait checks the response to that input rather than an earlier prompt.
+
+Prefer a specific readiness message over a broad match such as `$` or `ready`: command echo, a login banner, or unrelated output could otherwise satisfy the wait. A fixed **Wait** only measures time; it does not prove the server is ready.
+
+### Controlling port forwards
+
+Create the forward in the host's **Edit port forwards** screen first, then select it in the automation action. These actions control an existing forward; they do not create one or change its destination. Enabling an already enabled forward, or disabling an already disabled one, leaves it in the requested state.
+
+Forwarding actions require an **SSH** host. They cannot provide an SSH tunnel through Mosh or Telnet. A deleted forward leaves its automation action with a missing reference; edit that action to select a replacement or remove it.
+
+Remember that saved forwards normally start enabled. If a forward must stay off until a readiness check succeeds, configure it to start disabled in the port-forward list. Disabling it as the first automation action may still leave it briefly enabled during connection setup.
+
+Read the [port-forwarding guide](/guides/port-forwarding/) for server permissions, listening addresses, and testing. Enabling a listener does not prove the destination service is reachable.
+
+## Example: open a project and attach to tmux
+
+Suppose your shell prompt contains the distinctive text `workstation> ` and your project is in `$HOME/projects/my-app`. Add these actions:
+
+1. **Wait for string:** `workstation> `, with a suitable timeout and **Stop automation** on failure.
+2. **Send string:** `cd "$HOME/projects/my-app" && tmux new-session -A -s work`
+3. **Send special key:** Enter.
+
+This changes to the project directory and asks tmux to attach to an existing `work` session or create it. The server must have tmux installed. Replace the prompt and directory with ones that actually exist on your server.
+
+The `&&` prevents tmux from starting if changing directories fails. That condition is handled by the shell: ConnectBot's action list itself has no conditional branches or loops. For more complex logic, call a script on the server and use automation to start it and recognize its output.
+
+## Example: enable a tunnel after a readiness check
+
+Suppose you have a saved Local forward to a web service and a server-side `check-workspace` command that prints `WORKSPACE_OK` on its own line only when the service is ready.
+
+1. Configure the forward to start disabled.
+2. **Wait for string:** your shell's distinctive prompt.
+3. **Send string:** `check-workspace`
+4. **Send special key:** Enter.
+5. **Wait for string:** `(?m)^WORKSPACE_OK$`, with **Regular expression** enabled and **Stop automation** on failure.
+6. **Enable port forward:** select your saved web-service forward.
+
+The line-specific match helps distinguish the result from the echoed command. `check-workspace` is an example of a command you supply on the server, not a built-in ConnectBot command. If the marker never arrives, the timeout stops the sequence before the tunnel is enabled.
+
+## Failures, progress, and cancellation
+
+Each action except **Disconnect** has an **On failure** setting:
+
+- **Stop automation** is the default. Later actions do not run after that action fails.
+- **Continue** records the failure and moves to the next action. Use it for an optional step whose failure will not make later input unsafe or misleading.
+
+A text-wait timeout counts as a failure. Other failures include a closed terminal session, a missing forward, or a rejected forwarding request. Stopping automation normally leaves the connection open; **Disconnect** explicitly closes it and ends the sequence, even if more actions follow it.
+
+The terminal shows the current action number while automation runs and identifies an action that fails. **Cancel automation** stops the sequence while leaving the connection open. It does not undo commands already sent, stop a remote process, or reset a forward that was already changed. Use the terminal to inspect and clean up if needed.
+
+## Make routines reliable
+
+- **Test manually first.** Confirm the commands, prompts, and forwards work before automating them. Start with a short sequence and extend it gradually.
+- **Use output to synchronize.** Slow networks and busy servers make fixed delays unreliable. Give text waits enough time and keep essential checks on **Stop automation**.
+- **Avoid mixing manual typing with a running sequence.** Both send input to the same session, so typing while automation is waiting can change what later actions do. Cancel first when you need to take over.
+- **Plan for reconnects.** A fresh terminal connection can repeat the actions. Prefer commands that reuse existing resources or check whether work has already been done. Mosh roaming without a new terminal session is not a fresh automation run.
+- **Keep secrets out of saved text.** Action text is saved with the host's automation settings and is not a protected password field. Prefer [SSH keys](/guides/ssh-keys/) for authentication and handle sensitive prompts interactively.
+- **Keep output manageable.** Automation has a bounded capture buffer. If too much output accumulates before it can be processed, the run stops instead of silently discarding it; an action's **Continue** setting does not bypass that safeguard. Avoid starting an unbounded log stream before a long wait.
+- **Confirm completion before disconnecting.** Sending a command and immediately disconnecting can interrupt work. Wait for a reliable completion marker, or use a server-side tool designed to keep running after the session ends.
+
+## Implementation references
+
+The behavior described here is grounded in **ConnectBot v1.11.1**:
+
+- [AutomationEditorScreen.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/ui/screens/automation/AutomationEditorScreen.kt) and [AutomationEditorViewModel.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/ui/screens/automation/AutomationEditorViewModel.kt): editing, ordering, validation, and defaults.
+- [AutomationRunner.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/service/automation/AutomationRunner.kt): sequential execution, matching, failures, and disconnect behavior.
+- [AutomationOutput.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/service/automation/AutomationOutput.kt) and [AutomationRegex.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/service/automation/AutomationRegex.kt): output capture and regular-expression matching.
+- [AutomationKeySupport.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/service/automation/AutomationKeySupport.kt) and [TerminalBridge.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/service/TerminalBridge.kt): supported keys, startup, cancellation, and forwarding control.
