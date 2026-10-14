@@ -1,0 +1,178 @@
+---
+title: Local, remote, and dynamic port forwarding
+---
+
+# Local, remote, and dynamic port forwarding
+
+Written for **ConnectBot v1.11.1**.
+
+An SSH port forward carries TCP connections through your SSH session. It can let you reach a server-side service from your phone, expose a phone-side service through your server, or provide a SOCKS proxy for an application.
+
+**Local and remote describe where the listening port is created—not where you enter the settings.** The destination is the service that receives the connection after it crosses the tunnel.
+
+## Choose a forwarding type
+
+| Type | Where you connect | Where the destination service runs | Use it for |
+| --- | --- | --- | --- |
+| **Local** | A listening port on your phone | On the machine running SSH, or another host reachable from it | Accessing a server-side service from your phone. |
+| **Remote** | A listening port on the machine running SSH | On your phone, or another host reachable from your phone | Accessing a phone-side service through your server. |
+| **Dynamic (SOCKS)** | A SOCKS proxy port on your phone | Any allowed host reachable from the machine running SSH; your application chooses each destination | Accessing multiple services through one proxy. |
+
+For these forwards, traffic is encrypted **between the phone and SSH server**. Connections outside that segment still need their own protection, such as HTTPS. These are TCP forwards, not a whole-device VPN or a UDP tunnel.
+
+## Set up a forward in ConnectBot
+
+1. [Save an SSH host](/guides/add-host/) and confirm you can sign in.
+2. Open that host's menu in the Host List and choose **Edit port forwards**.
+3. Add a forward with a nickname, type, and **Source port**. For Local or Remote, also enter a **Destination** as `host:port`.
+4. For Remote, choose the server-side **Host address** to listen on. Start with **localhost** for access only from the server itself.
+5. Save and connect to the host. If already connected, check the forward's enabled state in the port-forward list.
+
+Saved forwards are configured to start enabled by default in the current implementation, but creating or enabling a forward still requires an authenticated SSH connection. Keep that connection alive while using the tunnel. Use an **SSH** host for forwarding: ConnectBot's Mosh transport closes its initial SSH connection after handoff.
+
+The current editor accepts source ports **1–65535**. It does not expose OpenSSH's server-assigned port `0` feature, and Dynamic has no fixed destination field.
+
+## Local: reach a service from your phone
+
+Suppose a web service listens on port `80` on the SSH server, but you do not want to open that service directly to the network.
+
+| ConnectBot field | Example |
+| --- | --- |
+| Type | Local |
+| Source port | `8080` |
+| Destination | `127.0.0.1:80` |
+
+The route is: **phone application → phone port 8080 → SSH tunnel → server port 80**.
+
+Try `http://127.0.0.1:8080/` in a browser on the phone. The destination's `127.0.0.1` means **the machine running the SSH server**, not the phone. You can also use a destination on the server's network, provided the server can reach it and its forwarding policy allows it.
+
+ConnectBot currently binds Local and Dynamic listeners to the address returned by Android's `InetAddress.getLocalHost()`. It does not offer a custom listen address for these types. Loopback access is the usual starting point; if it fails, check the actual bound address. Do not assume the listener is available through the phone's Wi-Fi address.
+
+## Remote: reach a phone-side service from the server
+
+Suppose an application on your phone listens on port `8000` and you want to reach it from the SSH server.
+
+| ConnectBot field | Example |
+| --- | --- |
+| Type | Remote |
+| Host address | `localhost` |
+| Source port | `18080` |
+| Destination | `127.0.0.1:8000` |
+
+The route is: **server application → server port 18080 → SSH tunnel → phone port 8000**.
+
+On the server, connect to `http://127.0.0.1:18080/`. For this forward, the destination's `127.0.0.1` means **the phone**. If there is no service listening on the phone at port `8000`, the tunnel has nothing to connect to.
+
+To allow other machines to use this server-side port, the requested Host address, server policy, and firewall must all permit it. An “all addresses” choice in ConnectBot is a request to the server, not an override of its restrictions. A listener on all interfaces can expose your phone-side service to other people who can reach the server.
+
+## Dynamic: use a SOCKS proxy
+
+Choose **Dynamic (SOCKS)** and a Source port such as `1080`. Configure a SOCKS-capable application on the phone to use `127.0.0.1:1080` as its proxy.
+
+The application chooses the destination for each connection; you do not save a single `host:port` destination in ConnectBot. Each requested connection goes through SSH and is opened from the server.
+
+Use a **SOCKS** proxy setting, not an HTTP proxy setting. Simply starting the forward does not reroute every app on the phone. If the application supports resolving hostnames through SOCKS, enable that option when you want name resolution to happen through the server rather than on the phone.
+
+## Does the server allow forwarding?
+
+A successful shell login does not prove forwarding is allowed. Check the running SSH service, its effective policy, the account/key restrictions, and then test actual traffic. If you do not administer the server, ask its administrator to check these settings.
+
+### OpenSSH
+
+On the server, inspect the effective configuration for your connection. Replace these example values with your username, the phone's source address and resolved hostname as seen by the server, and the server's listening address/port:
+
+```sh
+sudo /usr/sbin/sshd -T -C user=alex,addr=198.51.100.23,host=phone.example,laddr=192.0.2.10,lport=22
+```
+
+`-T` reports the parsed configuration; `-C` applies matching `Match` rules. Use the daemon's actual config file with `-f` if it runs with a nonstandard one, and account for any startup `-o` overrides. This checks the configuration on disk; it does not prove a running daemon has reloaded it. See the [OpenSSH server manual](https://man.openbsd.org/sshd).
+
+Look for these entries:
+
+| Setting | What to check |
+| --- | --- |
+| `AllowTcpForwarding` | `yes`/`all` permits both directions; `local` permits Local and Dynamic; `remote` permits Remote; `no` blocks both. |
+| `DisableForwarding` | `yes` overrides forwarding permissions. |
+| `PermitOpen` | Limits server-side destinations for Local and Dynamic. |
+| `PermitListen` | Limits Remote listening addresses and ports. |
+| `GatewayPorts` | Controls Remote exposure: `no` forces loopback; `clientspecified` allows requested addresses; `yes` forces wildcard binding. |
+
+`PermitOpen` compares requested host names/addresses, not merely where DNS resolves them. A rule permitting `localhost:80` may not permit a request for `127.0.0.1:80`. Remote listen rules also distinguish `localhost` from explicit loopback addresses. Details are in [sshd_config](https://man.openbsd.org/sshd_config).
+
+Check the `authorized_keys` entry actually used to log in: `no-port-forwarding`, `restrict`, `permitopen=`, and `permitlisten=` can further limit the connection. SSH certificate restrictions can apply too. Check the server logs while making a request through the forward.
+
+### Dropbear
+
+Dropbear generally uses startup arguments rather than OpenSSH's `sshd_config`. On the server, inspect its help and process arguments:
+
+```sh
+dropbear -h
+ps -ef
+```
+
+On a BusyBox-based system, use its supported `ps` options, such as `ps w`. Also inspect the service's startup configuration; routers may generate daemon arguments from their own settings.
+
+- **`-j`** disables Local forwarding, including Dynamic's server-side connections.
+- **`-k`** disables Remote forwarding.
+- **`-a`** allows other hosts to connect to remote forwarded ports.
+
+A key's `no-port-forwarding`, `restrict`, or `permitopen=` options may impose additional limits. Newer versions also document `permitlisten=` for Remote ports; check the manual for the installed version. See the [upstream Dropbear manual](https://github.com/mkj/dropbear/blob/master/manpages/dropbear.8).
+
+Embedded builds can omit forwarding at compile time. Dropbear's [build options](https://github.com/mkj/dropbear/blob/master/src/default_options.h) include `DROPBEAR_SVR_LOCALTCPFWD` and `DROPBEAR_SVR_REMOTETCPFWD`; a missing feature cannot be enabled with a client setting.
+
+### Other SSH servers
+
+Look for TCP forwarding or tunneling permissions for the actual user, key, or role. Do not copy OpenSSH configuration names into a different server. The definitive check is whether the requested listener and destination work for that connection.
+
+## Test the tunnel, not just the listener
+
+For the Local example, first test the service **on the server**:
+
+```sh
+curl http://127.0.0.1:80/
+```
+
+Then open `http://127.0.0.1:8080/` **on the phone**. For the Remote example, run this **on the server**, while the phone service and SSH session are active:
+
+```sh
+curl http://127.0.0.1:18080/
+```
+
+If available, `ss -ltn` on the server shows whether the Remote listener exists and which address it uses. A listener only on `127.0.0.1` or `::1` will not accept connections to the server's public address.
+
+For a desktop comparison, an OpenSSH client can test the same server/account policy with:
+
+```sh
+ssh -vv -N -o ExitOnForwardFailure=yes -L 127.0.0.1:18080:127.0.0.1:80 alex@server.example
+```
+
+In a second terminal **on that desktop**, request `http://127.0.0.1:18080/`. These commands create a desktop listener, not a phone listener. `ExitOnForwardFailure` catches setup failures; it does not prove later connections to the destination will succeed. Local and Dynamic listeners can start even if the server later rejects forwarded traffic.
+
+For Dynamic, test with an application explicitly using SOCKS. With a command-line client available **on the phone**, this requests remote hostname resolution:
+
+```sh
+curl --socks5-hostname 127.0.0.1:1080 https://example.com/
+```
+
+ConnectBot does not supply `curl` itself. Running that command inside your SSH terminal runs it on the server, where the phone's SOCKS listener is not located.
+
+## Common pitfalls
+
+- **Listening below port 1024.** Ports such as `80` and `443` often require elevated privileges on Unix-like systems. For Local/Dynamic, the listener runs under the Android app's permissions; server-side `sudo` cannot grant it privileges. For Remote, the server/account rules apply. Start with `8080`, `1080`, or `18080`. A high listening port can forward to destination port `80` or `443` without owning that destination listener. Linux's [privileged-port threshold is configurable](https://www.kernel.org/doc/html/latest/networking/ip-sysctl.html), so this is not an unconditional rule on every device or server.
+- **Address already in use.** Choose a different Source port or stop the conflicting listener, including another saved forward using that port.
+- **IPv6 destination syntax.** The current editor splits Destination on `:` and expects exactly `host:port`. Use a DNS hostname or IPv4 address there; raw IPv6 literals are not accepted, even though Remote Host address has IPv6 choices.
+- **Wrong side's localhost.** Local/Dynamic destinations are reached from the server; Remote destinations are reached from the phone. Commands typed into an SSH shell run on the server.
+- **Forward marked enabled, but traffic fails.** Check the destination service, forwarding policy, and server logs. A local listener being enabled does not mean its destination has been tested.
+- **Remote forward works only on the server.** Check the actual listen address, `GatewayPorts` or Dropbear's `-a`, and inbound firewall rules. NAT or cloud security groups may also block other hosts.
+- **Unexpected exposure.** Prefer loopback Remote listeners unless you intend to share the service. SSH authenticates the tunnel owner; a service exposed through a remote listening port still needs appropriate access controls.
+- **HTTP/SOCKS or HTTP/HTTPS mismatch.** Use the application's correct proxy type and the service's correct protocol. HTTPS certificates and redirects may expect the original service hostname, not `localhost`.
+- **Network changes or an ended session.** These forwards depend on SSH. Reconnect and check they are enabled again after a disconnect; a Mosh session does not preserve the SSH tunnel.
+
+## Implementation references
+
+ConnectBot-specific behavior described here is for **v1.11.1**. These source references explain the implementation:
+
+- [SSH.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/transport/SSH.kt): Local, Remote, and Dynamic setup, listen addresses, and authentication checks.
+- [PortForwardEditorViewModel.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/ui/screens/portforwardlist/PortForwardEditorViewModel.kt): source-port range, Remote address selection, and destination fields.
+- [PortForward.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/data/entity/PortForward.kt): saved forwarding types and startup state.
+- [Mosh.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/transport/Mosh.kt): closing the bootstrap SSH connection.
