@@ -12,6 +12,7 @@ export const guideGroups = [
       { slug: 'raspberry-pi', title: 'Connect to a Raspberry Pi' },
       { slug: 'linux-server', title: 'Administer a Linux server' },
       { slug: 'mosh', title: 'Set up Mosh' },
+      { slug: 'ssh-keys', title: 'SSH keys and biometric protection' },
     ],
   },
   {
