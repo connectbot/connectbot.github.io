@@ -1,0 +1,75 @@
+---
+title: SSH key algorithms and biometric protection
+---
+
+# SSH key algorithms and biometric protection
+
+Written for **ConnectBot v1.11.1**.
+
+An SSH key pair lets you sign in without sending an account password to the server. Install the **public key** on the server and keep the **private key** on your device. ConnectBot uses the private key to sign a challenge that the server can verify.
+
+Two separate choices matter: **which algorithm your server accepts**, and **how ConnectBot stores and unlocks the private key**.
+
+## Compare the algorithms
+
+| Algorithm | What it means | Biometric-protected key generation in ConnectBot |
+| --- | --- | --- |
+| **RSA** | A widely supported algorithm with a configurable key size. Modern SSH servers can use RSA with SHA-256 or SHA-512 signatures. | Yes, when you enable fingerprint protection while generating the key. |
+| **EC / ECDSA** | Elliptic-curve keys using the NIST P-256, P-384, or P-521 curves. ConnectBot labels this option **EC**; SSH uses ECDSA signatures. | Yes, when you enable fingerprint protection while generating the key. |
+| **Ed25519** | A fixed-size elliptic-curve signature algorithm in the EdDSA family. It is a separate algorithm from ECDSA. | No. ConnectBot stores these as software keys. |
+| **DSA** | An older algorithm, also called `ssh-dss`, retained for legacy compatibility. Avoid it for new keys: OpenSSH 10.0 removed DSA support. | No. ConnectBot stores these as software keys. |
+
+Your server must accept the algorithm you choose. Key sizes across algorithms are not directly comparable: a larger number does not automatically mean a stronger key.
+
+An RSA public key may start with `ssh-rsa` even when authentication uses SHA-256 or SHA-512. OpenSSH's retirement of the **RSA/SHA-1 signature algorithm** does not mean all RSA keys are obsolete. See the [OpenSSH 8.8 release notes](https://www.openssh.org/txt/release-8.8) and [OpenSSH 10.0 release notes](https://www.openssh.org/txt/release-10.0) for these compatibility changes.
+
+## A prompt is different from Keystore protection
+
+ConnectBot has three distinct controls:
+
+| Control | What it protects |
+| --- | --- |
+| **Key passphrase** | Encrypts a software private key stored by ConnectBot. You enter the passphrase to unlock it; the app then uses the unlocked key in memory. |
+| **Confirm before use** | Asks whether ConnectBot may use the key. This is an app-level confirmation, not biometric authentication or Android Keystore storage. |
+| **Fingerprint protection** | Generates an RSA or EC private key inside Android Keystore and requires biometric authentication for its use. The private key cannot be exported from Keystore. |
+
+**A password or confirmation prompt does not make a software key an Android Keystore key.** In the current implementation, Ed25519 and DSA can use passphrases and confirmation prompts, but they do not use ConnectBot's biometric unlock path.
+
+RSA and EC keys can also be ordinary software keys. Choosing one of these algorithms alone does not enable Keystore protection; you must enable **Fingerprint protection** when generating the key. Importing an existing RSA or EC private key does not automatically convert it into a Keystore key.
+
+## Generate a biometric-protected key
+
+1. Open ConnectBot's key manager and start generating a new key.
+2. Choose **RSA** or **EC**.
+3. Enable **Fingerprint protection**. This option requires a supported, enrolled biometric on your device.
+4. Generate the key and copy its public key to the server account's authorized keys.
+5. Select that key for your [SSH host](/guides/add-host/), then authenticate when prompted.
+
+ConnectBot currently configures a **30-second authentication window** for Keystore keys and removes its cached key reference when that window expires. This is not a promise of a fresh biometric prompt for every signing operation.
+
+### Keystore and hardware backing
+
+Android Keystore keeps the private key material outside ConnectBot's process and enforces its configured authentication requirements. ConnectBot tries StrongBox key generation first on supported Android versions, then falls back to the regular Android Keystore provider if that attempt fails.
+
+Hardware backing depends on the device, algorithm, and key size. **Android Keystore storage does not by itself guarantee StrongBox or other secure-hardware backing.** Android's [Keystore documentation](https://developer.android.com/privacy-and-security/keystore) explains this distinction and authentication windows.
+
+### Export, backup, and recovery
+
+Biometric-protected private keys are tied to their device. ConnectBot does not export or back them up, and it does not automatically unlock them at startup. The public key can still be shared with your server.
+
+Before relying on a device-bound key, keep another way to access your server. If you lose the device or its Keystore key becomes unavailable, you will need that access to authorize a replacement key.
+
+## Which should I choose?
+
+- **Want biometric-enforced, non-exportable storage?** Generate an RSA or EC key with fingerprint protection enabled, using parameters supported by your device and server.
+- **Want a software key for a modern server?** Consider Ed25519 if your server accepts it, and protect the private key with a passphrase.
+- **Need to move a key between devices?** Use an exportable software key and protect any copies. A Keystore private key cannot be transferred.
+- **Connecting to an older server?** Check its accepted algorithms; use RSA where supported rather than creating a new DSA key.
+
+## Implementation references
+
+ConnectBot-specific behavior described here is for **v1.11.1**. These source references explain the implementation:
+
+- [BiometricKeyManager.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/util/BiometricKeyManager.kt): supported algorithms, Keystore generation, and authentication window.
+- [GeneratePubkeyViewModel.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/ui/screens/generatepubkey/GeneratePubkeyViewModel.kt): software versus Keystore storage and backup settings.
+- [SSH.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/transport/SSH.kt): separate biometric, passphrase, and confirmation paths.
