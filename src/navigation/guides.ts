@@ -13,6 +13,7 @@ export const guideGroups = [
       { slug: 'linux-server', title: 'Administer a Linux server' },
       { slug: 'mosh', title: 'Set up Mosh' },
       { slug: 'ssh-keys', title: 'SSH keys and biometric protection' },
+      { slug: 'port-forwarding', title: 'Local, remote, and dynamic forwards' },
     ],
   },
   {
