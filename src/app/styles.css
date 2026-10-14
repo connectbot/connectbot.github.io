@@ -2,6 +2,16 @@
 
 :root {
   --site-header-height: var(--nextra-navbar-height);
+  --site-link-color: #1d4ed8;
+  --site-link-hover-color: #1e40af;
+  --x-color-primary-400: #93c5fd;
+  --x-color-primary-600: var(--site-link-color);
+}
+
+.dark {
+  --site-link-color: #93c5fd;
+  --site-link-hover-color: #bfdbfe;
+  --x-color-primary-600: var(--site-link-color);
 }
 
 html,
@@ -278,14 +288,14 @@ article p {
   padding: 0.625rem 1rem;
   border: 1px solid currentColor;
   border-radius: 0.5rem;
-  color: #1d4ed8;
+  color: var(--site-link-color);
   font-weight: 700;
   text-decoration: none;
   transition: background-color 0.15s ease;
 }
 
 .home-hero .first-connection-link:hover {
-  color: #1e40af;
+  color: var(--site-link-hover-color);
   background-color: hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) 50% / 0.15);
   text-decoration: none;
 }
@@ -566,38 +576,26 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
 }
 
 .home-section .guide-card h3 {
-  color: #1d4ed8;
+  color: var(--site-link-color);
 }
 
 .dark .home-section .guide-card h3 {
-  color: #93c5fd;
+  color: var(--site-link-color);
 }
 
 .home-section .guide-card:hover h3 {
-  color: #1e40af;
+  color: var(--site-link-hover-color);
 }
 
 .dark .home-section .guide-card:hover h3 {
-  color: #bfdbfe;
-}
-
-.home-section,
-.home-help {
-  --home-link-color: #1d4ed8;
-  --home-link-hover-color: #1e40af;
-}
-
-.dark .home-section,
-.dark .home-help {
-  --home-link-color: #93c5fd;
-  --home-link-hover-color: #bfdbfe;
+  color: var(--site-link-hover-color);
 }
 
 .home-section .feature-card a,
 .home-section .guide-card span,
 .home-section .section-link,
 .home-help .section-link {
-  color: var(--home-link-color);
+  color: var(--site-link-color);
   font-size: 1rem;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
@@ -608,7 +606,7 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
 .home-section .guide-card:hover span,
 .home-section .section-link:hover,
 .home-help .section-link:hover {
-  color: var(--home-link-hover-color);
+  color: var(--site-link-hover-color);
 }
 
 .home-section .section-link,
@@ -636,11 +634,11 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
 }
 
 .dark .home-hero .first-connection-link {
-  color: #93c5fd;
+  color: var(--site-link-color);
 }
 
 .dark .home-hero .first-connection-link:hover {
-  color: #bfdbfe;
+  color: var(--site-link-hover-color);
 }
 
 .support-link {
@@ -788,14 +786,14 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
   }
 
   .guides-panel-heading > a {
-    color: #1d4ed8;
+    color: var(--site-link-color);
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 0.25em;
   }
 
   .dark .guides-panel-heading > a {
-    color: #93c5fd;
+    color: var(--site-link-color);
   }
 
   .guides-panel-heading button {
@@ -1005,12 +1003,12 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
   }
 
   .article-navigation-panel a[aria-current] {
-    color: #1d4ed8;
+    color: var(--site-link-color);
     font-weight: 600;
   }
 
   .dark .article-navigation-panel a[aria-current] {
-    color: #93c5fd;
+    color: var(--site-link-color);
   }
 
   .article-subsection {
