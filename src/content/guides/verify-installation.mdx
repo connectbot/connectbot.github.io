@@ -1,0 +1,386 @@
+---
+title: Verify your ConnectBot installation
+---
+
+# Verify your ConnectBot installation
+
+You can check that the ConnectBot code installed on your phone was signed with
+ConnectBot's keys. You can also connect that code to a particular GitHub build
+and source commit.
+
+Choose the instructions for **Google Play** or **GitHub Releases** below. These
+checks apply to releases that include code transparency; older releases may not
+include it. F-Droid builds use a separate distribution process and are outside
+this guide.
+
+## What you will check
+
+| Check | What a successful result establishes |
+| --- | --- |
+| **APK signature** | The installed APKs are intact and their signing certificate matches the trusted certificate for your download channel. |
+| **Code transparency** | Installed DEX bytecode and native libraries match a statement signed with ConnectBot's transparency key. |
+| **Build provenance (optional)** | The matching release artifact is authenticated by ConnectBot's GitHub release workflow, which records its source commit and build run. |
+
+Start with the installed-app checks. The optional provenance steps then connect
+the installed code to an authenticated release artifact. Matching version
+numbers alone do not establish that connection.
+
+## Prepare your computer and phone
+
+1. Install [Java](https://adoptium.net/), [Android
+   platform-tools](https://developer.android.com/tools/releases/platform-tools),
+   and [bundletool](https://github.com/google/bundletool/releases). Use the
+   Java version required by your bundletool release, and save its executable
+   JAR as `bundletool.jar` in a new working folder.
+2. Make sure `java` and `adb` are available in your terminal. On Windows, use a
+   Bash terminal such as Git Bash for the command examples; install Windows
+   platform-tools and add its folder to `PATH`.
+3. Enable **Developer options**, then **USB debugging** on your Android device.
+   Connect it to your computer, unlock it, and accept the debugging
+   authorization prompt. See [Android's device setup
+   instructions](https://developer.android.com/studio/run/device).
+4. Run the following command. Your device should appear with status `device`:
+
+```sh
+adb devices -l
+```
+
+Use one connected device throughout the walkthrough. If several devices or
+emulators are listed, select one in your terminal with `export
+ANDROID_SERIAL='YOUR_DEVICE_SERIAL'` before continuing. Bundletool and the
+later `adb` commands will use it.
+
+Find ConnectBot's installed version in Android's **Settings → Apps →
+ConnectBot** app information screen. You can also inspect its version name and
+version code with:
+
+```sh
+adb shell dumpsys package org.connectbot
+```
+
+Keep the installed version unchanged while completing the checks. Run commands
+from the working folder containing your tools, certificates, and downloads.
+
+## Download the trusted certificates
+
+Download the transparency certificate and the APK-signing certificate for your
+channel into your working folder. Preserve the filenames shown here.
+
+| Certificate | Download | SHA-256 certificate fingerprint |
+| --- | --- | --- |
+| Code transparency, both channels | [connectbot-transparency.pem](/certificates/connectbot-transparency.pem) | `909e650add6ddce32b2307d5aa141f8cdb1bdf455d89388b2f53f8c30fdb0c61` |
+| Google Play app signing | [connectbot-play-app-signing.pem](/certificates/connectbot-play-app-signing.pem) | `aa43746a46127842169f8176412a1f4b1b1e2f8ad9e15aba217c3822dbeb2d5f` |
+| GitHub APK signing | [connectbot-github-apk-signing.pem](/certificates/connectbot-github-apk-signing.pem) | `aa43746a46127842169f8176412a1f4b1b1e2f8ad9e15aba217c3822dbeb2d5f` |
+
+The supplied Play and GitHub APK certificates currently have the same
+fingerprint, but serve separate distribution roles. The **Play upload
+certificate** is different: it authenticates uploads to Play, rather than the
+APKs Play installs on your phone.
+
+Obtain these certificates from a trusted ConnectBot source. Extracting a
+certificate from the app you are checking does not independently establish who
+signed it. If you have OpenSSL, you can display a downloaded certificate's
+fingerprint with:
+
+```sh
+openssl x509 -in connectbot-transparency.pem -noout -fingerprint -sha256
+```
+
+Compare the result with the table, ignoring colons and letter case. This is a
+certificate fingerprint, rather than a checksum of the PEM text file.
+
+## Check a Google Play installation
+
+With the device connected, run:
+
+```sh
+java -jar bundletool.jar check-transparency \
+  --mode=connected_device \
+  --package-name=org.connectbot \
+  --apk-signing-key-certificate=connectbot-play-app-signing.pem \
+  --transparency-key-certificate=connectbot-transparency.pem
+```
+
+Check that bundletool reports all three results: the APK signature verifies
+against the supplied APK-signing certificate, the transparency signature
+verifies against the supplied transparency certificate, and the code files
+match the transparency statement. A successful command exits with status zero.
+Wording can vary between bundletool versions.
+
+This checks the installed base APK and splits. To connect this code to its
+GitHub build, continue to [Trace the installed code to a GitHub
+build](#trace-the-installed-code-to-a-github-build).
+
+## Check a GitHub Releases installation
+
+For ConnectBot installed from a GitHub release APK, run:
+
+```sh
+java -jar bundletool.jar check-transparency \
+  --mode=connected_device \
+  --package-name=org.connectbot \
+  --apk-signing-key-certificate=connectbot-github-apk-signing.pem \
+  --transparency-key-certificate=connectbot-transparency.pem
+```
+
+Require the same three successful results as the Play check: APK signature,
+transparency signature, and matching code files.
+
+### Check a downloaded APK before installing it
+
+You can also verify a release APK on your computer. This checks the downloaded
+file; checking the installed copy still requires the connected-device command
+above.
+
+Install [Python 3](https://www.python.org/downloads/), set `APK` to the actual
+downloaded filename, and put that APK in a ZIP for bundletool:
+
+```sh
+APK='ConnectBot-YOUR_RELEASE-oss.apk'
+python3 -m zipfile -c downloaded-apks.zip "$APK"
+java -jar bundletool.jar check-transparency \
+  --mode=apk \
+  --apk-zip=downloaded-apks.zip \
+  --apk-signing-key-certificate=connectbot-github-apk-signing.pem \
+  --transparency-key-certificate=connectbot-transparency.pem
+```
+
+Use a fresh ZIP, and replace `YOUR_RELEASE` with the release's actual name.
+GitHub publishes `oss` and `google` variants; choose the file you downloaded.
+Stop if any check fails.
+
+## Trace the installed code to a GitHub build
+
+This optional section requires [GitHub CLI](https://cli.github.com/) (`gh`) and
+[Python 3](https://www.python.org/downloads/) (`python3`), in addition to the
+tools above. On Windows, ensure your Python installation exposes `python3`, or
+use `python` in its place in these examples. Authenticate with `gh auth login`
+if GitHub CLI requests it.
+
+### 1. Get the matching release and evidence
+
+Open [ConnectBot's releases](https://github.com/connectbot/connectbot/releases) and find the release matching your installed version, including its version code. Download:
+
+- Its **Google AAB** (`ConnectBot-…-google.aab`) for a Play installation.
+- Its **APK in the variant you installed** (`ConnectBot-…-oss.apk` or
+  `ConnectBot-…-google.apk`) for a GitHub installation.
+- Its **signing evidence** (`ConnectBot-…-signing-evidence.zip`).
+
+If that release has no evidence archive, you cannot complete this provenance
+walkthrough for it. Do not substitute evidence from another release or an
+unsigned artifact.
+
+Set `ARTIFACT` and `EVIDENCE` to the filenames you downloaded, then extract the
+two verification files:
+
+```sh
+ARTIFACT='ConnectBot-YOUR_RELEASE-google.aab'
+EVIDENCE='ConnectBot-YOUR_RELEASE-signing-evidence.zip'
+python3 - "$EVIDENCE" <<'PY'
+import pathlib
+import sys
+import zipfile
+
+with zipfile.ZipFile(sys.argv[1]) as archive:
+    for name in ("release-manifest.json", "final.sigstore.json"):
+        pathlib.Path(name).write_bytes(archive.read(name))
+PY
+```
+
+For GitHub installations, change `ARTIFACT` to your APK filename. The evidence
+ZIP transports the original signed evidence; the ZIP's presence on a release
+page does not authenticate its contents.
+
+### 2. Authenticate the manifest and artifact
+
+Run both commands and continue only if both succeed. They save the
+authenticated verification results for the next step:
+
+```sh
+gh attestation verify release-manifest.json \
+  --bundle final.sigstore.json \
+  --repo connectbot/connectbot \
+  --signer-workflow connectbot/actions/.github/workflows/android-finalize.yml \
+  --source-ref refs/heads/main \
+  --deny-self-hosted-runners \
+  --format json > manifest-verification.json
+
+gh attestation verify "$ARTIFACT" \
+  --bundle final.sigstore.json \
+  --repo connectbot/connectbot \
+  --signer-workflow connectbot/actions/.github/workflows/android-finalize.yml \
+  --source-ref refs/heads/main \
+  --deny-self-hosted-runners \
+  --format json > artifact-verification.json
+```
+
+These commands check the artifact digests and enforce the expected repository,
+reusable signing workflow, source branch, and GitHub-hosted runner. The
+following Python command also checks the signing workflow's branch against its
+authenticated certificate. See the [GitHub verification
+reference](https://cli.github.com/manual/gh_attestation_verify).
+
+The finalizer runs from `main` even for tagged releases. Its GitHub certificate
+identifies the finalization workflow's source; the Android app's source commit
+is recorded separately in the authenticated release manifest. Do not replace
+the expected workflow identity with one copied from unverified evidence.
+
+Enforce the signing workflow's full identity, check that your artifact also
+matches its entry in the authenticated manifest, then display the recorded
+Android source and build run:
+
+```sh
+python3 - "$ARTIFACT" <<'PY'
+import hashlib
+import json
+import pathlib
+import sys
+
+identity = "https://github.com/connectbot/actions/.github/workflows/android-finalize.yml@refs/heads/android-signer-v1"
+for name in ("manifest-verification.json", "artifact-verification.json"):
+    results = json.loads(pathlib.Path(name).read_text())
+    if not results:
+        raise SystemExit("STOP: no verified attestations")
+    for result in results:
+        certificate = result["verificationResult"]["signature"]["certificate"]
+        if certificate["buildSignerURI"] != identity or certificate["subjectAlternativeName"] != identity:
+            raise SystemExit("STOP: unexpected signing workflow identity or branch")
+artifact = pathlib.Path(sys.argv[1])
+manifest = json.loads(pathlib.Path("release-manifest.json").read_text())
+expected = manifest["assets"][artifact.name]
+if hashlib.sha256(artifact.read_bytes()).hexdigest() != expected["sha256"]:
+    raise SystemExit("STOP: artifact does not match the authenticated manifest")
+source = manifest["source"]
+if manifest["repository"] != "connectbot/connectbot" or source["repository"] != "connectbot/connectbot":
+    raise SystemExit("STOP: unexpected source repository")
+print("Release:", manifest["release"]["tag_name"])
+print("Version codes:", manifest["version_codes"])
+print("Source commit:", source["commit"])
+print("Source ref:", source["ref"])
+print(f"Build: https://github.com/connectbot/connectbot/actions/runs/{source['run_id']}/attempts/{source['attempt']}")
+PY
+```
+
+Confirm that the printed release and channel's version code match your
+installation. This source information is a claim authenticated by the trusted
+finalizer, which verifies the upstream build and signing evidence.
+
+### 3. Copy the installed APKs
+
+First complete the connected-device signature and transparency check for your
+channel above. Then copy **all installed APKs**, including splits, into a new
+temporary folder:
+
+```sh
+python3 - <<'PY'
+import pathlib
+import subprocess
+import tempfile
+
+result = subprocess.run(
+    ["adb", "shell", "pm", "path", "org.connectbot"],
+    check=True, capture_output=True, text=True,
+)
+paths = [line.strip()[len("package:"):] for line in result.stdout.splitlines()
+         if line.strip().startswith("package:")]
+if not paths:
+    raise SystemExit("STOP: no installed ConnectBot APKs found")
+folder = pathlib.Path(tempfile.mkdtemp(prefix="connectbot-installed-", dir="."))
+for index, path in enumerate(paths):
+    subprocess.run(["adb", "pull", path, str(folder / f"{index}.apk")], check=True)
+print("Installed APK folder:", folder)
+PY
+```
+
+Keep the folder name printed by this command. If ConnectBot updates during the
+process, repeat the installed-app check and copy the APKs again.
+
+### 4. Compare the signed transparency statements
+
+Set `INSTALLED` to that folder name. This compares the complete signed JWT
+bytes, rather than just a version string or decoded JSON:
+
+```sh
+INSTALLED='connectbot-installed-REPLACE_ME'
+python3 - "$ARTIFACT" "$INSTALLED" <<'PY'
+import pathlib
+import sys
+import zipfile
+
+artifact = pathlib.Path(sys.argv[1])
+entry = ("BUNDLE-METADATA/com.android.tools.build.bundletool/code_transparency_signed.jwt"
+         if artifact.suffix == ".aab" else "META-INF/code_transparency_signed.jwt")
+with zipfile.ZipFile(artifact) as archive:
+    release_jwt = archive.read(entry)
+installed_jwts = set()
+for apk in pathlib.Path(sys.argv[2]).glob("*.apk"):
+    with zipfile.ZipFile(apk) as archive:
+        name = "META-INF/code_transparency_signed.jwt"
+        if name in archive.namelist():
+            installed_jwts.add(archive.read(name))
+if not release_jwt or installed_jwts != {release_jwt}:
+    raise SystemExit("STOP: installed and release transparency statements do not match")
+print("MATCH: installed code uses the authenticated release's transparency statement")
+PY
+```
+
+Together with the successful installed-code check, a match connects your
+installed code to this authenticated release and its recorded build. Play
+generates device-specific APKs from an AAB, so comparing a whole installed
+APK's SHA-256 with the release AAB's SHA-256 would not work.
+
+## If verification fails
+
+- **No device, or `unauthorized`:** unlock the phone, check the USB connection,
+  accept its authorization prompt, and run `adb devices -l` again. Select a
+  serial if several devices are connected.
+
+- **ADB cannot be found:** add platform-tools to `PATH`, or pass bundletool
+  `--adb=/path/to/adb`.
+
+- **Java cannot run bundletool:** check the Java requirement of the bundletool
+  release you downloaded.
+
+- **No transparency statement or signing evidence:** older releases may predate
+  these checks. Missing evidence means this walkthrough cannot verify them; it
+  does not by itself prove tampering.
+
+- **Certificate or signature mismatch:** check your installation channel and
+  the certificate filenames. Signing-key rotation or a Play key upgrade may
+  require updated certificates and Android-version-specific instructions. Do
+  not bypass a mismatch or trust a replacement certificate taken from the
+  failing app.
+
+- **Code hashes or JWTs differ:** check the release, variant, and version code,
+  then repeat after any app update has finished. Do not treat the installation
+  as verified while the mismatch remains.
+
+- **Attestation verification fails:** check that the artifact and evidence came
+  from the same release and that GitHub CLI can refresh its Sigstore trust
+  data. A release produced by another workflow needs separately reviewed
+  instructions; do not relax the identity checks to make it pass.
+
+If you still need help, [report the problem](/bugs/) with the release,
+distribution channel, Android version, tool versions, and verification error.
+
+## What verification does and does not cover
+
+Code transparency covers DEX bytecode and native libraries. It excludes
+resources, assets, and the Android manifest, and Android does not automatically
+enforce it during installation. The APK-signature check verifies APK integrity
+separately. See [Android's code-transparency
+documentation](https://developer.android.com/guide/app-bundle/code-transparency)
+for verification behavior and coverage.
+
+A successful check establishes signing identity and a connection to a build. It
+does not establish that the source is free of vulnerabilities or independently
+reproducible. These instructions rely on a trusted Android system; they do not
+prove the integrity of a running process on a compromised device.
+
+A website cannot inspect your installed apps directly, and ConnectBot does not
+currently provide a separate on-phone verifier. Checking an uploaded or
+downloaded APK establishes facts about that file, rather than establishing that
+it is the installed copy.
+
+When finished, you can disable USB debugging in Developer options and remove
+the temporary APK copies from your computer.

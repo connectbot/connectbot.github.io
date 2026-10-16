@@ -1,0 +1,3 @@
+/certificates/*.pem
+  Content-Type: application/pem-certificate-chain
+  Content-Disposition: attachment
