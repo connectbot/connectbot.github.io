@@ -24,4 +24,10 @@ export const guideGroups = [
       { slug: 'terminal-appearance', title: 'Customize terminal appearance' },
     ],
   },
+  {
+    title: 'Security',
+    guides: [
+      { slug: 'verify-installation', title: 'Verify your installation' },
+    ],
+  },
 ];
