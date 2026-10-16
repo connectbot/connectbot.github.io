@@ -38,6 +38,56 @@ article p {
   opacity: 1;
 }
 
+.command-inputs {
+  display: grid;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.command-inputs label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.command-inputs input {
+  display: block;
+  width: min(100%, 28rem);
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #8886;
+  border-radius: 0.5rem;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+}
+
+.command-inputs input:focus-visible {
+  outline: 2px solid var(--site-link-color);
+  outline-offset: 2px;
+}
+
+.command-inputs p,
+.command-template-note {
+  font-size: 0.9rem;
+}
+
+.command-inputs p {
+  margin: 0.35rem 0 0;
+}
+
+.command-input-error {
+  color: #b91c1c;
+}
+
+.dark .command-input-error {
+  color: #fca5a5;
+}
+
+.command-template pre code {
+  display: block;
+  padding: 0 1rem;
+}
+
 .issue-buttons {
   display: flex;
   flex-wrap: wrap;

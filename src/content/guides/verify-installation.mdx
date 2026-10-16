@@ -2,6 +2,9 @@
 title: Verify your ConnectBot installation
 ---
 
+import { CommandExamples, CommandInputs } from '@/components/CommandExamples';
+import { CommandTemplate } from '@/components/CommandTemplate';
+
 # Verify your ConnectBot installation
 
 You can check that the ConnectBot code installed on your phone was signed with
@@ -12,6 +15,15 @@ Choose the instructions for **Google Play** or **GitHub Releases** below. These
 checks apply to releases that include code transparency; older releases may not
 include it. F-Droid builds use a separate distribution process and are outside
 this guide.
+
+<CommandExamples variables={[{
+  name: 'release',
+  label: 'Release tag',
+  placeholder: 'v1.11.1',
+  description: 'Use the exact GitHub release tag, such as v1.11.1 or git-v1.11.1-3-g670d06ef.',
+  pattern: '[A-Za-z0-9][A-Za-z0-9._+-]*',
+  validationMessage: 'Use letters, numbers, dots, underscores, plus signs, and hyphens.',
+}]}>
 
 ## What you will check
 
@@ -58,8 +70,15 @@ version code with:
 adb shell dumpsys package org.connectbot
 ```
 
-Keep the installed version unchanged while completing the checks. Run commands
-from the working folder containing your tools, certificates, and downloads.
+Keep the installed version unchanged while completing the checks. Use a fresh
+working folder for each release, containing your tools, certificates, and
+downloads. Run one command block at a time and stop if it reports an error.
+The explanations below identify the files each command reads or writes.
+
+For the download and build-provenance commands, enter the release tag matching
+your installation. The filenames in those commands update as you type.
+
+<CommandInputs />
 
 ## Download the trusted certificates
 
@@ -132,12 +151,15 @@ You can also verify a release APK on your computer. This checks the downloaded
 file; checking the installed copy still requires the connected-device command
 above.
 
-Install [Python 3](https://www.python.org/downloads/), set `APK` to the actual
-downloaded filename, and put that APK in a ZIP for bundletool:
+You will need the `zip` utility. Set `APK` to the downloaded filename, then
+create `downloaded-apks.zip` containing that APK. Bundletool expects a ZIP of
+APKs for this mode:
+
+<CommandTemplate>
 
 ```sh
-APK='ConnectBot-YOUR_RELEASE-oss.apk'
-python3 -m zipfile -c downloaded-apks.zip "$APK"
+APK='ConnectBot-{{release}}-oss.apk'
+zip downloaded-apks.zip "$APK"
 java -jar bundletool.jar check-transparency \
   --mode=apk \
   --apk-zip=downloaded-apks.zip \
@@ -145,17 +167,21 @@ java -jar bundletool.jar check-transparency \
   --transparency-key-certificate=connectbot-transparency.pem
 ```
 
-Use a fresh ZIP, and replace `YOUR_RELEASE` with the release's actual name.
+</CommandTemplate>
+
+Use a fresh ZIP: `zip` updates an archive if that filename already exists.
+Enter the release's actual tag in the **Release tag** field.
 GitHub publishes `oss` and `google` variants; choose the file you downloaded.
 Stop if any check fails.
 
 ## Trace the installed code to a GitHub build
 
-This optional section requires [GitHub CLI](https://cli.github.com/) (`gh`) and
-[Python 3](https://www.python.org/downloads/) (`python3`), in addition to the
-tools above. On Windows, ensure your Python installation exposes `python3`, or
-use `python` in its place in these examples. Authenticate with `gh auth login`
-if GitHub CLI requests it.
+This optional section requires [GitHub CLI](https://cli.github.com/) (`gh`),
+[jq](https://jqlang.org/) for reading JSON, and the `unzip`, `sha256sum`, and
+`cmp` utilities. On macOS, use `shasum -a 256 -c` in place of
+`sha256sum --check` below. On Windows, run these commands in Git Bash with
+these utilities installed. Authenticate with `gh auth login` if GitHub CLI
+requests it.
 
 ### 1. Get the matching release and evidence
 
@@ -170,26 +196,31 @@ If that release has no evidence archive, you cannot complete this provenance
 walkthrough for it. Do not substitute evidence from another release or an
 unsigned artifact.
 
-Set `ARTIFACT` and `EVIDENCE` to the filenames you downloaded, then extract the
-two verification files:
+Set `ARTIFACT` and `EVIDENCE` to the filenames you downloaded. These assignments
+only store filenames in your current shell:
+
+<CommandTemplate>
 
 ```sh
-ARTIFACT='ConnectBot-YOUR_RELEASE-google.aab'
-EVIDENCE='ConnectBot-YOUR_RELEASE-signing-evidence.zip'
-python3 - "$EVIDENCE" <<'PY'
-import pathlib
-import sys
-import zipfile
-
-with zipfile.ZipFile(sys.argv[1]) as archive:
-    for name in ("release-manifest.json", "final.sigstore.json"):
-        pathlib.Path(name).write_bytes(archive.read(name))
-PY
+ARTIFACT='ConnectBot-{{release}}-google.aab'
+EVIDENCE='ConnectBot-{{release}}-signing-evidence.zip'
 ```
 
-For GitHub installations, change `ARTIFACT` to your APK filename. The evidence
-ZIP transports the original signed evidence; the ZIP's presence on a release
-page does not authenticate its contents.
+</CommandTemplate>
+
+For GitHub installations, change `ARTIFACT` to your APK filename. Keep the
+files in your current folder and use their filenames without a directory
+prefix.
+
+Extract only the manifest and attestation bundle from the evidence archive:
+
+```sh
+unzip "$EVIDENCE" release-manifest.json final.sigstore.json
+```
+
+`unzip` writes those two named files to the current folder. The evidence ZIP
+transports the original signed evidence; the ZIP's presence on a release page
+does not authenticate its contents.
 
 ### 2. Authenticate the manifest and artifact
 
@@ -214,10 +245,10 @@ gh attestation verify "$ARTIFACT" \
   --format json > artifact-verification.json
 ```
 
-These commands check the artifact digests and enforce the expected repository,
-reusable signing workflow, source branch, and GitHub-hosted runner. The
-following Python command also checks the signing workflow's branch against its
-authenticated certificate. See the [GitHub verification
+These commands read the manifest, artifact, and attestation bundle, verify the
+signatures and digests, and enforce the expected repository, reusable signing
+workflow, source branch, and GitHub-hosted runner. Each `>` saves the verified
+JSON result in the named file. See the [GitHub verification
 reference](https://cli.github.com/manual/gh_attestation_verify).
 
 The finalizer runs from `main` even for tagged releases. Its GitHub certificate
@@ -225,104 +256,157 @@ identifies the finalization workflow's source; the Android app's source commit
 is recorded separately in the authenticated release manifest. Do not replace
 the expected workflow identity with one copied from unverified evidence.
 
-Enforce the signing workflow's full identity, check that your artifact also
-matches its entry in the authenticated manifest, then display the recorded
-Android source and build run:
+#### Check the signing workflow's branch
+
+The expected identity includes the trusted workflow's branch. Store that exact
+identity, then check it against the authenticated certificate fields in both
+verification results:
 
 ```sh
-python3 - "$ARTIFACT" <<'PY'
-import hashlib
-import json
-import pathlib
-import sys
-
-identity = "https://github.com/connectbot/actions/.github/workflows/android-finalize.yml@refs/heads/android-signer-v1"
-for name in ("manifest-verification.json", "artifact-verification.json"):
-    results = json.loads(pathlib.Path(name).read_text())
-    if not results:
-        raise SystemExit("STOP: no verified attestations")
-    for result in results:
-        certificate = result["verificationResult"]["signature"]["certificate"]
-        if certificate["buildSignerURI"] != identity or certificate["subjectAlternativeName"] != identity:
-            raise SystemExit("STOP: unexpected signing workflow identity or branch")
-artifact = pathlib.Path(sys.argv[1])
-manifest = json.loads(pathlib.Path("release-manifest.json").read_text())
-expected = manifest["assets"][artifact.name]
-if hashlib.sha256(artifact.read_bytes()).hexdigest() != expected["sha256"]:
-    raise SystemExit("STOP: artifact does not match the authenticated manifest")
-source = manifest["source"]
-if manifest["repository"] != "connectbot/connectbot" or source["repository"] != "connectbot/connectbot":
-    raise SystemExit("STOP: unexpected source repository")
-print("Release:", manifest["release"]["tag_name"])
-print("Version codes:", manifest["version_codes"])
-print("Source commit:", source["commit"])
-print("Source ref:", source["ref"])
-print(f"Build: https://github.com/connectbot/connectbot/actions/runs/{source['run_id']}/attempts/{source['attempt']}")
-PY
+IDENTITY='https://github.com/connectbot/actions/.github/workflows/android-finalize.yml@refs/heads/android-signer-v1'
+jq -s -e --arg identity "$IDENTITY" '
+  length == 2 and
+  all(.[]; length > 0 and
+    all(.[].verificationResult.signature.certificate;
+      .buildSignerURI == $identity and .subjectAlternativeName == $identity
+    )
+  )
+' manifest-verification.json artifact-verification.json
 ```
 
-Confirm that the printed release and channel's version code match your
-installation. This source information is a claim authenticated by the trusted
-finalizer, which verifies the upstream build and signing evidence.
+`jq` reads JSON; it does not execute the file's contents. `-s` reads the two
+files together, and the expression requires both to contain verified
+attestations with the expected certificate identities. `-e` makes a failed
+comparison return a nonzero exit status. Expect **`true`**; stop on `false`
+or any error. This also rejects empty verification results.
 
-### 3. Copy the installed APKs
+#### Check the artifact against the manifest
+
+Read the expected SHA-256 for your filename from the authenticated manifest
+and write it, alongside that filename, to a checksum file:
+
+```sh
+jq -er --arg file "$ARTIFACT" \
+  '.assets[$file].sha256 + "  " + $file' \
+  release-manifest.json > artifact.sha256
+```
+
+`--arg` passes the filename as a string rather than treating it as part of the
+JSON query. The two spaces separate the expected digest from the filename in
+the standard checksum-file format. You can inspect the result:
+
+```sh
+cat artifact.sha256
+```
+
+Now calculate the downloaded file's SHA-256 and compare it with that expected
+value:
+
+```sh
+sha256sum --check artifact.sha256
+```
+
+Expect your filename followed by **`OK`**. On macOS, run
+`shasum -a 256 -c artifact.sha256` instead. Stop on a mismatch or an error.
+
+#### Read the source commit and build run
+
+Check that both repository fields name ConnectBot's repository:
+
+```sh
+jq -e '
+  .repository == "connectbot/connectbot" and
+  .source.repository == "connectbot/connectbot"
+' release-manifest.json
+```
+
+Expect **`true`**. Then display the release tag, version codes, and Android
+source information:
+
+```sh
+jq '{release: .release.tag_name, version_codes, source}' release-manifest.json
+```
+
+Confirm that the release and your channel's version code match your
+installation. The `source` object includes the commit, source ref, build run
+ID, and attempt. To print the corresponding build URL:
+
+```sh
+jq -r '"https://github.com/connectbot/connectbot/actions/runs/\(.source.run_id)/attempts/\(.source.attempt)"' release-manifest.json
+```
+
+These commands display claims authenticated by the trusted finalizer, which
+verifies the upstream build and signing evidence.
+
+### 3. Copy the installed base APK
 
 First complete the connected-device signature and transparency check for your
-channel above. Then copy **all installed APKs**, including splits, into a new
-temporary folder:
+channel above. That checks code across the installed APKs, including splits.
+For the statement comparison below, you need the **base APK**, which carries
+the signed transparency statement. See [Android's explanation of where the
+statement is stored](https://developer.android.com/guide/app-bundle/code-transparency#how_code_transparency_works).
+
+Ask Android to list ConnectBot's installed APK paths:
 
 ```sh
-python3 - <<'PY'
-import pathlib
-import subprocess
-import tempfile
-
-result = subprocess.run(
-    ["adb", "shell", "pm", "path", "org.connectbot"],
-    check=True, capture_output=True, text=True,
-)
-paths = [line.strip()[len("package:"):] for line in result.stdout.splitlines()
-         if line.strip().startswith("package:")]
-if not paths:
-    raise SystemExit("STOP: no installed ConnectBot APKs found")
-folder = pathlib.Path(tempfile.mkdtemp(prefix="connectbot-installed-", dir="."))
-for index, path in enumerate(paths):
-    subprocess.run(["adb", "pull", path, str(folder / f"{index}.apk")], check=True)
-print("Installed APK folder:", folder)
-PY
+adb shell pm path org.connectbot
 ```
 
-Keep the folder name printed by this command. If ConnectBot updates during the
-process, repeat the installed-app check and copy the APKs again.
+Find the line ending in `/base.apk`. Copy its full path, leaving off the
+`package:` prefix. Replace `PASTE_BASE_APK_PATH_HERE` below with that path,
+keeping the single quotes:
+
+```sh
+adb pull 'PASTE_BASE_APK_PATH_HERE' installed-base.apk
+```
+
+`adb pull` reads that file from your device and saves it as
+`installed-base.apk` on your computer. If ConnectBot updates during the
+process, repeat the installed-app check and copy the base APK again.
 
 ### 4. Compare the signed transparency statements
 
-Set `INSTALLED` to that folder name. This compares the complete signed JWT
-bytes, rather than just a version string or decoded JSON:
+APKs and AABs are ZIP containers. `unzip -p` reads a particular entry from an
+archive; `>` saves those bytes to the named file. Run the command for your
+distribution channel below.
+
+For a **Google Play installation**, extract the statement from the
+authenticated Google AAB:
 
 ```sh
-INSTALLED='connectbot-installed-REPLACE_ME'
-python3 - "$ARTIFACT" "$INSTALLED" <<'PY'
-import pathlib
-import sys
-import zipfile
-
-artifact = pathlib.Path(sys.argv[1])
-entry = ("BUNDLE-METADATA/com.android.tools.build.bundletool/code_transparency_signed.jwt"
-         if artifact.suffix == ".aab" else "META-INF/code_transparency_signed.jwt")
-with zipfile.ZipFile(artifact) as archive:
-    release_jwt = archive.read(entry)
-installed_jwts = set()
-for apk in pathlib.Path(sys.argv[2]).glob("*.apk"):
-    with zipfile.ZipFile(apk) as archive:
-        name = "META-INF/code_transparency_signed.jwt"
-        if name in archive.namelist():
-            installed_jwts.add(archive.read(name))
-if not release_jwt or installed_jwts != {release_jwt}:
-    raise SystemExit("STOP: installed and release transparency statements do not match")
-print("MATCH: installed code uses the authenticated release's transparency statement")
-PY
+unzip -p "$ARTIFACT" \
+  BUNDLE-METADATA/com.android.tools.build.bundletool/code_transparency_signed.jwt \
+  > release.jwt
 ```
+
+For a **GitHub installation**, extract it from the authenticated release APK
+instead:
+
+```sh
+unzip -p "$ARTIFACT" META-INF/code_transparency_signed.jwt > release.jwt
+```
+
+Then extract the installed base APK's statement:
+
+```sh
+unzip -p installed-base.apk META-INF/code_transparency_signed.jwt > installed.jwt
+```
+
+Require both extracted files to exist and contain data, then compare their
+complete bytes:
+
+```sh
+test -s release.jwt && test -s installed.jwt && cmp release.jwt installed.jwt
+echo $?
+```
+
+`test -s` checks that a file is nonempty. Each `&&` runs the next check only
+if the preceding check succeeded. `cmp` compares the complete signed JWTs,
+without decoding or rewriting them. A match produces no output from `cmp`,
+and `echo $?` prints **`0`** for the preceding command's success status.
+Any nonzero status means verification has not succeeded, even if no other
+message was printed. The nonempty checks prevent two missing or empty
+statements from being mistaken for a match.
 
 Together with the successful installed-code check, a match connects your
 installed code to this authenticated release and its recorded build. Play
@@ -384,3 +468,5 @@ it is the installed copy.
 
 When finished, you can disable USB debugging in Developer options and remove
 the temporary APK copies from your computer.
+
+</CommandExamples>
