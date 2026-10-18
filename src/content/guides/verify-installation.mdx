@@ -88,13 +88,31 @@ channel into your working folder. Preserve the filenames shown here.
 | Certificate | Download | SHA-256 certificate fingerprint |
 | --- | --- | --- |
 | Code transparency, both channels | [connectbot-transparency.pem](/certificates/connectbot-transparency.pem) | `909e650add6ddce32b2307d5aa141f8cdb1bdf455d89388b2f53f8c30fdb0c61` |
-| Google Play app signing | [connectbot-play-app-signing.pem](/certificates/connectbot-play-app-signing.pem) | `aa43746a46127842169f8176412a1f4b1b1e2f8ad9e15aba217c3822dbeb2d5f` |
-| GitHub APK signing | [connectbot-github-apk-signing.pem](/certificates/connectbot-github-apk-signing.pem) | `aa43746a46127842169f8176412a1f4b1b1e2f8ad9e15aba217c3822dbeb2d5f` |
+| App signing, both channels, API 33+ (2026 RSA 4096) | [connectbot-app-signing-2026.pem](/certificates/connectbot-app-signing-2026.pem) | `d24913b692db31a929cd30ae8618df97718882b6eaa1ed6e124bc43d028e7fbe` |
+| Intermediate Google Play app signing, API 33+ | [connectbot-play-app-signing-intermediate.pem](/certificates/connectbot-play-app-signing-intermediate.pem) | `2fef9cfe29bee1932061a81bfbb8b57c5c658854b82cc97bbf265265ddb2277c` |
+| Original app signing, both channels, API 32 and earlier | [connectbot-app-signing-original.pem](/certificates/connectbot-app-signing-original.pem) | `aa43746a46127842169f8176412a1f4b1b1e2f8ad9e15aba217c3822dbeb2d5f` |
 
-The supplied Play and GitHub APK certificates currently have the same
-fingerprint, but serve separate distribution roles. The **Play upload
-certificate** is different: it authenticates uploads to Play, rather than the
-APKs Play installs on your phone.
+For both Google Play and GitHub Releases, the **2026 RSA 4096 app-signing
+certificate applies to Android 13 (API 33) and newer**. Android 12L (API 32)
+and earlier have always used the original signing certificate, which is the
+same for both channels.
+
+The commands below use the API 33+ certificate. For API 32 and earlier, replace
+`connectbot-app-signing-2026.pem` with `connectbot-app-signing-original.pem`
+for either channel.
+
+For older Google Play releases on API 33+, including version code **11101000**,
+use `connectbot-play-app-signing-intermediate.pem` if the installation predates
+the 2026 RSA 4096 rotation and was signed with the intermediate Play key.
+Earlier Play releases and GitHub releases from before the 2026 rotation use
+the original certificate. API 32 and earlier always use the original key,
+regardless of these API 33+ rotations.
+
+You can check your connected device's API level with:
+
+```sh
+adb shell getprop ro.build.version.sdk
+```
 
 Obtain these certificates from a trusted ConnectBot source. Extracting a
 certificate from the app you are checking does not independently establish who
@@ -110,13 +128,16 @@ certificate fingerprint, rather than a checksum of the PEM text file.
 
 ## Check a Google Play installation
 
-With the device connected, run:
+For Android 13 (API 33) and newer, run the following with the device connected.
+For API 32 and earlier, use `connectbot-app-signing-original.pem` instead. For
+older API 33+ Play installations signed with the intermediate key, use
+`connectbot-play-app-signing-intermediate.pem`:
 
 ```sh
 java -jar bundletool.jar check-transparency \
   --mode=connected_device \
   --package-name=org.connectbot \
-  --apk-signing-key-certificate=connectbot-play-app-signing.pem \
+  --apk-signing-key-certificate=connectbot-app-signing-2026.pem \
   --transparency-key-certificate=connectbot-transparency.pem
 ```
 
@@ -132,13 +153,15 @@ build](#trace-the-installed-code-to-a-github-build).
 
 ## Check a GitHub Releases installation
 
-For ConnectBot installed from a GitHub release APK, run:
+For ConnectBot installed from a GitHub release APK on API 33+, run the
+following. For API 32 and earlier, use
+`connectbot-app-signing-original.pem` instead:
 
 ```sh
 java -jar bundletool.jar check-transparency \
   --mode=connected_device \
   --package-name=org.connectbot \
-  --apk-signing-key-certificate=connectbot-github-apk-signing.pem \
+  --apk-signing-key-certificate=connectbot-app-signing-2026.pem \
   --transparency-key-certificate=connectbot-transparency.pem
 ```
 
@@ -150,6 +173,10 @@ transparency signature, and matching code files.
 You can also verify a release APK on your computer. This checks the downloaded
 file; checking the installed copy still requires the connected-device command
 above.
+
+Use the certificate appropriate to the APK's signing key: the example below
+uses the 2026 key for API 33+; APKs for API 32 and earlier use
+`connectbot-app-signing-original.pem`.
 
 You will need the `zip` utility. Set `APK` to the downloaded filename, then
 create `downloaded-apks.zip` containing that APK. Bundletool expects a ZIP of
@@ -163,7 +190,7 @@ zip downloaded-apks.zip "$APK"
 java -jar bundletool.jar check-transparency \
   --mode=apk \
   --apk-zip=downloaded-apks.zip \
-  --apk-signing-key-certificate=connectbot-github-apk-signing.pem \
+  --apk-signing-key-certificate=connectbot-app-signing-2026.pem \
   --transparency-key-certificate=connectbot-transparency.pem
 ```
 
