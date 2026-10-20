@@ -4,7 +4,7 @@ The website consumes committed media. Android tooling and speech credentials are
 needed only when generating media, never by `pnpm build` or readers.
 
 For creating a new scenario, its step descriptions, narration, and video, follow
-the [complete authoring workflow in README.md](../README.md#feature-guides). Each
+the [complete authoring workflow](guide-authoring.md). Each
 guide has a module in `scripts/guides/scenarios/`; shared capture helpers remain
 in `scripts/guides/capture.py`.
 
