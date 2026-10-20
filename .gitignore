@@ -31,12 +31,7 @@ out/
 # misc
 .DS_Store
 *.pem
-!/public/certificates/connectbot-transparency.pem
-!/public/certificates/connectbot-play-app-signing.pem
-!/public/certificates/connectbot-github-apk-signing.pem
-!/public/certificates/connectbot-app-signing-2026.pem
-!/public/certificates/connectbot-app-signing-original.pem
-!/public/certificates/connectbot-play-app-signing-intermediate.pem
+!/public/certificates/*.pem
 Thumbs.db
 
 # debug
