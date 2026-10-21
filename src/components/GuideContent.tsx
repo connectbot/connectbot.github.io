@@ -1,4 +1,6 @@
+import type { GuideVariant } from '@/guides/types';
 import guides from '@/guides/en.json';
+import captures from '../../public/guides/index.json';
 import { GuideDemo } from './GuideDemo';
 
 export function GuideContent({ id }: { id: string }) {
@@ -9,7 +11,7 @@ export function GuideContent({ id }: { id: string }) {
   return (
     <>
       <p>{guide.description}</p>
-      <GuideDemo guide={guide} />
+      <GuideDemo guide={guide} initialVariants={(captures.variants as GuideVariant[]).filter(variant => variant.guide === id)} />
     </>
   );
 }

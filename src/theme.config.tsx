@@ -4,7 +4,7 @@ import Link from 'next/link';
 const config = {
   logo: (
     <div className="navbar-brand">
-      <Image src="/logo.png" alt="ConnectBot logo" width={32} height={32} />
+      <Image src="/logo.png" alt="ConnectBot logo" width={32} height={32} preload />
       <span>ConnectBot</span>
     </div>
   ),

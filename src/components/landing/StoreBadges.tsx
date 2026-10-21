@@ -31,6 +31,8 @@ export function StoreBadges() {
             alt={store.label}
             width={store.width}
             height={store.height}
+            loading="eager"
+            fetchPriority={store.image === '/badges/f-droid.svg' ? 'high' : 'auto'}
             unoptimized
           />
         </a>

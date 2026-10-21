@@ -17,17 +17,19 @@ import { SupportLink } from '@/components/SupportLink';
 import themeConfig from '@/theme.config';
 import './styles.css';
 
+// Preload fonts, but keep the fallback for this visit if a font arrives too late.
+// Swapping after first paint can rewrap text and move the content below it.
 const raleway = Raleway({
   weight: ['300', '400', '700'],
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-raleway',
 });
 
 const sourceSans = Source_Sans_3({
   weight: ['300', '400', '700'],
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-source-sans',
 });
 
@@ -39,7 +41,7 @@ const datatypeThin = localFont({
       style: 'normal',
     },
   ],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-datatype-thin',
 });
 

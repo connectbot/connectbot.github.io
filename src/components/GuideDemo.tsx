@@ -4,6 +4,10 @@ import type { Guide, GuideVariant } from '@/guides/types';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 
+function subscribeHydration() {
+  return () => {};
+}
+
 function subscribeMotion(update: () => void) {
   const query = window.matchMedia('(prefers-reduced-motion: reduce)');
   query.addEventListener('change', update);
@@ -47,9 +51,10 @@ function GuideInstructions({ guide, variant }: { guide: Guide; variant?: GuideVa
   );
 }
 
-export function GuideDemo({ guide }: { guide: Guide }) {
+export function GuideDemo({ guide, initialVariants }: { guide: Guide; initialVariants: GuideVariant[] }) {
   const { resolvedTheme } = useTheme();
-  const [variants, setVariants] = useState<GuideVariant[]>([]);
+  const hydrated = useSyncExternalStore(subscribeHydration, () => true, () => false);
+  const [variants, setVariants] = useState(initialVariants);
   const language = useSyncExternalStore(subscribeLanguage, languageSnapshot, () => 'en').toLowerCase();
   const [mode, setMode] = useState('watch');
   const [stepId, setStepId] = useState(guide.steps[0]?.id ?? '');
@@ -63,7 +68,8 @@ export function GuideDemo({ guide }: { guide: Guide }) {
   const manualPlayback = useRef(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastVariant = useRef<string | null>(null);
-  const desiredTheme = resolvedTheme === 'dark' ? 'dark' : 'light';
+  // Match the exported light variant during hydration before applying the site theme.
+  const desiredTheme = hydrated && resolvedTheme === 'dark' ? 'dark' : 'light';
   const selectedLanguage = [language, language.split('-')[0], 'en']
     .find(locale => variants.some(v => v.language.toLowerCase() === locale));
   const variant = variants

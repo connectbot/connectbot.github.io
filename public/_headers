@@ -1,3 +1,9 @@
 /certificates/*.pem
   Content-Type: application/pem-certificate-chain
   Content-Disposition: attachment
+
+/*
+  Link: </logo.png>; rel=preload; as=image
+
+/
+  Link: </badges/f-droid.svg>; rel=preload; as=image
