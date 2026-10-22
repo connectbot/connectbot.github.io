@@ -598,10 +598,10 @@ html:has(.hero-brand):not([data-brand-docked='true']) a:has(> .navbar-brand) {
     align-items: center;
     justify-content: center;
     min-height: 44px;
-    padding: 0 0.5rem;
+    padding: 0 0.3rem;
     border-radius: 0.5rem;
     color: inherit;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
   }

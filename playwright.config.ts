@@ -1,10 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './tests/guides',
+  testDir: './tests',
+  testMatch: '**/*.spec.ts',
   fullyParallel: true,
   use: { baseURL: 'http://127.0.0.1:3012', contextOptions: { reducedMotion: 'reduce' } },
   webServer: {
+    stdout: 'ignore',
+    stderr: 'ignore',
     command: 'python3 -m http.server 3012 --bind 127.0.0.1 --directory out',
     url: 'http://127.0.0.1:3012/guides/',
     reuseExistingServer: process.env.CI !== 'true',

@@ -33,6 +33,8 @@ Web page for [ConnectBot](https://connectbot.org/), the first open source SSH cl
 
 ## Contributor documentation
 
+- [Terminal keyboard editor](docs/keyboard-editor.md): format compatibility, previews, tests, and community layout contributions.
+
 - [Development](docs/development.md): project structure, Git hooks, LAN access, checks, and deployment.
 - [Parameterized commands in MDX](docs/parameterized-commands.md): shared inputs, templates, and validation.
 - [Authoring feature guides](docs/guide-authoring.md): scenarios, translations, capture, narration, and publication.

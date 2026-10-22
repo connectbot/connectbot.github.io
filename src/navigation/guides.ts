@@ -21,6 +21,7 @@ export const guideGroups = [
     title: 'Terminal',
     guides: [
       { slug: 'special-keys', title: 'Keep special keys visible' },
+      { slug: 'terminal-keyboard', title: 'Set up a Terminal Keyboard' },
       { slug: 'terminal-appearance', title: 'Customize terminal appearance' },
     ],
   },
