@@ -34,6 +34,10 @@ export default antfu(
     ],
     ...playwright.configs['flat/recommended'],
   },
+  {
+    files: ['tests/keyboards/*.test.ts'],
+    rules: { 'test/no-import-node-test': 'off' },
+  },
   // --- Custom Rule Overrides ---
   {
     rules: {

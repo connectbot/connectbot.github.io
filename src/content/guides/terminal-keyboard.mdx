@@ -1,0 +1,57 @@
+---
+title: Set up a Terminal Keyboard
+description: Choose or create a terminal keyboard layout, preview it on your device, and import it into ConnectBot.
+---
+
+# Set up a Terminal Keyboard
+
+Keep the terminal keys you use most within reach. Choose a layout from the
+[keyboard gallery](/keyboards/) or [open the web editor](/keyboards/editor/) to
+create your own.
+
+These instructions require a ConnectBot build with the customizable **Terminal
+keyboard** settings. Older builds may only offer the special-key toolbar.
+
+## Choose a layout
+
+Browse the [keyboard gallery](/keyboards/) for built-in templates and
+community layouts. Select **Customize layout** to open one in the editor, or
+start with a blank layout. You can also import a keyboard JSON file you already
+have into the editor.
+
+## Make it your own
+
+1. Give the layout a name and select a key to change its action or appearance.
+   Drag keys to rearrange them, or add keys for shortcuts and macros.
+2. Select **Phone** or **Tablet** and switch between **Portrait** and
+   **Landscape** to check the available space. Mobile previews include a
+   simulated Google Keyboard; use **Show Google Keyboard** to hide it.
+3. Switch to **Test keyboard** to try layers, modifiers, and shortcuts. The
+   action log shows what each key would do.
+4. Select **Download JSON** to save the layout. By default, the editor creates
+   new identifiers so the import adds a separate copy.
+
+The preview and action log run in your browser. Google Keyboard is shown for
+spacing; its simulated keys do not type into a live terminal.
+
+## Import into ConnectBot
+
+1. Save the downloaded JSON on your Android device.
+2. Open ConnectBot's Host List, open its menu, and select **Import Hosts**.
+   Choose your keyboard JSON file. This importer also handles keyboard layouts
+   and macros, even when the file contains no hosts.
+3. Open the host or profile you want to use, find **Terminal keyboard**, and
+   select the imported layout. Save the host or profile to apply the choice.
+
+You can manage saved layouts and macros from **Settings → Terminal keyboard**.
+If you cannot find these controls, use a ConnectBot build that includes the
+customizable Terminal Keyboard.
+
+## Share your layout
+
+Select **Share your layout** in the editor for the contribution steps. Upload
+the JSON to the GitHub repository's `public/keyboards/` directory and open a
+pull request. Once merged, your layout appears in the gallery.
+
+The [contribution guide](https://github.com/connectbot/connectbot.github.io/blob/develop/public/keyboards/README.md)
+explains naming and validation requirements.

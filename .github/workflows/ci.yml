@@ -16,7 +16,8 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Match the OS supported by the pinned Playwright version.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -49,8 +50,17 @@ jobs:
       - name: Type Check
         run: pnpm run check:types
 
+      - name: Keyboard contract tests
+        run: pnpm test:keyboards
+
       - name: Build
         run: pnpm run build
+
+      - name: Install keyboard test browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Keyboard browser tests
+        run: pnpm exec playwright test tests/keyboards --project=chromium
 
       - name: Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/develop' && github.repository == 'connectbot/connectbot.github.io' && github.event_name == 'push'

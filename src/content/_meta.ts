@@ -19,6 +19,12 @@ const meta: MetaRecord = {
     type: 'page',
     href: '/guides/',
   },
+  keyboards: {
+    title: 'Keyboards',
+    display: 'hidden',
+    type: 'page',
+    theme: { layout: 'full', sidebar: false, toc: false },
+  },
   bugs: {
     title: 'Help',
     type: 'page',
