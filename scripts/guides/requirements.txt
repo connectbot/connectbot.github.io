@@ -1,4 +1,4 @@
 uiautomator2==3.5.0
-Pillow==12.3.0
+Pillow==13.0.0
 requests==2.33.0
 imageio-ffmpeg==0.6.0
