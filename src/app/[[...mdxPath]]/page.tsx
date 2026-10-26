@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { FC } from 'react';
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { removeLinks } from 'nextra/remove-links';
@@ -6,10 +7,17 @@ import { useMDXComponents as getMDXComponents } from '../../mdx-components';
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath');
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   const { metadata } = await importPage(params.mdxPath);
-  return metadata;
+  const path = (params.mdxPath ?? []).map(encodeURIComponent).join('/');
+  return {
+    ...metadata,
+    alternates: {
+      ...metadata.alternates,
+      canonical: path ? `/${path}/` : '/',
+    },
+  };
 }
 
 type PageProps = Readonly<{
