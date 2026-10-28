@@ -52,12 +52,14 @@ pnpm run analyze
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the `develop` branch. The CI workflow:
+The site is automatically deployed to Cloudflare Pages when changes are pushed to the `develop` branch. The CI workflow:
 1. Runs linting and type checking
 2. Builds the static site
-3. Deploys to GitHub Pages
+3. Deploys to Cloudflare Pages
 
 You can preview the production build locally by serving the `./out` directory:
 ```bash
 npx serve ./out
 ```
+
+See [WebAuthn hosting](webauthn.md) for the independent passkey association deployment.

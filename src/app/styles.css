@@ -1,16 +1,13 @@
 @import 'nextra-theme-docs/style.css';
+@import '../../public/brand.css';
 
 :root {
   --site-header-height: var(--nextra-navbar-height);
-  --site-link-color: #1d4ed8;
-  --site-link-hover-color: #1e40af;
   --x-color-primary-400: #93c5fd;
   --x-color-primary-600: var(--site-link-color);
 }
 
 .dark {
-  --site-link-color: #93c5fd;
-  --site-link-hover-color: #bfdbfe;
   --x-color-primary-600: var(--site-link-color);
 }
 
