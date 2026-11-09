@@ -4,7 +4,7 @@ title: SSH key algorithms and biometric protection
 
 # SSH key algorithms and biometric protection
 
-Written for **ConnectBot v1.11.1**.
+Written for **ConnectBot v1.11.1** (with a separate section for passkeys in alpha builds).
 
 An SSH key pair lets you sign in without sending an account password to the server. Install the **public key** on the server and keep the **private key** on your device. ConnectBot uses the private key to sign a challenge that the server can verify.
 
@@ -59,6 +59,39 @@ Biometric-protected private keys are tied to their device. ConnectBot does not e
 
 Before relying on a device-bound key, keep another way to access your server. If you lose the device or its Keystore key becomes unavailable, you will need that access to authorize a replacement key.
 
+## Passkeys in development builds
+
+**Passkey support is under development in alpha builds.**
+
+ConnectBot can create an ES256/P-256 passkey through Android Credential Manager and ask its credential provider to sign SSH authentication requests. The private key stays with the provider, such as Bitwarden. Your SSH server must support OpenSSH's WebAuthn security-key signatures.
+
+1. Open ConnectBot's public-key list and choose **Create passkey**.
+2. Enter a nickname and select your credential provider to save the new passkey.
+3. Copy the public key from ConnectBot and install it in the server account's
+   `authorized_keys`. It uses the `sk-ecdsa-sha2-nistp256@openssh.com` key type.
+4. Select the key in the host settings and connect.
+5. Complete the credential provider's verification prompt when signing in.
+
+ConnectBot stores the credential ID, relying-party ID, and SSH public key. It
+does not store or export the private key, and it does not back up the local
+credential metadata. Syncing your provider's vault does not automatically add
+keys to ConnectBot; use **Import passkey** to restore them.
+
+### Import a synced passkey
+
+1. Sync your credential provider's vault and enable it as an Android passkey
+   provider.
+2. Open ConnectBot's public-key list, choose **Import passkey**, and confirm.
+3. Select a passkey previously created for ConnectBot. Your provider may ask you
+   to verify twice so ConnectBot can recover its SSH public key.
+4. If a saved key matches, ConnectBot reconnects that entry and preserves its
+   nickname, settings, and host connections.
+5. If several saved entries match, choose the entry to reconnect. If none match,
+   enter a nickname to add the recovered key.
+
+Deleting a key entry in ConnectBot leaves the passkey in its provider. Delete it
+separately in the provider if you no longer need it.
+
 ## Which should I choose?
 
 - **Want biometric-enforced, non-exportable storage?** Generate an RSA or EC key with fingerprint protection enabled, using parameters supported by your device and server.
@@ -68,7 +101,7 @@ Before relying on a device-bound key, keep another way to access your server. If
 
 ## Implementation references
 
-ConnectBot-specific behavior described here is for **v1.11.1**. These source references explain the implementation:
+The software-key and Keystore behavior described above is for **v1.11.1**; the passkey section describes development builds. These source references explain the v1.11.1 implementation:
 
 - [BiometricKeyManager.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/util/BiometricKeyManager.kt): supported algorithms, Keystore generation, and authentication window.
 - [GeneratePubkeyViewModel.kt](https://github.com/connectbot/connectbot/blob/v1.11.1/app/src/main/java/org/connectbot/ui/screens/generatepubkey/GeneratePubkeyViewModel.kt): software versus Keystore storage and backup settings.
