@@ -45,10 +45,10 @@ Web page for [ConnectBot](https://connectbot.org/), the first open source SSH cl
 The WebAuthn CI job packages and deploys two separate Cloudflare Pages sites:
 
 - `webauthn` → `connectbot-webauthn` → `webauthn.connectbot.org`
-- `webauthn-debug` → `connectbot-webauthn-debug` → `debug.webauthn.connectbot.org`
+- `webauthn-debug` → `connectbot-webauthn-debug` → `webauthn-debug.connectbot.org`
 
 Before the first debug deployment, create the `connectbot-webauthn-debug` Pages
-project with production branch `main` and attach `debug.webauthn.connectbot.org`
+project with production branch `main` and attach `webauthn-debug.connectbot.org`
 as its custom domain in Cloudflare. Allow Cloudflare to provision DNS and HTTPS.
 The debug association authorizes only `org.connectbot.debug` signed with the
 specific local test certificate checked in `scripts/check-webauthn.py`;
