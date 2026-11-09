@@ -39,3 +39,23 @@ Web page for [ConnectBot](https://connectbot.org/), the first open source SSH cl
 - [Parameterized commands in MDX](docs/parameterized-commands.md): shared inputs, templates, and validation.
 - [Authoring feature guides](docs/guide-authoring.md): scenarios, translations, capture, narration, and publication.
 - [Guide capture reference](docs/guides.md): device setup, speech providers, media behavior, and validation.
+
+## Debug passkey relying party
+
+The WebAuthn CI job packages and deploys two separate Cloudflare Pages sites:
+
+- `webauthn` → `connectbot-webauthn` → `webauthn.connectbot.org`
+- `webauthn-debug` → `connectbot-webauthn-debug` → `debug.webauthn.connectbot.org`
+
+Before the first debug deployment, create the `connectbot-webauthn-debug` Pages
+project with production branch `main` and attach `debug.webauthn.connectbot.org`
+as its custom domain in Cloudflare. Allow Cloudflare to provision DNS and HTTPS.
+The debug association authorizes only `org.connectbot.debug` signed with the
+specific local test certificate checked in `scripts/check-webauthn.py`;
+production remains restricted to the official release identities.
+
+Validate with `python3 scripts/check-webauthn.py`. Package either site with
+`python3 scripts/prepare-webauthn.py webauthn` or
+`python3 scripts/prepare-webauthn.py webauthn-debug`. A push to `develop` deploys
+both. Debug credentials cannot authenticate as release credentials because their
+relying-party IDs differ.

@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "org.connectbot.debug",
+      "sha256_cert_fingerprints": [
+        "C1:8F:63:40:06:F9:B6:68:EF:7C:5C:EB:3E:DB:50:D0:90:E7:DC:C0:23:DD:A7:2A:6A:08:D9:3D:F3:2F:35:C2"
+      ]
+    }
+  }
+]

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: ConnectBot;
+  src: url('/fonts/logo-font.woff2') format('woff2');
+  font-weight: 100;
+  font-display: optional;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: var(--site-background);
+  color: var(--site-text);
+  font:
+    1rem/1.65 Arial,
+    sans-serif;
+}
+header,
+main,
+footer {
+  max-width: 48rem;
+  margin: auto;
+  padding: 1.5rem;
+}
+header {
+  border-bottom: 1px solid #8884;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  font:
+    100 1.5rem/1 ConnectBot,
+    Arial,
+    sans-serif;
+}
+.brand img {
+  width: 40px;
+  height: 40px;
+}
+main {
+  padding-block: clamp(2rem, 8vw, 5rem);
+}
+h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+p {
+  max-width: 38rem;
+}
+.notice {
+  margin-block: 2rem;
+  padding: 1.25rem;
+  border: 1px solid #8884;
+  border-radius: 0.875rem;
+  background: #8881;
+}
+.notice p {
+  margin: 0;
+}
+a {
+  color: var(--site-link-color);
+  text-underline-offset: 0.25em;
+}
+a:hover {
+  color: var(--site-link-hover-color);
+}
+a:focus-visible {
+  outline: 3px solid #438be5;
+  outline-offset: 4px;
+}
+footer {
+  border-top: 1px solid #8884;
+  font-size: 0.875rem;
+}
