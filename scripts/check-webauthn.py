@@ -16,7 +16,10 @@ for certificate in CERTIFICATES:
     digest = hashlib.sha256(ssl.PEM_cert_to_DER_cert(pem)).hexdigest().upper()
     fingerprints.append(':'.join(digest[i:i + 2] for i in range(0, 64, 2)))
 expected = [{
-    'relation': ['delegate_permission/common.get_login_creds'],
+    'relation': [
+        'delegate_permission/common.get_login_creds',
+        'delegate_permission/common.handle_all_urls',
+    ],
     'target': {
         'namespace': 'android_app',
         'package_name': 'org.connectbot',
@@ -28,7 +31,10 @@ if actual != expected:
     raise SystemExit('WebAuthn association must match the three official release certificates')
 debug = json.loads((ROOT / 'webauthn-debug/.well-known/assetlinks.json').read_text())
 expected_debug = [{
-    'relation': ['delegate_permission/common.get_login_creds'],
+    'relation': [
+        'delegate_permission/common.get_login_creds',
+        'delegate_permission/common.handle_all_urls',
+    ],
     'target': {
         'namespace': 'android_app',
         'package_name': 'org.connectbot.debug',
