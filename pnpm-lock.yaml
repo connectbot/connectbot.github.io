@@ -222,7 +222,7 @@ importers:
         specifier: 26.6.6
         version: 26.6.6
       '@types/react':
-        specifier: ^19.3.0
+        specifier: 19.3.0
         version: 19.3.0
       '@typescript/native':
         specifier: npm:typescript@7.0.2
