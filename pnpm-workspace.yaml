@@ -1,10 +1,16 @@
-shellEmulator: true
+minimumReleaseAgeExcludePrune: true
 
 trustPolicy: no-downgrade
 # The upstream npm release lacks provenance; keep the exception version-scoped.
 # Verified registry ownership and the upstream v2.2.2 release.
 trustPolicyExclude:
   - lefthook@2.2.2
+
+shellEmulator: true
+
+patchedDependencies:
+  nextra-theme-docs@4.6.1: patches/nextra-theme-docs@4.6.1.patch
+
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
@@ -12,5 +18,3 @@ allowBuilds:
   lefthook: true
   sharp: true
   workerd: true
-patchedDependencies:
-  nextra-theme-docs@4.6.1: patches/nextra-theme-docs@4.6.1.patch

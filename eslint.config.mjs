@@ -1,5 +1,5 @@
 import antfu from '@antfu/eslint-config';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
+import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 import playwright from 'eslint-plugin-playwright';
 
 export default antfu(
@@ -25,7 +25,7 @@ export default antfu(
     },
   },
   // --- Accessibility Rules ---
-  jsxA11y.flatConfigs.recommended,
+  jsxA11y.configs.recommended,
   // --- E2E Testing Rules ---
   {
     files: [

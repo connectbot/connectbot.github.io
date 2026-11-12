@@ -21,11 +21,12 @@ dependency build permissions from `allowBuilds` in `pnpm-workspace.yaml`.
 The trust policy remains enabled; its Lefthook exception covers only 2.2.2,
 whose npm release lacks provenance.
 
-ESLint stays on 9 because `eslint-plugin-jsx-a11y` does not yet support 10.
-`@antfu/eslint-config` is pinned to 9.0.0 because later releases require
-an ESLint 10 version of `eslint-plugin-unicorn`. TypeScript stays on 6 while
-typescript-eslint and Twoslash require its compiler API. Recheck these peer
-requirements before upgrading those major versions.
+ESLint 10 uses `eslint-plugin-jsx-a11y-x` for accessibility checks.
+`pnpm check:types` runs TypeScript 7's `tsc` through the `@typescript/native`
+package alias. The `typescript` alias supplies `@typescript/typescript6` for
+typescript-eslint, Next.js, and Nextra's Twoslash dependencies, which still
+need the JavaScript compiler API. Its separate executable is `tsc6`.
+This follows [Microsoft's side-by-side setup](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0).
 
 CI uses Ubuntu 24.04, which the pinned Playwright release supports.
 
