@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["connectbot/*", "kruton/*"],
+      "minimumReleaseAge": null
+    },
+    {
+      "matchManagers": ["gradle"],
+      "groupName": "Kotlin and Gradle dependencies"
+    }
+  ]
+}
