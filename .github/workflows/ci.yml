@@ -19,7 +19,7 @@ jobs:
       contents: read
       deployments: write
     # Match the OS supported by the pinned Playwright version.
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7.0.1
         with:
@@ -80,7 +80,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7.0.1
       - name: Validate WebAuthn association
