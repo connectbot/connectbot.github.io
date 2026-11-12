@@ -16,3 +16,7 @@ pre-commit:
       glob: '*.{ts,tsx}'
       run: pnpm run check:types
       priority: 2
+    zizmor:
+      glob: '.github/workflows/*.{yml,yaml,lock}'
+      run: mise exec -- zizmor --offline .
+      priority: 2
