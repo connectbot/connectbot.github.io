@@ -55,7 +55,6 @@
     // Project Structure
     // Configure import paths and module resolution
     // ======================================================================
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"

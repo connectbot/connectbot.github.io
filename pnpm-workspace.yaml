@@ -1,11 +1,16 @@
 shellEmulator: true
 
 trustPolicy: no-downgrade
-ignoredBuiltDependencies:
-  - esbuild
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
-  - lefthook
-  - sharp
-  - workerd
+# The upstream npm release lacks provenance; keep the exception version-scoped.
+# Verified registry ownership and the upstream v2.2.2 release.
+trustPolicyExclude:
+  - lefthook@2.2.2
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: false
+  lefthook: true
+  sharp: true
+  workerd: true
+patchedDependencies:
+  nextra-theme-docs@4.6.1: patches/nextra-theme-docs@4.6.1.patch

@@ -77,7 +77,7 @@ test('site preferences preserve the step; tours support keyboard navigation', as
   await page.evaluate(() => {
     document.documentElement.lang = 'ar-EG';
   });
-  await page.locator('[title="Change theme"]:visible').click();
+  await page.locator('.site-header').getByRole('button', { name: 'Change theme' }).click();
   await page.getByRole('option', { name: 'Light', exact: true }).click();
 
   await expect.poll(async () => page.locator('video').evaluate((v: HTMLVideoElement) => v.currentSrc))
@@ -127,7 +127,7 @@ test('unavailable site theme hides the walkthrough and watch links', async ({ pa
     variants: [makeVariant('en', 36, 'dark')],
   } }));
   await page.goto('/guides/special-keys/');
-  await page.locator('[title="Change theme"]:visible').click();
+  await page.locator('.site-header').getByRole('button', { name: 'Change theme' }).click();
   await page.getByRole('option', { name: 'Light', exact: true }).click();
 
   await expect(page.getByRole('heading', { name: 'Step by step' })).toBeVisible();

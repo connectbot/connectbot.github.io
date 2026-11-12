@@ -111,9 +111,7 @@ export function GuideDemo({ guide, initialVariants }: { guide: Guide; initialVar
         manualPlayback.current = true;
         player.current?.pause();
         // Synchronize browser-owned URL state, including the initial deep link.
-        // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
         setStepId(id);
-        // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
         setMode('watch');
         panel.current?.scrollIntoView({ block: 'nearest' });
       }
@@ -176,7 +174,7 @@ export function GuideDemo({ guide, initialVariants }: { guide: Guide; initialVar
     if (!ring) {
       return;
     }
-    const timer = window.setTimeout(() => setRingVariant(null), 600);
+    const timer = window.setTimeout(setRingVariant, 600, null);
     return () => window.clearTimeout(timer);
   }, [ring]);
 
@@ -311,7 +309,7 @@ export function GuideDemo({ guide, initialVariants }: { guide: Guide; initialVar
                         setRingVariant(variant.id);
                         const next = variant.steps[stepIndex + 1];
                         if (next) {
-                          advanceTimer.current = setTimeout(() => selectStep(next.id), reducedMotion ? 150 : 600);
+                          advanceTimer.current = setTimeout(selectStep, reducedMotion ? 150 : 600, next.id);
                         }
                       }}
                     >

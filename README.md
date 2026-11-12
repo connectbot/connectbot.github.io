@@ -8,8 +8,8 @@ Web page for [ConnectBot](https://connectbot.org/), the first open source SSH cl
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) 20 or later
-- [pnpm](https://pnpm.io/) 10 or later
+- [Node.js](https://nodejs.org/) 26 (matches CI)
+- [pnpm](https://pnpm.io/) 12.18.0 (pinned in `package.json`)
 
 ### Getting Started
 
