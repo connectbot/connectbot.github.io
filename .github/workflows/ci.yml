@@ -31,7 +31,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v7.1.0
         with:
-          node-version: '25'
+          node-version: '26'
           cache: pnpm
 
       - name: Restore cache
@@ -91,7 +91,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v7.1.0
         with:
-          node-version: '25'
+          node-version: '26'
       - name: Deploy WebAuthn association
         if: github.ref == 'refs/heads/develop' && github.repository == 'connectbot/connectbot.github.io' && github.event_name == 'push'
         uses: cloudflare/wrangler-action@v4.1.3
