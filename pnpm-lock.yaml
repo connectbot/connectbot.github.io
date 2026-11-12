@@ -195,79 +195,79 @@ importers:
         version: 19.3.1(react@19.3.1)
     devDependencies:
       '@antfu/eslint-config':
-        specifier: ^10.0.0
+        specifier: 10.0.0
         version: 10.0.0(@eslint-react/eslint-plugin@5.30.1(@typescript/typescript6@6.0.2)(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@next/eslint-plugin-next@16.4.6(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/typescript-estree@8.72.2(@typescript/typescript6@6.0.2)(supports-color@10.2.2))(@typescript-eslint/utils@8.72.2(@typescript/typescript6@6.0.2)(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.45)(eslint-plugin-format@2.0.1(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint-plugin-react-refresh@0.5.7(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       '@commitlint/cli':
-        specifier: ^21.2.4
+        specifier: 21.2.4
         version: 21.2.4(@typescript/typescript6@6.0.2)(conventional-commits-parser@7.1.4)
       '@commitlint/config-conventional':
-        specifier: ^21.2.4
+        specifier: 21.2.4
         version: 21.2.4
       '@commitlint/types':
-        specifier: ^21.2.3
+        specifier: 21.2.3
         version: 21.2.3
       '@eslint-react/eslint-plugin':
-        specifier: ^5.30.1
+        specifier: 5.30.1
         version: 5.30.1(@typescript/typescript6@6.0.2)(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       '@next/bundle-analyzer':
-        specifier: ^16.4.6
+        specifier: 16.4.6
         version: 16.4.6
       '@next/eslint-plugin-next':
-        specifier: ^16.4.6
+        specifier: 16.4.6
         version: 16.4.6(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       '@playwright/test':
         specifier: 1.65.0
         version: 1.65.0
       '@types/node':
-        specifier: ^26.6.6
+        specifier: 26.6.6
         version: 26.6.6
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       babel-plugin-react-compiler:
-        specifier: ^1.0.0
+        specifier: 1.0.0
         version: 1.0.0
       eslint:
-        specifier: ^10.14.0
+        specifier: 10.14.0
         version: 10.14.0(jiti@2.7.0)(supports-color@10.2.2)
       eslint-plugin-format:
-        specifier: ^2.0.1
+        specifier: 2.0.1
         version: 2.0.1(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-jsx-a11y-x:
-        specifier: ^0.2.0
+        specifier: 0.2.0
         version: 0.2.0(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-playwright:
-        specifier: ^2.12.2
+        specifier: 2.12.2
         version: 2.12.2(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-react-hooks:
-        specifier: ^7.1.1
+        specifier: 7.1.1
         version: 7.1.1(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       eslint-plugin-react-refresh:
-        specifier: ^0.5.7
+        specifier: 0.5.7
         version: 0.5.7(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       knip:
-        specifier: ^6.45.0
+        specifier: 6.45.0
         version: 6.45.0
       lefthook:
-        specifier: ^2.2.2
+        specifier: 2.2.2
         version: 2.2.2
       next-sitemap:
-        specifier: ^4.2.3
+        specifier: 4.2.3
         version: 4.2.3(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
       pagefind:
-        specifier: ^1.6.0
+        specifier: 1.6.0
         version: 1.6.0
       tsx:
-        specifier: ^4.23.15
+        specifier: 4.23.15
         version: 4.23.15
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.2
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
       wrangler:
-        specifier: ^4.160.0
+        specifier: 4.160.0
         version: 4.160.0(@types/node@26.6.6)
 
 packages:
