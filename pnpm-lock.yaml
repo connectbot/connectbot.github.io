@@ -249,8 +249,8 @@ importers:
         specifier: 0.5.7
         version: 0.5.7(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       knip:
-        specifier: 6.45.0
-        version: 6.45.0
+        specifier: 6.45.1
+        version: 6.45.1
       lefthook:
         specifier: 2.2.2
         version: 2.2.2
@@ -3517,8 +3517,8 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  knip@6.45.0:
-    resolution: {integrity: sha512-ywPAhxiJGPWD/1V5dVYawA6el74q4vgX8omkeyl0MbA1CCkdjxrvWXXVqM20a5wQWcl1NbC9ImLHYsbFEbD0Xg==}
+  knip@6.45.1:
+    resolution: {integrity: sha512-zp3zXKy2cZWiIttdlWU5fisKxVQaLSU6471ej0KGz1GdHdaHxpzTAO/LIyFNc3gU3v1W7LJaqvYumoO3l/u+6A==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -7965,7 +7965,7 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  knip@6.45.0:
+  knip@6.45.1:
     dependencies:
       formatly: 0.11.4
       get-tsconfig: 4.14.3

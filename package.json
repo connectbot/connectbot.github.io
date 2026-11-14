@@ -53,7 +53,7 @@
     "eslint-plugin-playwright": "2.12.2",
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-react-refresh": "0.5.7",
-    "knip": "6.45.0",
+    "knip": "6.45.1",
     "lefthook": "2.2.2",
     "next-sitemap": "4.2.3",
     "pagefind": "1.6.0",
