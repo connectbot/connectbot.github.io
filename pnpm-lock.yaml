@@ -174,16 +174,16 @@ importers:
         version: 2.2.3
       next:
         specifier: ^16.4.6
-        version: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        version: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       nextra:
         specifier: ^4.6.1
-        version: 4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)
+        version: 4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)
       nextra-theme-docs:
         specifier: ^4.6.1
-        version: 4.6.1(patch_hash=f71f08a75ddca41c267fa8a927780d3e5b1a94a34d5d86f00e4c36e01eda5021)(@types/react@19.3.0)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(nextra@4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1))
+        version: 4.6.1(patch_hash=f71f08a75ddca41c267fa8a927780d3e5b1a94a34d5d86f00e4c36e01eda5021)(@types/react@19.3.0)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(nextra@4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1))
       qrcode.react:
         specifier: ^4.2.0
         version: 4.2.0(react@19.3.1)
@@ -216,8 +216,8 @@ importers:
         specifier: 16.4.6
         version: 16.4.6(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       '@playwright/test':
-        specifier: 1.65.0
-        version: 1.65.0
+        specifier: 1.65.1
+        version: 1.65.1
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -256,7 +256,7 @@ importers:
         version: 2.2.2
       next-sitemap:
         specifier: 4.2.3
-        version: 4.2.3(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
+        version: 4.2.3(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))
       pagefind:
         specifier: 1.6.0
         version: 1.6.0
@@ -1758,8 +1758,8 @@ packages:
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.65.0':
-    resolution: {integrity: sha512-iGURLGuKDLakSEl7Pgfv8h7f+XLT+V861Wfhz0zlEl5nyFuKUopdkFBPKqTllTUp06aOwPuH8iuUEb3yp3MpbQ==}
+  '@playwright/test@1.65.1':
+    resolution: {integrity: sha512-y+NCIRm2LvY4slUVWvGh1nujJ8RF/hEisIsq2mtUPgdQC4L701bq5hZGMhrpeXjACvwvO9tj5dJqhvM6TP9lbw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -4074,13 +4074,13 @@ packages:
   pkg-types@2.4.0:
     resolution: {integrity: sha512-07Fys7iVx0X6TcviMOgogM1Lk33ZyqOezMnU79S+kffWqwolG/5W9V8EgQSeYCIfFTYVgssRbnH630Oa2+soBA==}
 
-  playwright-core@1.65.0:
-    resolution: {integrity: sha512-vNSKgH6YqtN7cdT/L334zo0a+YwkrpicyrHJlWWPIm/Q+Nn2SWInil01oT0mbu96U4GgoRtCYQD9CzJQgju+lA==}
+  playwright-core@1.65.1:
+    resolution: {integrity: sha512-hqPpz7blSMPxWVdoeE1yiBSzXsKiVOd2k+kjCvmUywD2GPO2Dd9HfcWnq9NN0GHbNZDFgZ9JfBFr+X5/BLo0qw==}
     engines: {node: '>=20'}
     hasBin: true
 
-  playwright@1.65.0:
-    resolution: {integrity: sha512-F3AMWcR44qMBt4kq+6Kb6mX7bjGXshktKFOPULd7reED6ZJWevjbNRqysP7q+AATE9kdPEZBibex1BYsvpVoeA==}
+  playwright@1.65.1:
+    resolution: {integrity: sha512-vJ1FuoOrNwOKHUIVEvSt3jT1L+wjjDpwhwIstKtfvTh8XIG4FG4bIFuvNdMxi81LGfAhUgUZleVFaOLY4RIUUw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -6026,9 +6026,9 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
-  '@playwright/test@1.65.0':
+  '@playwright/test@1.65.1':
     dependencies:
-      playwright: 1.65.0
+      playwright: 1.65.1
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -8653,20 +8653,20 @@ snapshots:
     dependencies:
       content-type: 2.1.0
 
-  next-sitemap@4.2.3(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)):
+  next-sitemap@4.2.3(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.11
       fast-glob: 3.3.3
       minimist: 1.2.8
-      next: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      next: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
 
   next-themes@0.4.6(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
-  next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       '@next/env': 16.4.6
       '@swc/helpers': 0.5.23
@@ -8685,7 +8685,7 @@ snapshots:
       '@next/swc-linux-x64-musl': 16.4.6
       '@next/swc-win32-arm64-msvc': 16.4.6
       '@next/swc-win32-x64-msvc': 16.4.6
-      '@playwright/test': 1.65.0
+      '@playwright/test': 1.65.1
       babel-plugin-react-compiler: 1.0.0
       sharp: 0.35.5(@types/node@26.6.6)
     transitivePeerDependencies:
@@ -8693,13 +8693,13 @@ snapshots:
       - '@types/node'
       - babel-plugin-macros
 
-  nextra-theme-docs@4.6.1(patch_hash=f71f08a75ddca41c267fa8a927780d3e5b1a94a34d5d86f00e4c36e01eda5021)(@types/react@19.3.0)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(nextra@4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1)):
+  nextra-theme-docs@4.6.1(patch_hash=f71f08a75ddca41c267fa8a927780d3e5b1a94a34d5d86f00e4c36e01eda5021)(@types/react@19.3.0)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(nextra@4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1)):
     dependencies:
       '@headlessui/react': 2.2.10(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       clsx: 2.1.1
-      next: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      next: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       next-themes: 0.4.6(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      nextra: 4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)
+      nextra: 4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)
       react: 19.3.1
       react-compiler-runtime: 19.1.0-rc.3(react@19.3.1)
       react-dom: 19.3.1(react@19.3.1)
@@ -8711,7 +8711,7 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra@4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2):
+  nextra@4.6.1(@typescript/typescript6@6.0.2)(next@16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.2
       '@headlessui/react': 2.2.10(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -8732,7 +8732,7 @@ snapshots:
       mdast-util-gfm: 3.1.0(supports-color@10.2.2)
       mdast-util-to-hast: 13.2.2
       negotiator: 1.1.0
-      next: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.0)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      next: 16.4.6(@babel/core@7.29.13(supports-color@10.2.2))(@playwright/test@1.65.1)(@types/node@26.6.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react: 19.3.1
       react-compiler-runtime: 19.1.0-rc.3(react@19.3.1)
       react-dom: 19.3.1(react@19.3.1)
@@ -8968,11 +8968,11 @@ snapshots:
       exsolve: 1.2.0
       pathe: 2.0.3
 
-  playwright-core@1.65.0: {}
+  playwright-core@1.65.1: {}
 
-  playwright@1.65.0:
+  playwright@1.65.1:
     dependencies:
-      playwright-core: 1.65.0
+      playwright-core: 1.65.1
 
   pluralize@8.0.0: {}
 
