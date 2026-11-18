@@ -205,7 +205,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: 10.0.0
-        version: 10.0.0(@eslint-react/eslint-plugin@5.30.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@next/eslint-plugin-next@16.4.6(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/typescript-estree@8.72.2(@typescript/typescript6@6.0.2)(supports-color@10.2.2))(@typescript-eslint/utils@8.72.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.45)(eslint-plugin-format@2.0.1(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint-plugin-react-refresh@0.5.7(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
+        version: 10.0.0(@eslint-react/eslint-plugin@5.30.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@next/eslint-plugin-next@16.4.6(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/typescript-estree@8.72.2(@typescript/typescript6@6.0.2)(supports-color@10.2.2))(@typescript-eslint/utils@8.72.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.45)(eslint-plugin-format@2.0.1(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint-plugin-react-refresh@0.5.8(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       '@commitlint/cli':
         specifier: 21.2.4
         version: 21.2.4(@typescript/typescript6@6.0.2)(conventional-commits-parser@7.1.4)
@@ -255,8 +255,8 @@ importers:
         specifier: 7.1.1
         version: 7.1.1(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       eslint-plugin-react-refresh:
-        specifier: 0.5.7
-        version: 0.5.7(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))
+        specifier: 0.5.8
+        version: 0.5.8(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))
       knip:
         specifier: 6.45.1
         version: 6.45.1
@@ -2948,8 +2948,8 @@ packages:
       eslint:
         optional: true
 
-  eslint-plugin-react-refresh@0.5.7:
-    resolution: {integrity: sha512-XhJSzLljuYD4UjNuFGJu2v7aD3sqNVK12w5/DCUfrNfHWegZo2+TsavNx8MuxMwEquuFAzNbNfXKU0WoZ+YUIg==}
+  eslint-plugin-react-refresh@0.5.8:
+    resolution: {integrity: sha512-VYgz1iCC5LxeAd6YRz5ATfg8WKrNb1ulHMpCe4pQpn3CS9DiYpZi5wcag73O8iChLhrl/CmlGMmzA6eXZ2cX4Q==}
     peerDependencies:
       eslint: ^9 || ^10
 
@@ -4808,7 +4808,7 @@ packages:
 
 snapshots:
 
-  '@antfu/eslint-config@10.0.0(@eslint-react/eslint-plugin@5.30.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@next/eslint-plugin-next@16.4.6(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/typescript-estree@8.72.2(@typescript/typescript6@6.0.2)(supports-color@10.2.2))(@typescript-eslint/utils@8.72.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.45)(eslint-plugin-format@2.0.1(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint-plugin-react-refresh@0.5.7(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)':
+  '@antfu/eslint-config@10.0.0(@eslint-react/eslint-plugin@5.30.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@next/eslint-plugin-next@16.4.6(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(@typescript-eslint/typescript-estree@8.72.2(@typescript/typescript6@6.0.2)(supports-color@10.2.2))(@typescript-eslint/utils@8.72.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.45)(eslint-plugin-format@2.0.1(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint-plugin-react-refresh@0.5.8(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)':
     dependencies:
       '@antfu/install-pkg': 2.1.0
       '@clack/prompts': 1.9.0
@@ -4851,7 +4851,7 @@ snapshots:
       '@eslint-react/eslint-plugin': 5.30.2(@typescript/typescript6@6.0.2)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       '@next/eslint-plugin-next': 16.4.6(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-format: 2.0.1(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))
-      eslint-plugin-react-refresh: 0.5.7(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))
+      eslint-plugin-react-refresh: 0.5.8(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))
     transitivePeerDependencies:
       - '@eslint/json'
       - '@typescript-eslint/typescript-estree'
@@ -7285,7 +7285,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-refresh@0.5.7(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)):
+  eslint-plugin-react-refresh@0.5.8(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2)):
     dependencies:
       eslint: 10.15.0(jiti@2.7.0)(supports-color@10.2.2)
 
